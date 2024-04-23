@@ -22,7 +22,9 @@
 
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": [
+        "./src/*"
+      ]
     }
   },
   "include": ["src", "prettier.config.mjs", "postcss.config.cjs"],

@@ -1,9 +1,10 @@
+import { BrowserRouter } from "react-router-dom";
+import Routes from "./routes/routes";
 
 export function App() {
-
   return (
-    <div>
-      Clema
-    </div>
-  )
+    <BrowserRouter>
+      <Routes />
+    </BrowserRouter>
+  );
 }

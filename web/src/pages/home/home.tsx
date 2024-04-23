@@ -1,7 +1,7 @@
 export default function Home() {
   return (
     <div>
-      <p>Clema</p>
+      <p className="text-3xl font-bold underline">Clema</p>
     </div>
   );
 }

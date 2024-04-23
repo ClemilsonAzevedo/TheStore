@@ -1,10 +1,7 @@
-import { Button } from "../../components/ui/button";
-
 export default function Home() {
   return (
     <div>
-      <p className="text-3xl font-bold underline">Clema</p>
-      <Button>Teste</Button>
+      <p className="font-poppins text-3xl text-violet-500">Clema</p>
     </div>
   );
 }

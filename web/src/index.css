@@ -2,8 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  font-family: "Poppins";
+}
+
 @layer base {
   :root {
+    --neutral50: 0 0% 98%;
+    --neutral400: 0 0% 90%;
+    --neutral600: 0 0% 64%;
+    --neutral950: 0 0% 4%;
+
+    --violet500: 271 91% 65%;
+
     --background: 0 0% 100%;
     --foreground: 0 0% 3.9%;
 

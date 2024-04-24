@@ -9,7 +9,7 @@ import { FeedbackSucessStep } from "./Steps/FeedbackSucessStep"
 
 export const feedBackTypes = {
   BUG: {
-    title: "Problema",
+    title: "Problem",
     image: {
       source: bugImageUrl,
       alt: 'Imagem de um insecto'
@@ -23,7 +23,7 @@ export const feedBackTypes = {
     }
   },
   OTHER: {
-    title: "Outro",
+    title: "Other",
     image: {
       source: thoughtImageUrl,
       alt: 'Imagem de uma nuvem pensamento'
@@ -44,7 +44,7 @@ export function WidgetForm() {
   }
 
   return (
-    <div className="bg-neutral-400 p-4 relative rounded-2xl mb-4 flex flex-col items-center shadow-lg w-[calc(100vw-2rem)] md:w-auto">
+    <div className="bg-neutral-400 p-4 relative rounded-lg flex flex-col items-center shadow-lg w-[calc(100vw-5rem)] md:w-auto">
 
       {feedbackSent ? (
         <FeedbackSucessStep onFeedbackRestartRequested={handleRestartFeedback} />

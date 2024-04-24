@@ -10,8 +10,7 @@ export function FeedbackTypeStep({ onFeedbackTypeChanged }: FeedbackTypeStepProp
   return (
     <>
       <header>
-        <span className="text-xl leading-6">Deixe seu Feedback</span>
-
+        <span className="text-lg leading-6">Give us feedback</span>
         <CloseButton />
       </header>
 
@@ -21,10 +20,13 @@ export function FeedbackTypeStep({ onFeedbackTypeChanged }: FeedbackTypeStepProp
             <button
               key={key}
               onClick={() => onFeedbackTypeChanged(key as FeedbackType)}
-              className="rounded-lg py-5 w-24 flex-1 flex-col items-center gap-2 border-2 border-transparent hover:border-neutral-400 focus:border-neutral-400 focus:outline-none"
+              className="rounded-lg py-4 px-1 w-24 h-24 flex-1 flex flex-col items-center gap-2 border-2 border-transparent hover:bg-neutral-600/30 transition focus:border-neutral-400 focus:outline-none"
               type="button"
             >
-              <img src={value.image.source} alt={value.image.alt} />
+              <img
+                src={value.image.source}
+                alt={value.image.alt}
+              />
               <span>{value.title}</span>
             </button>
           )

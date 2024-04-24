@@ -8,7 +8,7 @@ export function Widget() {
   return (
     <div className="absolute bottom-4 right-4">
       <Popover>
-        <PopoverContent className="bg-transparent shadow-none border-0">
+        <PopoverContent className="bg-transparent shadow-none border-0 w-full">
           <WidgetForm />
         </PopoverContent>
         <PopoverTrigger className="bg-violet-500 rounded-full px-3 h-12 text-neutral-50 flex justify-center items-center group focus-visible:outline-none">

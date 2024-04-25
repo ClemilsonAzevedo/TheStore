@@ -9,7 +9,7 @@ import {
 
 export default function Aside() {
   return (
-    <section className="flex h-[550px] w-[50px] flex-col items-center justify-between">
+    <aside className="flex h-full w-[50px] flex-col items-center justify-between">
       <div>
         <div className="bg-white relative rounded-full p-2 duration-300 hover:bg-neutral-400">
           <div className="absolute right-1 top-2 h-[5px] w-[5px] rounded-full bg-violet-500" />
@@ -35,6 +35,6 @@ export default function Aside() {
           <Settings />
         </div>
       </div>
-    </section>
+    </aside>
   );
 }

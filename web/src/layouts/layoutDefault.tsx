@@ -8,12 +8,12 @@ export default function LayoutDefault({
   children: React.ReactNode;
 }) {
   return (
-    <section className="min-h-screen">
+    <section className="min-h-screen ">
       <Header />
-      <div className="flex h-full">
+      <div className="h-[calc(100vh-76px)] flex relative">
         <Aside />
         {children}
-        <Widget />
+          <Widget />
       </div>
     </section>
   );

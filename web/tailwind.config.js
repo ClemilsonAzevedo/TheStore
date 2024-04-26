@@ -17,7 +17,7 @@ module.exports = {
       },
     },
     colors: {
-      transparent: 'transparent',
+      transparent: "transparent",
       neutral: {
         50: "hsl(var(--neutral50))",
         400: "hsl(var(--neutral400))",

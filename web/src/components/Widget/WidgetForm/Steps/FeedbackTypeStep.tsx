@@ -1,12 +1,13 @@
-import { feedBackTypes, FeedbackType } from ".."
-import { CloseButton } from "../../CloseButton"
+import { type FeedbackType, feedBackTypes } from "..";
+import { CloseButton } from "../../CloseButton";
 
 interface FeedbackTypeStepProps {
-  onFeedbackTypeChanged: (type: FeedbackType) => void
+  onFeedbackTypeChanged: (type: FeedbackType) => void;
 }
 
-export function FeedbackTypeStep({ onFeedbackTypeChanged }: FeedbackTypeStepProps) {
-
+export function FeedbackTypeStep({
+  onFeedbackTypeChanged,
+}: FeedbackTypeStepProps) {
   return (
     <>
       <header>
@@ -23,15 +24,12 @@ export function FeedbackTypeStep({ onFeedbackTypeChanged }: FeedbackTypeStepProp
               className="rounded-lg py-4 px-1 w-24 h-24 flex-1 flex flex-col items-center gap-2 border-2 border-transparent hover:bg-neutral-600/30 transition focus:border-neutral-400 focus:outline-none"
               type="button"
             >
-              <img
-                src={value.image.source}
-                alt={value.image.alt}
-              />
+              <img src={value.image.source} alt={value.image.alt} />
               <span>{value.title}</span>
             </button>
-          )
+          );
         })}
       </div>
     </>
-  )
+  );
 }

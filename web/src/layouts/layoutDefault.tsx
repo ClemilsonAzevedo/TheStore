@@ -1,6 +1,6 @@
+import { Widget } from "@/components/Widget";
 import Aside from "@/components/aside/aside";
 import Header from "../components/header/index.";
-import { Widget } from "@/components/Widget";
 
 export default function LayoutDefault({
   children,
@@ -13,7 +13,7 @@ export default function LayoutDefault({
       <div className="h-[calc(100vh-76px)] flex relative">
         <Aside />
         {children}
-          <Widget />
+        <Widget />
       </div>
     </section>
   );

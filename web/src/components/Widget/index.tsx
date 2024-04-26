@@ -5,7 +5,7 @@ import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover'
 
 export function Widget() {
 	return (
-		<div className='absolute bottom-4 right-4'>
+		<div className='fixed bottom-4 right-4'>
 			<Popover>
 				<PopoverContent className='bg-transparent shadow-none border-0 w-full'>
 					<WidgetForm />

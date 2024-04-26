@@ -1,6 +1,6 @@
 export function LovedProducts() {
   return (
-    <section className='flex flex-wrap gap-5 p-5 justify-center'>
+    <section className='flex flex-wrap gap-5 py-5 justify-center flex-1'>
       {Array.from({ length: 40 }).map((_, index) => {
         return (
           <div

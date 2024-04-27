@@ -49,40 +49,40 @@ export default function Aside() {
 				<div className='bg-white rounded-full p-2 duration-300 hover:bg-neutral-400'>
 					<User />
 				</div>
-				<div className='bg-white rounded-full p-2 duration-300 hover:bg-neutral-400'>
-					<Popover>
-						<PopoverTrigger asChild>
+				<Popover>
+					<PopoverTrigger asChild>
+						<div className='bg-white rounded-full p-2 duration-300 hover:bg-neutral-400'>
 							<Settings className='hover:rotate-90 transition' />
-						</PopoverTrigger>
 
-						<PopoverContent className='max-w-max ml-16 flex flex-col items-start gap-5'>
-							<div className='flex items-center right-0 justify-center w-full gap-2 p-1'>
-								<label htmlFor='theme'>
-									<Sun />
-								</label>
-								<Switch id='theme' className='focus:outline-none' />
-							</div>
-							<a
-								className='flex items-center gap-2 transition hover:text-violet-500 p-1'
-								href='http://'
-								target='_blank'
-								rel='noopener noreferrer'
-							>
-								<Github size={20} />
-								<span className='text-sm'>Repository</span>
-							</a>
-							<a
-								className='flex items-center gap-2 transition hover:text-violet-500 p-1'
-								href='http://'
-								target='_blank'
-								rel='noopener noreferrer'
-							>
-								<Figma size={20} />
-								<span className='text-sm'>Design</span>
-							</a>
-						</PopoverContent>
-					</Popover>
-				</div>
+							<PopoverContent className='max-w-max ml-16 flex flex-col items-start gap-5 bg-neutral-50'>
+								<div className='flex items-center right-0 justify-center w-full gap-2 p-1'>
+									<label htmlFor='theme'>
+										<Sun />
+									</label>
+									<Switch id='theme' className='focus:outline-none' />
+								</div>
+								<a
+									className='flex items-center gap-2 transition hover:text-violet-500 p-1'
+									href='http://'
+									target='_blank'
+									rel='noopener noreferrer'
+								>
+									<Github size={20} />
+									<span className='text-sm'>Repository</span>
+								</a>
+								<a
+									className='flex items-center gap-2 transition hover:text-violet-500 p-1'
+									href='http://'
+									target='_blank'
+									rel='noopener noreferrer'
+								>
+									<Figma size={20} />
+									<span className='text-sm'>Design</span>
+								</a>
+							</PopoverContent>
+						</div>
+					</PopoverTrigger>
+				</Popover>
 			</div>
 		</aside>
 	)

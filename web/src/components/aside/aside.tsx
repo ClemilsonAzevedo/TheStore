@@ -55,15 +55,15 @@ export default function Aside() {
 							<Settings className='hover:rotate-90 transition' />
 						</PopoverTrigger>
 
-						<PopoverContent className='max-w-max ml-16 p-5 flex flex-col items-start gap-5'>
-							<div className='flex items-center right-0 justify-center w-full gap-2'>
+						<PopoverContent className='max-w-max ml-16 flex flex-col items-start gap-5'>
+							<div className='flex items-center right-0 justify-center w-full gap-2 p-1'>
 								<label htmlFor='theme'>
 									<Sun />
 								</label>
 								<Switch id='theme' className='focus:outline-none' />
 							</div>
 							<a
-								className='flex items-center gap-2 transition hover:text-violet-500'
+								className='flex items-center gap-2 transition hover:text-violet-500 p-1'
 								href='http://'
 								target='_blank'
 								rel='noopener noreferrer'
@@ -72,7 +72,7 @@ export default function Aside() {
 								<span className='text-sm'>Repository</span>
 							</a>
 							<a
-								className='flex items-center gap-2 transition hover:text-violet-500'
+								className='flex items-center gap-2 transition hover:text-violet-500 p-1'
 								href='http://'
 								target='_blank'
 								rel='noopener noreferrer'

@@ -4,6 +4,7 @@ import { Home } from './pages/home'
 import { LovedProducts } from './pages/loved-products'
 import SignUp from './pages/sign-up'
 import { Cart } from './pages/cart'
+import { Login } from './pages/login'
 
 export default function Routes() {
 	return (
@@ -45,6 +46,14 @@ export default function Routes() {
 				element={
 					<LayoutDefault>
 						<SignUp />
+					</LayoutDefault>
+				}
+			/>
+			<Route
+				path='/login'
+				element={
+					<LayoutDefault>
+						<Login />
 					</LayoutDefault>
 				}
 			/>

@@ -9,58 +9,7 @@ import {
 	TableCell,
 	TableHeader,
 } from '@/components/ui/table'
-
-const products = [
-	{
-		id: 'd859cc47',
-		name: 'Macbook Pro M1 Pro 16gb',
-		quantity: 2,
-		unitPrice: 2499.99,
-		amount: 4999.98,
-	},
-	{
-		id: 'espocc47',
-		name: 'Macbook Air M1 8gb',
-		quantity: 1,
-		unitPrice: 999.99,
-		amount: 2999.97,
-	},
-	{
-		id: 'd859qpwo',
-		name: 'iMac 27" Retina 5K 2021',
-		quantity: 2,
-		unitPrice: 1799.99,
-		amount: 3599.98,
-	},
-	{
-		id: 'v123ldsk',
-		name: 'Mac Mini M1 8gb',
-		quantity: 1,
-		unitPrice: 699.99,
-		amount: 699.99,
-	},
-	{
-		id: '4lskdpcm',
-		name: 'Macbook Pro 13" M1 8gb',
-		quantity: 1,
-		unitPrice: 1299.99,
-		amount: 1299.99,
-	},
-	{
-		id: 'c2k3sjd0',
-		name: 'iMac 24" M1 8gb',
-		quantity: 2,
-		unitPrice: 1299.99,
-		amount: 2599.98,
-	},
-	{
-		id: '0clsiw8',
-		name: 'Mac Pro (2019)',
-		quantity: 2,
-		unitPrice: 5999.99,
-		amount: 35999.94,
-	},
-]
+import { products } from '@/api/productsFakeApi'
 
 const totalAmount = products
 	.reduce((acc, curr) => acc + curr.amount, 0)
@@ -87,7 +36,7 @@ export function Cart() {
 					</div>
 					<div className='border border-neutral-400 rounded-lg min-w-[200px] h-full p-5 flex flex-col justify-end items-center'>
 						<span className='text-4xl font-bold mx-auto'>{totalQuantity}</span>
-						<p className='text-sm mt-8'>Products Quatity</p>
+						<p className='text-sm mt-8'>Products Quantity</p>
 					</div>
 					<div className='border p-5 border-neutral-400 rounded-lg w-full h-full flex flex-col justify-between items-start'>
 						<span className='text-xl font-medium'>Total</span>

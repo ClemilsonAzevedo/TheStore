@@ -1,7 +1,7 @@
 import { Search } from 'lucide-react'
 import { Input } from '../ui/input'
 
-export default function Header() {
+export function Header() {
 	return (
 		<header className='h-[76px] min-w-screen flex items-center justify-center'>
 			<div className='flex items-center w-[400px] rounded-full bg-neutral-400'>

@@ -21,7 +21,7 @@ export function Login() {
 						<input
 							type='email'
 							placeholder='Add your email for recive magic link...'
-							className='flex-1 outline-none placeholder:text-neutral-400 text-neutral-950'
+							className='flex-1 outline-none placeholder:text-neutral-400 text-neutral-950 bg-transparent'
 						/>
 					</div>
 					<Button

@@ -37,13 +37,13 @@ export function Aside() {
 					</a>
 				</div>
 				<div className='bg-white rounded-full p-2 duration-300 hover:bg-neutral-400'>
-					<a href='/loved'>
-						<Heart />
+					<a href='/products'>
+						<ShoppingBasket />
 					</a>
 				</div>
 				<div className='bg-white rounded-full p-2 duration-300 hover:bg-neutral-400'>
-					<a href='/products'>
-						<ShoppingBasket />
+					<a href='/loved'>
+						<Heart />
 					</a>
 				</div>
 			</div>
@@ -54,10 +54,12 @@ export function Aside() {
 							<User />
 							<PopoverContent className='max-w-max ml-16 flex flex-col items-start gap-5 bg-neutral-50 p-5'>
 								<Link className='flex gap-2 hover:text-violet-500' to='/login'>
-									<CircleUserRound size={20} /> <span className='text-sm'>Login</span>
+									<CircleUserRound size={20} />{' '}
+									<span className='text-sm'>Login</span>
 								</Link>
 								<Link className='flex gap-2 hover:text-violet-500' to='/signup'>
-									<CircleUserRound size={20} /> <span className='text-sm'>Sign Up</span>
+									<CircleUserRound size={20} />{' '}
+									<span className='text-sm'>Sign Up</span>
 								</Link>
 							</PopoverContent>
 						</div>

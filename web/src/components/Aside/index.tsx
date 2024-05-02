@@ -37,7 +37,7 @@ export function Aside() {
 					</a>
 				</div>
 				<div className='bg-white rounded-full p-2 duration-300 hover:bg-neutral-400'>
-					<a href='/products'>
+					<a href='/store'>
 						<ShoppingBasket />
 					</a>
 				</div>

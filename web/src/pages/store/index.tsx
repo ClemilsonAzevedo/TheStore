@@ -3,7 +3,7 @@ import { Select } from '@/components/ui/select'
 
 const products = [
 	{
-		name: 'Dell Inspiron 15 3000 Cleminsis dmiwdimi',
+		name: 'Dell Inspiron 15 3000',
 		description: 'A reliable and affordable laptop for everyday use',
 		price: 599.99,
 	},
@@ -109,6 +109,13 @@ const products = [
 	},
 ]
 
+function formatUSD(number:number) {
+	return new Intl.NumberFormat('en-US', {
+		style: 'currency',
+		currency: 'USD',
+	}).format(number)
+}
+
 export function Store() {
 	return (
 		<section className='flex flex-wrap gap-5 justify-center w-full items-start my-5'>
@@ -122,7 +129,7 @@ export function Store() {
 							id={products.length + 1}
 							name={product.name}
 							description={product.description}
-							price={product.price}
+							price={formatUSD(product.price)}
 						/>
 					))}
 				</div>

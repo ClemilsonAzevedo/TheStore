@@ -6,7 +6,7 @@ interface ProductProps {
 	id: number
 	name: string
 	description: string
-	price: number
+	price: string
 	image?: string
 }
 
@@ -49,7 +49,7 @@ export function Product({
 				</div>
 				<div className='flex w-full justify-between items-center'>
 					<span className='text-neutral-950 font-medium text-base'>
-						$ {price}
+						{price}
 					</span>
 					<Button
 						className='bg-violet-500 text-neutral-50 p-2 rounded-lg hover:bg-violet-500/70 transition'

@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
     "build": "tsc && vite build",
+    "dev": "vite",
     "format": "biome format",
     "lint": "biome lint",
     "format-and-lint": "biome format && biome lint",

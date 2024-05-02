@@ -1,4 +1,7 @@
 {
+  "build": {
+    "command": "vite build"
+  },
   "rewrites": [
     {
       "source": "/(.*)",

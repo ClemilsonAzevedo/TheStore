@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button'
-import gmailLogo from '../../assets/gmail.svg'
-import githubLogo from '../../assets/github.svg'
 import { Mail } from 'lucide-react'
+import githubLogo from '../../assets/github.svg'
+import gmailLogo from '../../assets/gmail.svg'
 
 export function Login() {
 	return (

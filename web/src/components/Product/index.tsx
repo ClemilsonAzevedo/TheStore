@@ -1,6 +1,6 @@
 import { Heart, Plus } from 'lucide-react'
-import pcImage from '../../assets/MacbookProM1Pro.png'
 import { useState } from 'react'
+import pcImage from '../../assets/MacbookProM1Pro.png'
 import { Button } from '../ui/button'
 interface ProductProps {
 	id: number

@@ -1,6 +1,6 @@
-import { Button } from '@/components/ui/button'
-import google from '@/assets/gmail.svg'
 import github from '@/assets/github.svg'
+import google from '@/assets/gmail.svg'
+import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Mail } from 'lucide-react'
 

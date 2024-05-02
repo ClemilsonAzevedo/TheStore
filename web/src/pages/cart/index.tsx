@@ -1,15 +1,15 @@
-import { Filter } from 'lucide-react'
+import { products } from '@/api/productsFakeApi'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import {
-	TableRow,
-	TableHead,
 	Table,
 	TableBody,
 	TableCell,
+	TableHead,
 	TableHeader,
+	TableRow,
 } from '@/components/ui/table'
-import { products } from '@/api/productsFakeApi'
+import { Filter } from 'lucide-react'
 
 const totalAmount = products
 	.reduce((acc, curr) => acc + curr.amount, 0)

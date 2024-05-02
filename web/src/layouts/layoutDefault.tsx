@@ -1,6 +1,6 @@
-import { Widget } from '@/components/Widget'
 import { Aside } from '@/components/Aside'
 import { Header } from '@/components/Header'
+import { Widget } from '@/components/Widget'
 
 export default function LayoutDefault({
 	children,

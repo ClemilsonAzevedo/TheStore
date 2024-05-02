@@ -1,9 +1,9 @@
 import {
+	CircleUserRound,
 	Figma,
 	Github,
 	Heart,
 	Home,
-	CircleUserRound,
 	Settings,
 	ShoppingBasket,
 	ShoppingCart,
@@ -16,8 +16,8 @@ import {
 	PopoverContent,
 	PopoverTrigger,
 } from '@/components/ui/popover'
-import { Switch } from '../ui/switch'
 import { Link } from 'react-router-dom'
+import { Switch } from '../ui/switch'
 
 export function Aside() {
 	return (

@@ -109,7 +109,7 @@ const products = [
 	},
 ]
 
-function formatUSD(number:number) {
+function formatUSD(number: number) {
 	return new Intl.NumberFormat('en-US', {
 		style: 'currency',
 		currency: 'USD',

@@ -14,6 +14,12 @@ export function Product({
 	image = pcImage,
 }: ProductProps) {
 	const [isProductLiked, setIsProductLiked] = useState(isLiked)
+	const [addItemOnCart, setAddItemOnCart] = useState(1)
+
+	function handleAddItemOnCart() {
+		setAddItemOnCart(addItemOnCart + 1)
+		//TODO: CRIAR FUNCAO DE ADICIONAR NO CARRINHO.
+	}
 
 	function handleLikeProduct() {
 		setIsProductLiked(!isProductLiked)
@@ -50,6 +56,7 @@ export function Product({
 						{price}
 					</span>
 					<Button
+						onClick={handleAddItemOnCart}
 						className='bg-violet-500 text-neutral-50 p-2 rounded-lg hover:bg-violet-500/70 transition'
 						type='button'
 					>

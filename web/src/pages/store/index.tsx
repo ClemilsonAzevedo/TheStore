@@ -4,7 +4,7 @@ import { formatUSD } from '@/utils/formatToUSD'
 
 export function Store() {
 	return (
-		<section className='flex flex-wrap gap-5 justify-center w-full items-start my-5 '>
+		<section className='flex flex-wrap gap-5 justify-center w-full items-start my-5 overflow-y-auto'>
 			<div className='flex gap-5 items-center mx-5'>
 				<div className='flex flex-wrap gap-5 justify-center w-full mb-5'>
 					{products.map((product, _) => (

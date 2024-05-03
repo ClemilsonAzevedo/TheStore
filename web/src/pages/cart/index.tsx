@@ -9,7 +9,10 @@ import {
 	TableHeader,
 	TableRow,
 } from '@/components/ui/table'
-import { totalAmount, totalQuantity } from '@/utils/calculeQuantityAndAmountProducts'
+import {
+	totalAmount,
+	totalQuantity,
+} from '@/utils/calculeQuantityAndAmountProducts'
 import { formatUSD } from '@/utils/formatToUSD'
 import { Filter } from 'lucide-react'
 import { useState, useEffect } from 'react'

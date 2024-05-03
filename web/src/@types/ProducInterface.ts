@@ -4,8 +4,11 @@ export interface ProductInterface {
   description?: string;
   price?: string;
   isLiked: boolean;
-  quantity?: number;
-  unitPrice?: number;
-  amount?: number;
   image?: string;
+  onCart?: boolean;
+  cart?: {
+    unitPrice?: number;
+    quantity?: number;
+    amount?: number;
+  }
 }

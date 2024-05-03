@@ -1,4 +1,4 @@
-import { products } from '@/api/productsFakeApi'
+import { products } from '@/api/fakeProductsProps'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import {
@@ -9,14 +9,20 @@ import {
 	TableHeader,
 	TableRow,
 } from '@/components/ui/table'
+import { totalAmount, totalQuantity } from '@/utils/calculeQuantityAndAmountProducts'
+import { formatUSD } from '@/utils/formatToUSD'
 import { Filter } from 'lucide-react'
-
-const totalAmount = products
-	.reduce((acc, curr) => acc + curr.amount, 0)
-	.toLocaleString('en-US', { style: 'currency', currency: 'USD' })
-const totalQuantity = products.reduce((acc, curr) => acc + curr.quantity, 0)
+import { useState, useEffect } from 'react'
 
 export function Cart() {
+	const [onCartProducts, setOnCartProducts] = useState(
+		products.filter(product => product.onCart),
+	)
+
+	useEffect(() => {
+		setOnCartProducts(products.filter(product => product.onCart))
+	}, [products])
+
 	return (
 		<section className='w-full flex gap-5 p-5'>
 			<div className='w-full flex flex-col gap-5'>
@@ -28,7 +34,7 @@ export function Cart() {
 							button in this card
 						</p>
 						<a
-							href='/products'
+							href='/store'
 							className='py-2 w-[106px] text-[10px] bg-violet-500 flex items-center justify-center text-neutral-50 rounded-lg ml-auto hover:bg-violet-500/70 transition'
 						>
 							Add new product
@@ -78,13 +84,15 @@ export function Cart() {
 								</TableRow>
 							</TableHeader>
 							<TableBody>
-								{products.map(product => (
+								{onCartProducts.map(product => (
 									<TableRow key={product.id}>
 										<TableCell className='text-center'>{product.id}</TableCell>
 										<TableCell>{product.name}</TableCell>
-										<TableCell>{product.quantity}</TableCell>
-										<TableCell>{product.unitPrice}</TableCell>
-										<TableCell>{product.amount}</TableCell>
+										<TableCell>{product.cart?.quantity}</TableCell>
+										<TableCell>{product.cart?.unitPrice}</TableCell>
+										<TableCell>
+											{formatUSD(Number(product.cart?.amount))}
+										</TableCell>
 									</TableRow>
 								))}
 							</TableBody>
@@ -109,11 +117,11 @@ export function Cart() {
 							</TableRow>
 						</TableHeader>
 						<TableBody>
-							{products.map(product => (
+							{onCartProducts.map(product => (
 								<TableRow className='border-none rounded-lg ' key={product.id}>
 									<TableCell className='text-sm'>{product.id}</TableCell>
 									<TableCell className='text-right text-sm'>
-										{product.quantity}
+										{product.cart?.quantity}
 									</TableCell>
 								</TableRow>
 							))}

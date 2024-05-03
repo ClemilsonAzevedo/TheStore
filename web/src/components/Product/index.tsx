@@ -2,24 +2,22 @@ import { Heart, Plus } from 'lucide-react'
 import { useState } from 'react'
 import pcImage from '../../assets/MacbookProM1Pro.png'
 import { Button } from '../ui/button'
-interface ProductProps {
-	id: number
-	name: string
-	description: string
-	price: string
-	image?: string
-}
+import { ProductInterface } from '@/@types/producInterface'
+
+interface ProductProps extends ProductInterface {}
 
 export function Product({
-	description,
 	name,
+	description,
 	price,
+	isLiked = false,
 	image = pcImage,
 }: ProductProps) {
-	const [isProductLiked, setIsProductLiked] = useState(false)
+	const [isProductLiked, setIsProductLiked] = useState(isLiked)
 
 	function handleLikeProduct() {
 		setIsProductLiked(!isProductLiked)
+		isLiked = isProductLiked
 	}
 
 	return (
@@ -37,7 +35,7 @@ export function Product({
 					>
 						<Heart className='flex-1' size={16} />
 					</button>
-					<img src={image} alt='Macbook Pro' />
+					<img src={image} alt='' />
 				</div>
 				<div className='w-full'>
 					<h4 className='font-medium text-base text-neutral-950 text-center text-ellipsis truncate'>

@@ -2,7 +2,7 @@ import { Heart, Plus } from 'lucide-react'
 import { useState } from 'react'
 import pcImage from '../../assets/MacbookProM1Pro.png'
 import { Button } from '../ui/button'
-import { ProductInterface } from '@/@types/producInterface'
+import { ProductInterface } from '@/@types/ProducInterface'
 
 interface ProductProps extends ProductInterface {}
 

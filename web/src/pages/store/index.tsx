@@ -12,11 +12,11 @@ export function Store() {
 				<div className='flex flex-wrap gap-5 justify-center w-full mb-5'>
 					{products.map((product, _) => (
 						<Product
-							isLiked={false}
-							key={products.length + 1}
-							id={String(products.length + 1)}
+							key={product.id}
+							id={product.id}
 							name={product.name}
 							description={product.description}
+							isLiked={product.isLiked}
 							price={formatUSD(Number(product.price))}
 						/>
 					))}

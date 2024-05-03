@@ -10,7 +10,7 @@ export default function LayoutDefault({
 	return (
 		<section className='min-h-screen '>
 			<Header />
-			<div className='h-[calc(100vh-76px)] flex relative'>
+			<div className='h-[calc(100vh-76px)] flex relative max-w-full overflow-y-hidden'>
 				<Aside />
 				{children}
 				<Widget />

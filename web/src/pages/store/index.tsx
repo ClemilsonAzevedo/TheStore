@@ -109,16 +109,16 @@ const products = [
 	},
 ]
 
-function formatUSD(number: number) {
+function formatUSD(price: number) {
 	return new Intl.NumberFormat('en-US', {
 		style: 'currency',
 		currency: 'USD',
-	}).format(number)
+	}).format(price)
 }
 
 export function Store() {
 	return (
-		<section className='flex flex-wrap gap-5 justify-center w-full items-start my-5'>
+		<section className='flex flex-wrap gap-5 justify-center w-full items-start my-5 '>
 			<div className='flex gap-5 items-center mx-5'>
 				<Select />
 				<Select />

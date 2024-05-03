@@ -1,4 +1,4 @@
-import { Product } from '@/components/Product'
+import { DestacProduct } from '@/components/DestacProduct'
 import { products } from '@/api/fakeProductsProps'
 import { formatUSD } from '@/utils/formatToUSD'
 import { useEffect, useState } from 'react'
@@ -14,7 +14,7 @@ export function LovedProducts() {
 	return (
 		<section className='flex flex-wrap gap-5 py-5 justify-center items-start w-full overflow-auto'>
 			{likedProducts.map((product, index) => (
-				<Product
+				<DestacProduct
 					key={likedProducts.length + 1}
 					name={product.name}
 					id={String(index)}

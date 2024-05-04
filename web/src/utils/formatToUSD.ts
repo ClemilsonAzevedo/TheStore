@@ -1,8 +1,8 @@
 export function formatUSD(price: number) {
-  return new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-  })
-    .format(price)
-    .toString()
+	return new Intl.NumberFormat('en-US', {
+		style: 'currency',
+		currency: 'USD',
+	})
+		.format(price)
+		.toString()
 }

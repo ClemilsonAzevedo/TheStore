@@ -81,8 +81,7 @@ export function Aside() {
 									className='flex items-center gap-2 transition hover:text-violet-500 p-1'
 									href='http://'
 									target='_blank'
-									rel='noopener noreferrer'
-								>
+									rel='noopener noreferrer'>
 									<Github size={20} />
 									<span className='text-sm'>Repository</span>
 								</a>
@@ -90,8 +89,7 @@ export function Aside() {
 									className='flex items-center gap-2 transition hover:text-violet-500 p-1'
 									href='http://'
 									target='_blank'
-									rel='noopener noreferrer'
-								>
+									rel='noopener noreferrer'>
 									<Figma size={20} />
 									<span className='text-sm'>Design</span>
 								</a>

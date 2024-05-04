@@ -19,8 +19,7 @@ export function FeedbackSucessStep({
 					height='40'
 					viewBox='0 0 41 40'
 					fill='none'
-					xmlns='http://www.w3.org/2000/svg'
-				>
+					xmlns='http://www.w3.org/2000/svg'>
 					<path
 						d='M38.5 34C38.5 36.209 36.709 38 34.5 38H6.5C4.291 38 2.5 36.209 2.5 34V6C2.5 3.791 4.291 2 6.5 2H34.5C36.709 2 38.5 3.791 38.5 6V34Z'
 						fill='#77B255'
@@ -36,8 +35,7 @@ export function FeedbackSucessStep({
 				<button
 					type='button'
 					onClick={onFeedbackRestartRequested}
-					className='py-2 px-6 mt-6 bg-zinc-800 rounded-md border-transparent text-sm leading-6 hover:bg-zinc-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-zinc-900 focus:ring-brand-500 transition-colors'
-				>
+					className='py-2 px-6 mt-6 bg-zinc-800 rounded-md border-transparent text-sm leading-6 hover:bg-zinc-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-zinc-900 focus:ring-brand-500 transition-colors'>
 					Send Other
 				</button>
 			</div>

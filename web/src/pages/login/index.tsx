@@ -26,22 +26,19 @@ export function Login() {
 					</div>
 					<Button
 						type='submit'
-						className='py-5 h-full w-[150px] rounded-lg bg-violet-500 hover:bg-violet-500/70 transition'
-					>
+						className='py-5 h-full w-[150px] rounded-lg bg-violet-500 hover:bg-violet-500/70 transition'>
 						Continue
 					</Button>
 				</form>
 				<a
 					href='http://'
-					className='flex items-center gap-2 border justify-center py-4 border-neutral-950 rounded-lg hover:text-violet-500 hover:border-violet-500 transition'
-				>
+					className='flex items-center gap-2 border justify-center py-4 border-neutral-950 rounded-lg hover:text-violet-500 hover:border-violet-500 transition'>
 					<img src={githubLogo} alt='social media' />
 					Sign in With Github
 				</a>
 				<a
 					href='http://'
-					className='flex items-center gap-2 border justify-center py-4 border-neutral-950 rounded-lg hover:text-violet-500 hover:border-violet-500 transition'
-				>
+					className='flex items-center gap-2 border justify-center py-4 border-neutral-950 rounded-lg hover:text-violet-500 hover:border-violet-500 transition'>
 					<img src={gmailLogo} alt='social media' />
 					Sign in With Google
 				</a>

@@ -1,40 +1,40 @@
 {
-	"$schema": "https://biomejs.dev/schemas/1.7.1/schema.json",
-	"formatter": {
-		"enabled": true,
-		"formatWithErrors": false,
-		"ignore": [],
-		"attributePosition": "auto",
-		"indentStyle": "tab",
-		"indentWidth": 2,
-		"lineEnding": "lf",
-		"lineWidth": 80
+	"$schema": "https://biomejs.dev/schemas/1.7.2/schema.json",
+	"organizeImports": {
+		"enabled": true
 	},
-	"linter": {
-		"enabled": true,
-		"rules": {
-			"style": {
-				"useBlockStatements": "error",
-				"useShorthandArrayType": "error",
-				"noShoutyConstants": "warn"
-			}
-		}
+	"formatter": {
+		"indentWidth": 2,
+		"lineWidth": 80,
+		"indentStyle": "tab",
+		"lineEnding": "crlf"
 	},
 	"javascript": {
 		"formatter": {
-			"arrowParentheses": "asNeeded",
-			"bracketSameLine": false,
-			"bracketSpacing": true,
-			"jsxQuoteStyle": "single",
 			"quoteStyle": "single",
+			"jsxQuoteStyle": "single",
 			"quoteProperties": "asNeeded",
+			"trailingComma": "all",
 			"semicolons": "asNeeded",
-			"trailingComma": "all"
+			"arrowParentheses": "asNeeded",
+			"enabled": true,
+			"indentWidth": 2,
+			"indentStyle": "tab",
+			"lineEnding": "crlf",
+			"bracketSameLine": true,
+			"bracketSpacing": true
 		}
 	},
-	"json": {
-		"formatter": {
-			"trailingCommas": "none"
+	"linter": {
+		"ignore": [
+			"forbiden"
+		],
+		"enabled": true,
+		"rules": {
+			"style": {
+				"noNonNullAssertion": "off"
+			},
+			"recommended": true
 		}
 	}
 }

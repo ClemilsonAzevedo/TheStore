@@ -45,8 +45,7 @@ export function FeedbackContentStep({
 				<button
 					className='absolute top-5 left-5 text-neutral-600 hover:text-neutral-950'
 					type='button'
-					onClick={onFeedbackRestartRequested}
-				>
+					onClick={onFeedbackRestartRequested}>
 					<ChevronLeft size={20} />
 				</button>
 				<span className='text-lg leading-relaxed flex items-center gap-2'>
@@ -75,8 +74,7 @@ export function FeedbackContentStep({
 					<Button
 						disabled={comment.length === 0 || isSendingFeedback}
 						type='submit'
-						className='p-2 bg-violet-500 rounded-lg border-transparent flex-1 flex justify-center items-center text-sm hover:bg-violet-500/80 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-neutral-950 focus:ring-violet-500 transition-colors disabled:opacity-50 disabled:hover:bg-brand-500'
-					>
+						className='p-2 bg-violet-500 rounded-lg border-transparent flex-1 flex justify-center items-center text-sm hover:bg-violet-500/80 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-neutral-950 focus:ring-violet-500 transition-colors disabled:opacity-50 disabled:hover:bg-brand-500'>
 						{isSendingFeedback ? <Loading /> : 'Send Feedback'}
 					</Button>
 				</footer>

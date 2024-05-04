@@ -38,8 +38,7 @@ export function Cart() {
 						</p>
 						<a
 							href='/store'
-							className='py-2 w-[106px] text-[10px] bg-violet-500 flex items-center justify-center text-neutral-50 rounded-lg ml-auto hover:bg-violet-500/70 transition'
-						>
+							className='py-2 w-[106px] text-[10px] bg-violet-500 flex items-center justify-center text-neutral-50 rounded-lg ml-auto hover:bg-violet-500/70 transition'>
 							Add new product
 						</a>
 					</div>

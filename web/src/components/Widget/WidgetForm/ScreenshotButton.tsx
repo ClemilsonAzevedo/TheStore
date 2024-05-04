@@ -44,8 +44,7 @@ export function ScreenshotButton({
 					backgroundImage: `url(${screenshot})`,
 					backgroundPosition: 'right bottom',
 					backgroundSize: 180,
-				}}
-			>
+				}}>
 				<Trash size={16} />
 			</button>
 		)
@@ -55,8 +54,7 @@ export function ScreenshotButton({
 		<button
 			onClick={handleTakeScreenshot}
 			type='button'
-			className='p-2 bg-neutral-50 rounded-lg border-transparent hover:bg-neutral-600 transition-colors focus:outline-none focus:ring-offset-2 focus:ring-offset-neutral-950 focus:ring-neutral-600 '
-		>
+			className='p-2 bg-neutral-50 rounded-lg border-transparent hover:bg-neutral-600 transition-colors focus:outline-none focus:ring-offset-2 focus:ring-offset-neutral-950 focus:ring-neutral-600 '>
 			{isTakingScreenshot ? <Loading /> : <Camera className='w-6 h-6' />}
 		</button>
 	)

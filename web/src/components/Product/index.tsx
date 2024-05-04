@@ -2,7 +2,7 @@ import { Heart, Plus } from 'lucide-react'
 import { useState } from 'react'
 import pcImage from '../../assets/MacbookProM1Pro.png'
 import { Button } from '../ui/button'
-import { ProductInterface } from '@/@types/ProducInterface'
+import type { ProductInterface } from '@/@types/ProducInterface'
 
 interface ProductProps extends ProductInterface {}
 
@@ -37,8 +37,7 @@ export function Product({
 							!isProductLiked
 								? 'flex items-center justify-center ml-auto -mr-2 -mt-2 bg-neutral-50 p-1 rounded-full cursor-pointer focus:outline-none focus:ring-0 ease-in-out hover:scale-110 transition'
 								: 'flex items-center justify-center ml-auto -mr-2 -mt-2 bg-violet-500 p-1 rounded-full cursor-pointer text-neutral-50 focus:outline-none focus:ring-0 repeat-1 duration-300 animate-in ease-in-out scale-125'
-						}
-					>
+						}>
 						<Heart className='flex-1' size={16} />
 					</button>
 					<img src={image} alt='' />
@@ -58,8 +57,7 @@ export function Product({
 					<Button
 						onClick={handleAddItemOnCart}
 						className='bg-violet-500 text-neutral-50 p-2 rounded-lg hover:bg-violet-500/70 transition'
-						type='button'
-					>
+						type='button'>
 						<Plus size={24} />
 					</Button>
 				</div>

@@ -4,7 +4,7 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"dev": "nodemon --exec ts-node ./src/server.ts",
+		"dev": "tsx watch --env-file .env src/server.ts",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"keywords": [],
@@ -14,8 +14,8 @@
 		"@biomejs/biome": "1.7.2",
 		"@prisma/client": "^5.13.0",
 		"@types/node": "^20.12.8",
-		"nodemon": "^3.1.0",
 		"ts-node": "^10.9.2",
+		"tsx": "^4.9.0",
 		"typescript": "^5.4.5"
 	},
 	"dependencies": {

@@ -1,29 +1,14 @@
-import Fastify from "fastify";
-import prisma from "./client/client";
+//TODO: READ: GILSON TENTA ESCREVER O MINIMO DE CODIGO POSSIVEL.
 
-const app = Fastify();
+import fastify from 'fastify'
+import { PrismaClient } from '@prisma/client'
 
-app.get("/", (req, res) => {
-	res.send("API rodando");
-});
+const app = fastify()
 
-prisma
-	.$connect()
-	.then(() => {
-		console.log("Conexão com o banco de dados estabelecida com sucesso.");
-	})
-	.catch((error: Error) => {
-		throw new Error(error.message);
-	});
+app.get('/', () => {
+	return 'Hello World'
+})
 
-const start = async () => {
-	try {
-		await app.listen({ port: 8080 });
-		app.log.info(`API rodando na porta ${8080}`);
-	} catch (error: unknown) {
-		const newError = error as Error;
-		app.log.error(newError);
-		process.exit(1);
-	}
-};
-start();
+app.listen({ port: 8080 }).then(() => {
+	console.log('HTTP Server running!')
+})

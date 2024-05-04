@@ -1,8 +1,8 @@
+import type { ProductInterface } from '@/@types/ProductInterface'
 import { Heart, Plus } from 'lucide-react'
 import { useState } from 'react'
 import pcImage from '../../assets/MacbookProM1Pro.png'
 import { Button } from '../ui/button'
-import type { ProductInterface } from '@/@types/ProducInterface'
 
 interface ProductProps extends ProductInterface {}
 
@@ -18,7 +18,7 @@ export function Product({
 
 	function handleAddItemOnCart() {
 		setAddItemOnCart(addItemOnCart + 1)
-		//TODO: CRIAR FUNCAO DE ADICIONAR NO CARRINHO.
+		//TODO: CRIAR FUNÇÃO DE ADICIONAR NO CARRINHO.
 	}
 
 	function handleLikeProduct() {

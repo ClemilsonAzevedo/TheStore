@@ -1,4 +1,4 @@
-import type { ProductInterface } from '@/@types/ProducInterface'
+import type { ProductInterface } from '@/@types/ProductInterface'
 import pcImage from '../../assets/MacbookProM1Pro.png'
 
 interface ProductProps extends ProductInterface {}

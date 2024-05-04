@@ -1,5 +1,5 @@
-import pcImage from '../../assets/MacbookProM1Pro.png'
 import type { ProductInterface } from '@/@types/ProducInterface'
+import pcImage from '../../assets/MacbookProM1Pro.png'
 
 interface ProductProps extends ProductInterface {}
 

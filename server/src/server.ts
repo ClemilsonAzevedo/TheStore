@@ -1,14 +1,26 @@
-//TODO: READ: GILSON TENTA ESCREVER O MINIMO DE CODIGO POSSIVEL.
+import fastify from "fastify";
+import { db } from "./db/db";
 
-import fastify from 'fastify'
-import { PrismaClient } from '@prisma/client'
+const app = fastify();
 
-const app = fastify()
+app.get("/", () => {
+	return "Api rodando";
+});
 
-app.get('/', () => {
-	return 'Hello World'
-})
+db.$connect()
+	.then(() => {
+		console.log("Conexão com o banco de dados estabelecida com sucesso.");
+	})
+	.catch((error: Error) => {
+		throw new Error(error.message);
+	});
 
-app.listen({ port: 8080 }).then(() => {
-	console.log('HTTP Server running!')
-})
+const { PORT = "" } = process.env;
+
+app
+	.listen({
+		port: parseInt(PORT),
+	})
+	.then(() => {
+		console.log(`API rodando na porta ${process.env.PORT}`);
+	});

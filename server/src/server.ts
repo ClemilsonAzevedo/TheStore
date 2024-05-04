@@ -1,11 +1,16 @@
 import fastify from "fastify";
 import { db } from "./db/db";
+import { routes } from "./router";
 
-const app = fastify();
+export const app = fastify();
+
+const { PORT = "" } = process.env;
 
 app.get("/", () => {
 	return "Api rodando";
 });
+
+app.register(routes);
 
 db.$connect()
 	.then(() => {
@@ -15,12 +20,14 @@ db.$connect()
 		throw new Error(error.message);
 	});
 
-const { PORT = "" } = process.env;
-
-app
-	.listen({
+app.listen(
+	{
 		port: parseInt(PORT),
-	})
-	.then(() => {
-		console.log(`API rodando na porta ${process.env.PORT}`);
-	});
+	},
+	(error, address) => {
+		if (error) {
+			console.log(error.message);
+		}
+		console.log(`API rodando na porta ${address}`);
+	},
+);

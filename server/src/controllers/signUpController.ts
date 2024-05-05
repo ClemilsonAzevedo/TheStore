@@ -1,9 +1,18 @@
-import type { FastifyInstance, FastifyReply, FastifyRequest } from "fastify";
+import type { FastifyReply, FastifyRequest } from "fastify";
+import type { CreateUserInput } from "../@types/teste";
 
-export class SignUpController {
-    async create(app: FastifyInstance) {
-        app.get("/teste", (req: FastifyRequest, res: FastifyReply) => {
-            return res.send("funcionou");
-        });
-    }
-  }
+export function signUpController(
+	req: FastifyRequest<{
+		Body: CreateUserInput;
+	}>,
+	res: FastifyReply,
+) {
+	const { name, password, email } = req.body;
+
+	const response = {
+		name,
+		password,
+		email,
+	};
+	return res.send(response);
+}

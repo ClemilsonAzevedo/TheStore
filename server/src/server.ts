@@ -27,7 +27,7 @@ db.$connect()
 
 app.listen(
 	{
-		port: parseInt(PORT),
+		port: Number.parseInt(PORT),
 	},
 	(error, address) => {
 		if (error) {

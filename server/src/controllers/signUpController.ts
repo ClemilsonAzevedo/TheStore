@@ -11,13 +11,13 @@ export async function signUpController(
 ) {
 	const { name, password, email } = req.body;
 
-	const emailExist = await db.user.findUnique({
+	const user = await db.user.findUnique({
 		where: {
 			email: email,
 		},
 	});
 
-	if (emailExist) {
+	if (user) {
 		return res.status(400).send({ message: "Email já existente" });
 	}
 
@@ -33,5 +33,5 @@ export async function signUpController(
 
 	const { password: _, ...userData } = createUser;
 
-	return res.send({ userData });
+	return res.status(201).send(userData);
 }

@@ -15,4 +15,17 @@ export async function userRoutes() {
 		},
 		signUpController,
 	);
+
+	app.post(
+		"/login",
+		{
+			schema: {
+				body: $ref("createUserSchema"),
+				response: {
+					201: $ref("createUserResponseSchema"),
+				},
+			},
+		},
+		() => {},
+	);
 }

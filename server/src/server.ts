@@ -1,13 +1,13 @@
 import fastify from "fastify";
 import { db } from "./db/db";
 import { routes } from "./routes/router";
-import { userSchemas } from "./@types/signUpSchema";
+import { Schemas } from "./@types/signUpSchema";
 
 export const app = fastify();
 
 const { PORT = "" } = process.env;
 
-for (const schema of [...userSchemas]) {
+for (const schema of [...Schemas]) {
 	app.addSchema(schema);
 }
 

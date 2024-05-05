@@ -1,6 +1,5 @@
-import { DestacProduct } from '@/components/DestacProduct'
 import { products } from '@/api/fakeProductsProps'
-import { formatUSD } from '@/utils/formatToUSD'
+import { DestacProduct } from '@/components/DestacProduct'
 import { useEffect, useState } from 'react'
 
 export function LovedProducts() {
@@ -18,7 +17,7 @@ export function LovedProducts() {
 					key={likedProducts.length + 1}
 					name={product.name}
 					id={String(index)}
-					price={formatUSD(Number(product.price))}
+					price={product.price}
 					isLiked
 				/>
 			))}

@@ -5,6 +5,7 @@ export interface ProductInterface {
 	price?: string
 	isLiked: boolean
 	image?: string
+	sells?: number
 	onCart?: boolean
 	cart?: {
 		unitPrice?: number

@@ -9,6 +9,7 @@ export const products: ProductInterface[] = [
 		price: formatUSD(Number('749.99')),
 		isLiked: false,
 		image: '',
+		sells: 3,
 		onCart: true,
 		cart: {
 			quantity: 3,
@@ -23,6 +24,7 @@ export const products: ProductInterface[] = [
 		price: formatUSD(Number('399.99')),
 		isLiked: true,
 		image: '',
+		sells: 3,
 		onCart: true,
 		cart: {
 			quantity: 8,
@@ -37,6 +39,7 @@ export const products: ProductInterface[] = [
 		price: formatUSD(Number('599.99')),
 		isLiked: false,
 		image: '',
+		sells: 3,
 		onCart: true,
 		cart: {
 			quantity: 4,
@@ -51,6 +54,7 @@ export const products: ProductInterface[] = [
 		price: formatUSD(Number('499.99')),
 		isLiked: true,
 		image: '',
+		sells: 3,
 		onCart: true,
 		cart: {
 			quantity: 6,
@@ -66,6 +70,7 @@ export const products: ProductInterface[] = [
 		price: formatUSD(Number('999.99')),
 		isLiked: false,
 		image: '',
+		sells: 3,
 		onCart: false,
 		cart: {
 			quantity: 2,
@@ -80,6 +85,7 @@ export const products: ProductInterface[] = [
 		price: formatUSD(Number('999.99')),
 		isLiked: true,
 		image: '',
+		sells: 3,
 		onCart: false,
 		cart: {
 			quantity: 1,
@@ -95,6 +101,7 @@ export const products: ProductInterface[] = [
 		price: formatUSD(Number('1499.99')),
 		isLiked: false,
 		image: '',
+		sells: 3,
 		onCart: false,
 		cart: {
 			quantity: 3,
@@ -109,6 +116,7 @@ export const products: ProductInterface[] = [
 		price: formatUSD(Number('1299.99')),
 		isLiked: true,
 		image: '',
+		sells: 3,
 		onCart: false,
 		cart: {
 			quantity: 2,
@@ -123,6 +131,7 @@ export const products: ProductInterface[] = [
 		price: formatUSD(Number('1199.99')),
 		isLiked: false,
 		image: '',
+		sells: 3,
 		onCart: false,
 		cart: {
 			quantity: 1,
@@ -138,6 +147,7 @@ export const products: ProductInterface[] = [
 		price: formatUSD(Number('699.99')),
 		isLiked: true,
 		image: '',
+		sells: 3,
 		onCart: false,
 		cart: {
 			quantity: 4,

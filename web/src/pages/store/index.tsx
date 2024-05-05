@@ -1,6 +1,5 @@
-import { Product } from '@/components/Product'
 import { products } from '@/api/fakeProductsProps'
-import { formatUSD } from '@/utils/formatToUSD'
+import { Product } from '@/components/Product'
 
 export function Store() {
 	return (
@@ -14,7 +13,7 @@ export function Store() {
 							name={product.name}
 							description={product.description}
 							isLiked={product.isLiked}
-							price={formatUSD(Number(product.price))}
+							price={product.price}
 						/>
 					))}
 				</div>

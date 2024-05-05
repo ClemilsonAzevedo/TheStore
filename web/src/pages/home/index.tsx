@@ -84,7 +84,7 @@ export function Home() {
 				</Carousel>
 			</div>
 
-			<div className='flex items-start justify-center h-full flex-col px-5 my-5'>
+			<div className='flex items-start justify-center h-full flex-col px-5'>
 				<h3 className='font-semibold text-2xl'>Most Sells</h3>
 				<Carousel
 					opts={{
@@ -94,16 +94,19 @@ export function Home() {
 					}}
 					className='w-full max-w-screen-xl h-full  mx-auto'>
 					<CarouselContent>
-						{Array.from({ length: 20 }).map((_, index) => (
-							<Product
-								key={length}
-								price='$ 1,999.39'
-								onCart={false}
-								isLiked={false}
-								name='Macbook Pro'
-								description='a short description to this pc with 8gb of ram 256gb ssd dknidn bla blab bla bla bla bla balbkla bla bla bakbaiabaia'
-							/>
-						))}
+						{products.map(product => {
+							return (
+								<Product
+									key={product.id}
+									id={product.id}
+									price={product.price}
+									onCart={product.onCart}
+									isLiked={product.isLiked}
+									name={product.name}
+									description={product.description}
+								/>
+							)
+						})}
 					</CarouselContent>
 					<CarouselPrevious />
 					<CarouselNext />

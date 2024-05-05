@@ -1,6 +1,6 @@
 import fastify from "fastify";
 import { db } from "./db/db";
-import { routes } from "./router";
+import { routes } from "./routes/router";
 import { userSchemas } from "./@types/teste";
 
 export const app = fastify();

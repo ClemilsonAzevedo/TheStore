@@ -1,4 +1,4 @@
-import { $ref } from "../../@types/teste";
+import { $ref } from "../../@types/signUpSchema";
 import { signUpController } from "../../controllers/signUpController";
 import { app } from "../../server";
 

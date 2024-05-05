@@ -7,9 +7,3 @@ export const signUpSchema = z.object({
 });
 
 export type signUpProps = z.infer<typeof signUpSchema>;
-
-export const signUpResponseSchema = z.object({
-	email: z.string().email("Email invalido"),
-	password: z.string().min(6, "senha muito curta"),
-	name: z.string(),
-});

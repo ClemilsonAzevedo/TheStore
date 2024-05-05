@@ -1,4 +1,4 @@
-import { $ref } from "../../@types/signUpSchema";
+import { $ref } from "../../lib/schema";
 import { signUpController } from "../../controllers/signUpController";
 import { app } from "../../server";
 
@@ -7,20 +7,19 @@ export async function userRoutes() {
 		"/teste",
 		{
 			schema: {
-				body: $ref("createUserSchema"),
+				body: $ref("signUpSchema"),
 				response: {
-					201: $ref("createUserResponseSchema"),
+					201: $ref("signUpResponseSchema"),
 				},
 			},
 		},
 		signUpController,
 	);
-
 	app.post(
 		"/login",
 		{
 			schema: {
-				body: $ref("createUserSchema"),
+				body: $ref("signInSchema"),
 				response: {
 					201: $ref("createUserResponseSchema"),
 				},

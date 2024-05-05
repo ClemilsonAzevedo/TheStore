@@ -1,11 +1,11 @@
 import type { FastifyReply, FastifyRequest } from "fastify";
-import type { CreateUserInput } from "../@types/signUpSchema";
+import type { signUpProps } from "../@types/signUpSchema";
 import { db } from "../db/db";
 import bcrypt from "bcrypt";
 
 export async function signUpController(
 	req: FastifyRequest<{
-		Body: CreateUserInput;
+		Body: signUpProps;
 	}>,
 	res: FastifyReply,
 ) {

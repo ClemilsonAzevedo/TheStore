@@ -77,7 +77,7 @@
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-border scroll-smooth;
     font-family: "Poppins", sans-serif;
   }
 

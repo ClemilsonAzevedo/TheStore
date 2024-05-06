@@ -25,7 +25,7 @@ export function Home() {
 						<h1 className='text-4xl truncate font-bold'>
 							Welcome to "THE STORE"
 						</h1>
-						<a href="#Home">
+						<a href='#Home'>
 							<Button
 								type='button'
 								className='w-[150px] py-2 bg-violet-500 text-neutral-50 font-medium text-sm hover:bg-violet-500/70 transition'>
@@ -58,15 +58,17 @@ export function Home() {
 				</div>
 			</div>
 
-			<div id='Home' className='flex items-start justify-center h-full flex-col px-5'>
-				<h3 className='font-semibold text-2xl'>Most Recent</h3>
+			<div
+				id='Home'
+				className='flex items-start justify-center h-full flex-col px-5'>
+				<h3 className='font-semibold text-2xl mb-2'>Most Recent</h3>
 				<Carousel
 					opts={{
 						align: 'center',
 						loop: true,
 						slidesToScroll: 'auto',
 					}}
-					className='w-full max-w-screen-lg h-full  mx-auto'>
+					className='w-full max-w-screen-xl h-full  mx-auto'>
 					<CarouselContent>
 						{products.map(product => {
 							return (
@@ -148,14 +150,14 @@ export function Home() {
 			</div>
 
 			<div className='flex items-start justify-center h-full flex-col px-5'>
-				<h3 className='font-semibold text-2xl'>Most Sells</h3>
+				<h3 className='font-semibold text-2xl mb-2'>Most Sells</h3>
 				<Carousel
 					opts={{
 						align: 'center',
 						loop: true,
 						slidesToScroll: 'auto',
 					}}
-					className='w-full max-w-screen-lg h-full  mx-auto'>
+					className='w-full max-w-screen-xl h-full  mx-auto'>
 					<CarouselContent>
 						{products.map(product => {
 							return (

@@ -1,19 +1,16 @@
 import { Aside } from '@/components/Aside'
 import { Header } from '@/components/Header'
 import { Widget } from '@/components/Widget'
+import { Outlet } from 'react-router-dom'
 
-export default function LayoutDefault({
-	children,
-}: {
-	children: React.ReactNode
-}) {
+export function LayoutDefault() {
 	return (
-		<section className='min-h-screen '>
+		<section className='min-h-screen'>
 			<Header />
 			<div className='h-[calc(100vh-76px)] flex relative max-w-full overflow-y-hidden'>
 				<Aside />
-				{children}
 				<Widget />
+				<Outlet />
 			</div>
 		</section>
 	)

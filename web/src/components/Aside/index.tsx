@@ -19,35 +19,28 @@ import {
 import { Login } from '../Login'
 import { Dialog, DialogContent, DialogTrigger } from '../ui/dialog'
 import { SignUp } from '../SignUp'
+import { NavLink } from 'react-router-dom'
 
 export function Aside() {
 	return (
 		<aside className='flex h-full w-[50px] flex-col items-center justify-between py-5'>
-			<div>
-				<div className='bg-white relative rounded-full p-2 duration-300 hover:bg-neutral-400'>
-					<span className='absolute right-1 top-2 h-[5px] w-[5px] rounded-full bg-violet-500' />
-					<a href='/cart'>
-						<ShoppingCart />
-					</a>
-				</div>
-			</div>
-			<div className='flex flex-col gap-5'>
-				<div className='bg-white rounded-full p-2 duration-300 hover:bg-neutral-400'>
-					<a href='/'>
-						<Home />
-					</a>
-				</div>
-				<div className='bg-white rounded-full p-2 duration-300 hover:bg-neutral-400'>
-					<a href='/store'>
-						<ShoppingBasket />
-					</a>
-				</div>
-				<div className='bg-white rounded-full p-2 duration-300 hover:bg-neutral-400'>
-					<a href='/loved'>
-						<Heart />
-					</a>
-				</div>
-			</div>
+			<NavLink className='relative p-2 rounded-full hover:bg-neutral-400 active:text-violet-500 ' to='/cart' >
+				<span className='absolute right-1 top-2 h-[5px] w-[5px] rounded-full bg-violet-500' />
+				<ShoppingCart />
+			</NavLink>
+
+			<nav className='flex flex-col gap-5'>
+				<NavLink className='p-2 rounded-full hover:bg-neutral-400 active:text-violet-500 ' to='/'>
+					<Home />
+				</NavLink>
+				<NavLink className='p-2 rounded-full hover:bg-neutral-400 active:text-violet-500 ' to='/store' >
+					<ShoppingBasket />
+				</NavLink>
+				<NavLink className='p-2 rounded-full hover:bg-neutral-400 active:text-violet-500 ' to='/loved' >
+					<Heart />
+				</NavLink>
+			</nav>
+
 			<div className='flex flex-col gap-5'>
 				<div className='flex items-center flex-col justify-center gap-2 w-full'>
 					<Dialog>

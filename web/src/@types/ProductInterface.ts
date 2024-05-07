@@ -4,6 +4,7 @@ export interface ProductInterface {
 	description?: string
 	price?: string
 	isLiked: boolean
+	type?: 'laptop' | 'headphone' | 'smartphone' | 'smartwatch'
 	image?: string
 	sells?: number
 	onCart?: boolean

@@ -81,12 +81,12 @@ export function Login() {
 			<div className='text-center space-y-3'>
 				<a
 					href='#w'
-					className='block underline hover:text-violet-500 text-sm transition'>
+					className='block underline hover:text-violet-500 text-sm transition font-normal'>
 					Forgot password?
 				</a>
 				<a
 					href='#w'
-					className='block underline hover:text-violet-500 text-sm transition'>
+					className='block underline hover:text-violet-500 text-sm transition font-normal'>
 					Not have an account yet? Create one!
 				</a>
 			</div>

@@ -5,8 +5,7 @@ import { Checkbox } from '../ui/checkbox'
 
 export function Login() {
 	return (
-		<>
-			<div className='py-5 max-w-full max-h-max flex flex-col gap-8'>
+		<form className='py-5 max-w-full max-h-max flex flex-col gap-8'>
 				<div className='space-y-3 text-center w-[405px]'>
 					<h2 className='text-4xl font-bold'>
 						Login on <span className='text-violet-500'>THE STORE</span>
@@ -43,7 +42,6 @@ export function Login() {
 						/>
 					</div>
 				</div>
-			</div>
 
 			<div className='flex items-center space-x-2'>
 				<Checkbox
@@ -58,7 +56,7 @@ export function Login() {
 			</div>
 
 			<div className='space-y-3'>
-				<Button className='w-full bg-violet-500 hover:bg-violet-500/70 text-sm h-12'>
+				<Button type='submit' className='w-full bg-violet-500 hover:bg-violet-500/70 text-sm h-12'>
 					Login
 				</Button>
 				<div className='flex gap-5'>
@@ -90,6 +88,6 @@ export function Login() {
 					Not have an account yet? Create one!
 				</a>
 			</div>
-		</>
+		</form>
 	)
 }

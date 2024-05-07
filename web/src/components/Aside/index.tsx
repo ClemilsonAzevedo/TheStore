@@ -18,6 +18,7 @@ import {
 } from '@/components/ui/popover'
 import { Login } from '../Login'
 import { Dialog, DialogContent, DialogTrigger } from '../ui/dialog'
+import { SignUp } from '../SignUp'
 
 export function Aside() {
 	return (
@@ -48,7 +49,7 @@ export function Aside() {
 				</div>
 			</div>
 			<div className='flex flex-col gap-5'>
-				<div className='flex items-center flex-col justify-center gap-5 w-full'>
+				<div className='flex items-center flex-col justify-center gap-2 w-full'>
 					<Dialog>
 						<DialogContent className='px-[9.375rem] py-5 border-neutral-600 bg-neutral-400 focus-visible:outline-none max-w-max'>
 							<Login />
@@ -59,7 +60,9 @@ export function Aside() {
 					</Dialog>
 
 					<Dialog>
-						<DialogContent>{/* <Login /> */}</DialogContent>
+						<DialogContent className='px-[9.375rem] py-5 border-neutral-600 bg-neutral-400 focus-visible:outline-none max-w-max'>
+							<SignUp />
+						</DialogContent>
 						<DialogTrigger className='p-2 hover:bg-neutral-400 rounded-full focus-visible:outline-none transition'>
 							<UserPlus size={24} />
 						</DialogTrigger>

@@ -4,7 +4,7 @@ import { Input } from '../ui/input'
 export function Header() {
 	return (
 		<header className='h-[76px] min-w-screen flex items-center justify-center'>
-			<div className='flex items-center w-[400px] rounded-full bg-neutral-400'>
+			<div className='flex items-center w-[400px] rounded-full bg-neutral-400 focus-within:ring-1 focus-within:ring-violet-500 focus-within:fill-neutral-950'>
 				<label htmlFor='search' className='py-2 pl-5'>
 					<Search className='text-neutral-600' />
 				</label>

@@ -16,28 +16,32 @@ import {
 	PopoverContent,
 	PopoverTrigger,
 } from '@/components/ui/popover'
-import { Login } from '../Login'
-import { Dialog, DialogContent, DialogTrigger } from '../ui/dialog'
-import { SignUp } from '../SignUp'
 import { NavLink } from 'react-router-dom'
+import { Login } from '../Login'
+import { SignUp } from '../SignUp'
+import { Dialog, DialogContent, DialogTrigger } from '../ui/dialog'
 
 export function Aside() {
 	return (
 		<aside className='flex h-full w-[50px] flex-col items-center justify-between py-5'>
-			<NavLink className='relative p-2 rounded-full hover:bg-neutral-400 active:text-violet-500 ' to='/cart' >
+			<NavLink className='relative group p-2 rounded-full hover:bg-neutral-400 active:text-violet-500 ' to='/cart' >
 				<span className='absolute right-1 top-2 h-[5px] w-[5px] rounded-full bg-violet-500' />
 				<ShoppingCart />
+				<label className='hidden group-hover:block absolute left-10 top-0 transition bg-neutral-950 text-neutral-50 p-2 rounded-lg text-xs'>Cart</label>
 			</NavLink>
 
 			<nav className='flex flex-col gap-5'>
-				<NavLink className='p-2 rounded-full hover:bg-neutral-400 active:text-violet-500 ' to='/'>
+				<NavLink className='p-2 rounded-full hover:bg-neutral-400 active:text-violet-500 group relative' to='/' >
 					<Home />
+					<label className='hidden group-hover:block absolute left-10 top-0 transition bg-neutral-950 text-neutral-50 p-2 rounded-lg text-xs'>home</label>
 				</NavLink>
-				<NavLink className='p-2 rounded-full hover:bg-neutral-400 active:text-violet-500 ' to='/store' >
+				<NavLink className='p-2 rounded-full hover:bg-neutral-400 active:text-violet-500 group relative' to='/store' >
 					<ShoppingBasket />
+					<label className='hidden group-hover:block absolute left-10 top-0 transition bg-neutral-950 text-neutral-50 p-2 rounded-lg text-xs'>Store</label>
 				</NavLink>
-				<NavLink className='p-2 rounded-full hover:bg-neutral-400 active:text-violet-500 ' to='/loved' >
+				<NavLink className='p-2 rounded-full hover:bg-neutral-400 active:text-violet-500 group relative' to='/loved' >
 					<Heart />
+					<label className='hidden group-hover:block absolute left-10 top-0 transition bg-neutral-950 text-neutral-50 p-2 rounded-lg text-xs'>Loved</label>
 				</NavLink>
 			</nav>
 
@@ -47,8 +51,9 @@ export function Aside() {
 						<DialogContent className='px-[9.375rem] py-5 border-neutral-600 bg-neutral-400 focus-visible:outline-none max-w-max'>
 							<Login />
 						</DialogContent>
-						<DialogTrigger className='p-2 hover:bg-neutral-400 rounded-full focus-visible:outline-none transition'>
+						<DialogTrigger className='p-2 hover:bg-neutral-400 rounded-full focus-visible:outline-none transition group relative'>
 							<User size={24} />
+							<label className='hidden group-hover:block absolute left-10 top-0 transition bg-neutral-950 text-neutral-50 p-2 rounded-lg text-xs'>Login</label>
 						</DialogTrigger>
 					</Dialog>
 
@@ -56,42 +61,45 @@ export function Aside() {
 						<DialogContent className='px-[9.375rem] py-5 border-neutral-600 bg-neutral-400 focus-visible:outline-none max-w-max'>
 							<SignUp />
 						</DialogContent>
-						<DialogTrigger className='p-2 hover:bg-neutral-400 rounded-full focus-visible:outline-none transition'>
+						<DialogTrigger className='p-2 hover:bg-neutral-400 rounded-full focus-visible:outline-none transition group relative'>
 							<UserPlus size={24} />
+							<label className='hidden group-hover:block absolute left-10 top-0 transition bg-neutral-950 text-neutral-50 p-2 rounded-lg text-xs  text-nowrap'>Sign Up</label>
+
 						</DialogTrigger>
 					</Dialog>
 				</div>
 
 				<Popover>
 					<PopoverTrigger asChild>
-						<div className='bg-white rounded-full p-2 duration-300 hover:bg-neutral-400'>
+						<div className='rounded-full p-2 duration-300 hover:bg-neutral-400 transition group relative'>
 							<Settings className='hover:rotate-90 transition' />
-
-							<PopoverContent className='max-w-max ml-16 flex flex-col items-start gap-5 bg-neutral-50'>
-								<div className='flex items-center right-0 justify-center w-full gap-2 p-1'>
-									<span>
-										<Sun />
-									</span>
-								</div>
-								<a
-									className='flex items-center gap-2 transition hover:text-violet-500 p-1'
-									href='http://'
-									target='_blank'
-									rel='noopener noreferrer'>
-									<Github size={20} />
-									<span className='text-sm'>Repository</span>
-								</a>
-								<a
-									className='flex items-center gap-2 transition hover:text-violet-500 p-1'
-									href='http://'
-									target='_blank'
-									rel='noopener noreferrer'>
-									<Figma size={20} />
-									<span className='text-sm'>Design</span>
-								</a>
-							</PopoverContent>
+							<label className='hidden group-hover:block absolute left-10 top-0 transition bg-neutral-950 text-neutral-50 p-2 rounded-lg text-xs'>Settings</label>
 						</div>
 					</PopoverTrigger>
+
+					<PopoverContent className='max-w-max ml-16 flex flex-col items-start gap-5 bg-neutral-50'>
+						<div className='flex items-center right-0 justify-center w-full gap-2 p-1'>
+							<span>
+								<Sun />
+							</span>
+						</div>
+						<a
+							className='flex items-center gap-2 transition hover:text-violet-500 p-1'
+							href='http://'
+							target='_blank'
+							rel='noopener noreferrer'>
+							<Github size={20} />
+							<span className='text-sm'>Repository</span>
+						</a>
+						<a
+							className='flex items-center gap-2 transition hover:text-violet-500 p-1'
+							href='http://'
+							target='_blank'
+							rel='noopener noreferrer'>
+							<Figma size={20} />
+							<span className='text-sm'>Design</span>
+						</a>
+					</PopoverContent>
 				</Popover>
 			</div>
 		</aside>

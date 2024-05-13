@@ -16,13 +16,12 @@ export function Store() {
 			<div className='flex flex-col gap-5 items-center mx-5'>
 				<div className='mr-auto'>
 					<Select>
-						<SelectTrigger className='w-[180px]'>
+						<SelectTrigger className='w-[180px] focus-visible:ring-violet-500	'>
 							<SelectValue placeholder='All Products' />
 						</SelectTrigger>
 						<SelectContent>
 							<SelectGroup>
 								<SelectLabel>Category</SelectLabel>
-								<SelectItem value=' '>None</SelectItem>
 								<SelectItem value='laptops'>Laptops</SelectItem>
 								<SelectItem value='Smartphones'>Smartphones</SelectItem>
 								<SelectItem value='headphones'>Headphones</SelectItem>

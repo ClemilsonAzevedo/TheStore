@@ -1,6 +1,5 @@
 import { products } from '@/api/fakeProductsProps'
 import { Product } from '@/components/Product'
-import { ScrollToTopButton } from '@/components/ScrollToTopButton'
 import { Button } from '@/components/ui/button'
 import {
 	Carousel,

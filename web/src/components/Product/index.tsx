@@ -18,7 +18,6 @@ export function Product({
 
 	function handleAddItemOnCart() {
 		setAddItemOnCart(addItemOnCart + 1)
-		//TODO: CRIAR FUNÇÃO DE ADICIONAR NO CARRINHO.
 	}
 
 	function handleLikeProduct() {
@@ -27,7 +26,7 @@ export function Product({
 	}
 
 	return (
-		<div className='hover:bg-neutral-400 transition duration-300  rounded-lg px-5 hover:scale-110'>
+		<div className='hover:bg-neutral-400 transition duration-300  rounded-lg px-5'>
 			<div className='flex flex-col gap-5 py-5 max-w-48 justify-center items-center'>
 				<div className='flex flex-col bg-neutral-400 w-max p-4 rounded-lg'>
 					<button
@@ -40,7 +39,7 @@ export function Product({
 						}>
 						<Heart className='flex-1' size={16} />
 					</button>
-					<img src={image} alt='' />
+					<img src={image} width={'100%'} alt='' />
 				</div>
 				<div className='w-full'>
 					<h4 className='font-medium text-base text-neutral-950 text-center text-ellipsis truncate'>

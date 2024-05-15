@@ -15,7 +15,7 @@ import {
 } from '@/utils/calculeQuantityAndAmountProducts'
 import { formatUSD } from '@/utils/formatToUSD'
 import { Filter } from 'lucide-react'
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 export function Cart() {
 	const [onCartProducts, setOnCartProducts] = useState(
@@ -27,7 +27,7 @@ export function Cart() {
 	}, [products])
 
 	return (
-		<section className='w-full flex gap-5 p-5'>
+		<section className='w-full flex overflow-y-auto gap-5 p-5 max-xl:flex-wrap max-xl:justify-center'>
 			<div className='w-full flex flex-col gap-5'>
 				<div className='w-full flex gap-5 h-[150px]'>
 					<div className='border border-neutral-400 rounded-lg min-w-[350px] h-full flex flex-col p-5 gap-2'>

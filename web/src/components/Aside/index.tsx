@@ -31,7 +31,7 @@ export function Aside() {
 			</NavLink>
 
 			<nav className='flex flex-col gap-5'>
-				<NavLink className='p-2 rounded-full hover:bg-neutral-400 active:text-violet-500 group relative' to='/' >
+				<NavLink className='p-2 rounded-full hover:bg-neutral-400 active:text-violet-500 group relative' to={'/' || '#home'} >
 					<Home />
 					<label className='hidden group-hover:block absolute left-10 top-0 transition bg-neutral-950 text-neutral-50 p-2 rounded-lg text-xs'>home</label>
 				</NavLink>

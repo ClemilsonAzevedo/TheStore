@@ -95,7 +95,7 @@ export function Home() {
 			</div>
 
 			<div id='Smartwatches' className='flex flex-col items-center gap-5'>
-				<h2 className='flex gap-2 items-center text-2xl font-semibold sticky top-0 z-10 bg-neutral-50 w-full justify-center py-2'>
+				<h2 className='flex gap-2 items-center text-2xl font-semibold sticky -top-px z-10 bg-neutral-50 w-full justify-center py-2'>
 					<Watch size={32} />
 					Smartwatches
 				</h2>
@@ -118,7 +118,7 @@ export function Home() {
 			</div>
 
 			<div id='Smartphones' className='flex flex-col items-center gap-5'>
-				<h2 className='flex gap-2 items-center text-2xl font-semibold sticky z-10 top-0 bg-neutral-50 w-full justify-center py-2'>
+				<h2 className='flex gap-2 items-center text-2xl font-semibold sticky -top-px z-10 bg-neutral-50 w-full justify-center py-2'>
 					<Smartphone size={32} /> Smartphones
 				</h2>
 
@@ -140,7 +140,7 @@ export function Home() {
 			</div>
 
 			<div id='Headphones' className='flex flex-col items-center gap-5'>
-				<h2 className='flex gap-2 items-center text-2xl font-semibold sticky z-10 top-0 bg-neutral-50 w-full justify-center py-2'>
+				<h2 className='flex gap-2 items-center text-2xl font-semibold sticky -top-px z-10 bg-neutral-50 w-full justify-center py-2'>
 					<Headphones size={32} />
 					Headphones
 				</h2>
@@ -163,7 +163,7 @@ export function Home() {
 			</div>
 
 			<div id='Laptops' className='flex flex-col items-center gap-5'>
-				<h2 className='flex gap-2 items-center text-2xl font-semibold sticky top-0 z-10 bg-neutral-50 w-full justify-center py-2'>
+				<h2 className='flex gap-2 items-center text-2xl font-semibold sticky -top-px z-10 bg-neutral-50 w-full justify-center py-2'>
 					<Laptop size={32} />
 					Laptops
 				</h2>

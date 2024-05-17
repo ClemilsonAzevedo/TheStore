@@ -3,25 +3,10 @@ import { formatUSD } from '@/utils/formatToUSD'
 
 export const products: ProductInterface[] = [
 	{
-		id: 'e4f5g6h',
-		name: 'HP Pavilion 15',
-		description: 'A versatile laptop with a sleek design',
-		price: formatUSD(749.99),
-		isLiked: false,
-		type: 'laptop',
-		image: '',
-		sells: 3,
-		onCart: true,
-		cart: {
-			quantity: 3,
-			unitPrice: 749.99,
-			amount: 2249.97,
-		},
-	},
-	{
 		id: 'q5r6s7t',
 		name: 'Sony WH-1000XM4',
-		description: 'Wireless noise-canceling headphones with excellent audio quality',
+		description:
+			'Wireless noise-canceling headphones with excellent audio quality',
 		price: formatUSD(349.99),
 		isLiked: true,
 		type: 'headphone',
@@ -37,7 +22,8 @@ export const products: ProductInterface[] = [
 	{
 		id: 'u8v9w0x',
 		name: 'Apple Watch Series 6',
-		description: 'Advanced smartwatch with health and fitness tracking features',
+		description:
+			'Advanced smartwatch with health and fitness tracking features',
 		price: formatUSD(399.99),
 		isLiked: false,
 		type: 'smartwatch',
@@ -53,7 +39,8 @@ export const products: ProductInterface[] = [
 	{
 		id: 'y1z2a3b',
 		name: 'Bose Noise Cancelling Headphones 700',
-		description: 'Premium noise-canceling headphones with exceptional sound quality',
+		description:
+			'Premium noise-canceling headphones with exceptional sound quality',
 		price: formatUSD(399.99),
 		isLiked: true,
 		type: 'headphone',
@@ -133,7 +120,8 @@ export const products: ProductInterface[] = [
 	{
 		id: 'g7h8i9j',
 		name: 'Samsung Galaxy Watch 4',
-		description: 'Versatile smartwatch with fitness and health tracking features',
+		description:
+			'Versatile smartwatch with fitness and health tracking features',
 		price: formatUSD(249.99),
 		isLiked: true,
 		type: 'smartwatch',
@@ -146,4 +134,4 @@ export const products: ProductInterface[] = [
 			amount: 0,
 		},
 	},
-];
+]

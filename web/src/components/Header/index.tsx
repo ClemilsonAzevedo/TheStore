@@ -10,7 +10,12 @@ import {
 	CommandSeparator,
 } from '@/components/ui/command'
 import { Search } from 'lucide-react'
-import { type KeyboardEvent, useEffect, useState } from 'react'
+import {
+	type ChangeEvent,
+	type KeyboardEvent,
+	useEffect,
+	useState,
+} from 'react'
 
 interface typeProductProps {
 	type: 'laptop' | 'headphone' | 'smartphone' | 'smartwatch'
@@ -40,15 +45,6 @@ export function Header() {
 		return () => document.removeEventListener('keydown', down)
 	}, [])
 
-	function handleChangeInput(event: any) {
-		const { value } = event.target
-		setFilterProductsOnCommand(
-			filterProducts.filter(product =>
-				product.name.toLowerCase().includes(value.toLowerCase()),
-			),
-		)
-	}
-
 	return (
 		<>
 			<header className='flex items-center justify-center p-5'>
@@ -69,18 +65,24 @@ export function Header() {
 				</button>
 			</header>
 			<CommandDialog open={open} onOpenChange={setOpen}>
-				<Command className='flex items-center w-[400px] rounded-lg bg-neutral-400 focus-within:ring-1 focus-visible:outline-none focus-within:ring-violet-500'>
+				<Command className='flex items-center w-[400px] border border-neutral-600 rounded-lg bg-neutral-400 focus-within:ring-1 focus-visible:outline-none focus-within:ring-violet-500'>
 					<CommandInput asChild>
 						<input
 							id='search'
 							list='search-suggestions'
-							className='bg-transparent border-0 outline-none shadow-none focus:border-0 placeholder:text-neutral-600 flex-1'
+							className='bg-transparent border-0 outline-none shadow-non focus:border-0 placeholder:text-neutral-600 flex-1'
 							placeholder='Type for filter an product'
-							onChange={handleChangeInput}
+							onChange={e => {
+								const { value } = e.target
+								setFilterProductsOnCommand(
+									filterProducts.filter(product =>
+										product.name.toLowerCase().includes(value.toLowerCase()),
+									),
+								)
+							}}
 						/>
 					</CommandInput>
 				</Command>
-
 				<CommandList>
 					{!filterProductsOnCommand.length ? (
 						<CommandEmpty>No results found.</CommandEmpty>

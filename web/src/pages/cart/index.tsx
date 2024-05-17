@@ -15,16 +15,15 @@ import {
 } from '@/utils/calculeQuantityAndAmountProducts'
 import { formatUSD } from '@/utils/formatToUSD'
 import { Filter } from 'lucide-react'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 export function Cart() {
-	const [onCartProducts, setOnCartProducts] = useState(
-		products.filter(product => product.onCart),
+	const [filterOnCartProducts, _] = useState(
+		products.filter(product => product.onCart === true),
 	)
-
-	useEffect(() => {
-		setOnCartProducts(products.filter(product => product.onCart))
-	}, [products])
+	const [filterOnTableProducts, setFilterOnTableProducts] = useState(
+		products.filter(product => product.onCart === true),
+	)
 
 	return (
 		<section className='w-full flex overflow-y-auto gap-5 p-5 max-xl:flex-wrap max-xl:justify-center'>
@@ -60,7 +59,17 @@ export function Cart() {
 						<Filter size={24} />
 						<Input
 							placeholder='Filter name...'
-							className='border-none shadow-none outline-none placeholder:text-sm placeholder:text-neutral-400 text-sm'
+							className='border-none shadow-none outline-none placeholder:text-sm placeholder:text-neutral-600 text-sm'
+							onChange={e => {
+								const { value } = e.target
+								setFilterOnTableProducts(
+									filterOnCartProducts.filter(filteredProduct =>
+										filteredProduct.name
+											.toLowerCase()
+											.includes(value.toLowerCase()),
+									),
+								)
+							}}
 						/>
 					</div>
 
@@ -86,7 +95,7 @@ export function Cart() {
 								</TableRow>
 							</TableHeader>
 							<TableBody>
-								{onCartProducts.map(product => (
+								{filterOnTableProducts.map(product => (
 									<TableRow key={product.id}>
 										<TableCell className='text-center'>{product.id}</TableCell>
 										<TableCell>{product.name}</TableCell>
@@ -119,7 +128,7 @@ export function Cart() {
 							</TableRow>
 						</TableHeader>
 						<TableBody>
-							{onCartProducts.map(product => (
+							{filterOnCartProducts.map(product => (
 								<TableRow className='border-none rounded-lg ' key={product.id}>
 									<TableCell className='text-sm'>{product.id}</TableCell>
 									<TableCell className='text-right text-sm'>

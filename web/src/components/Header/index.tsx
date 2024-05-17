@@ -10,12 +10,7 @@ import {
 	CommandSeparator,
 } from '@/components/ui/command'
 import { Search } from 'lucide-react'
-import {
-	type ChangeEvent,
-	type KeyboardEvent,
-	useEffect,
-	useState,
-} from 'react'
+import { type KeyboardEvent, useEffect, useState } from 'react'
 
 interface typeProductProps {
 	type: 'laptop' | 'headphone' | 'smartphone' | 'smartwatch'

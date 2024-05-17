@@ -18,8 +18,11 @@ interface typeProductProps {
 
 export function Header() {
 	const [open, setOpen] = useState(false)
+	const [filterProducts, _] = useState(products)
+	const [filterProductsOnCommand, setFilterProductsOnCommand] =
+		useState(products)
 
-	const typeOfProcuts: typeProductProps[] = [
+	const typeOfProducts: typeProductProps[] = [
 		{ type: 'laptop' },
 		{ type: 'headphone' },
 		{ type: 'smartphone' },
@@ -37,6 +40,15 @@ export function Header() {
 		return () => document.removeEventListener('keydown', down)
 	}, [])
 
+	function handleChangeInput(event: any) {
+		const { value } = event.target
+		setFilterProductsOnCommand(
+			filterProducts.filter(product =>
+				product.name.toLowerCase().includes(value.toLowerCase()),
+			),
+		)
+	}
+
 	return (
 		<>
 			<header className='flex items-center justify-center p-5'>
@@ -51,32 +63,46 @@ export function Header() {
 					<span className='flex-1 flex pl-2 text-neutral-600 '>
 						You will search here ...
 					</span>
-					<kbd className='pointer-events-none inline-flex select-none items-center rounded-lg border bg-neutral-400 group-hover:bg-violet-500 group-hover:text-neutral-50 transition px-1.5 py-px font-mono text-[10px] font-medium text-neutral-600 '>
+					<kbd className='pointer-events-none inline-flex select-none items-center rounded-lg border bg-neutral-400 group-hover:bg-violet-500 group-hover:text-neutral-50 transition px-1.5 py-px font-mono text-sm font-medium text-neutral-600 '>
 						<span className='text-sm bg-transparent'>Ctrl + K</span>
 					</kbd>
 				</button>
 			</header>
 			<CommandDialog open={open} onOpenChange={setOpen}>
-				<Command className='flex items-center w-[400px] rounded-full bg-neutral-400 focus-within:ring-1 focus-within:ring-violet-500'>
-					<CommandInput
-						id='search'
-						list='search-suggestions'
-						className='bg-transparent border-0 outline-none h-7 shadow-none focus:border-0 placeholder:text-neutral-600 flex-1'
-						placeholder='Type for filter an product'
-					/>
+				<Command className='flex items-center w-[400px] rounded-lg bg-neutral-400 focus-within:ring-1 focus-visible:outline-none focus-within:ring-violet-500'>
+					<CommandInput asChild>
+						<input
+							id='search'
+							list='search-suggestions'
+							className='bg-transparent border-0 outline-none shadow-none focus:border-0 placeholder:text-neutral-600 flex-1'
+							placeholder='Type for filter an product'
+							onChange={handleChangeInput}
+						/>
+					</CommandInput>
 				</Command>
 
 				<CommandList>
-					<CommandEmpty>No results found.</CommandEmpty>
-					{typeOfProcuts.map(product => (
-						<CommandGroup key={product.type} heading={product.type}>
-							{products
-								.filter(item => item.type === product.type)
-								.map(item => (
-									<CommandItem key={item.id}>{item.name}</CommandItem>
-								))}
-						</CommandGroup>
-					))}
+					{!filterProductsOnCommand.length ? (
+						<CommandEmpty>No results found.</CommandEmpty>
+					) : (
+						<>
+							{typeOfProducts.map(product => (
+								<CommandGroup key={product.type} heading={product.type}>
+									{filterProductsOnCommand
+										.filter(item => item.type === product.type)
+										.map(item => (
+											<a
+												key={item.id}
+												href={`http://localhost:3000/products/${item.id}/detail`}>
+												<CommandItem>
+													{item.name} <CommandSeparator />
+												</CommandItem>
+											</a>
+										))}
+								</CommandGroup>
+							))}
+						</>
+					)}
 				</CommandList>
 			</CommandDialog>
 		</>

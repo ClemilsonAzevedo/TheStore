@@ -18,9 +18,9 @@ interface typeProductProps {
 
 export function Header() {
 	const [open, setOpen] = useState(false)
-	const [filterProducts, _] = useState(products)
+	const [filterProducts, _] = useState(products || [''])
 	const [filterProductsOnCommand, setFilterProductsOnCommand] =
-		useState(products)
+		useState(filterProducts)
 
 	const typeOfProducts: typeProductProps[] = [
 		{ type: 'laptop' },
@@ -59,12 +59,12 @@ export function Header() {
 					</kbd>
 				</button>
 			</header>
+
 			<CommandDialog open={open} onOpenChange={setOpen}>
 				<Command className='flex items-center w-[400px] border border-neutral-600 rounded-lg bg-neutral-400 focus-within:ring-1 focus-visible:outline-none focus-within:ring-violet-500'>
 					<CommandInput asChild>
 						<input
 							id='search'
-							list='search-suggestions'
 							className='bg-transparent border-0 outline-none shadow-non focus:border-0 placeholder:text-neutral-600 flex-1'
 							placeholder='Type for filter an product'
 							onChange={e => {
@@ -91,9 +91,8 @@ export function Header() {
 											<a
 												key={item.id}
 												href={`http://localhost:3000/products/${item.id}/detail`}>
-												<CommandItem>
-													{item.name} <CommandSeparator />
-												</CommandItem>
+												<CommandItem>{item.name}</CommandItem>
+												<CommandSeparator />g
 											</a>
 										))}
 								</CommandGroup>

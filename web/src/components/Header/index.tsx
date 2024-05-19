@@ -18,7 +18,7 @@ interface typeProductProps {
 
 export function Header() {
 	const [open, setOpen] = useState(false)
-	const [filterProducts, _] = useState(products || [''])
+	const [filterProducts, _] = useState(products || [' '])
 	const [filterProductsOnCommand, setFilterProductsOnCommand] =
 		useState(filterProducts)
 
@@ -83,10 +83,12 @@ export function Header() {
 						<CommandEmpty>No results found.</CommandEmpty>
 					) : (
 						<>
-							{typeOfProducts.map(product => (
-								<CommandGroup key={product.type} heading={product.type}>
+							{typeOfProducts.map(productGroup => (
+								<CommandGroup
+									key={productGroup.type}
+									heading={productGroup.type}>
 									{filterProductsOnCommand
-										.filter(item => item.type === product.type)
+										.filter(item => item.type === productGroup.type)
 										.map(item => (
 											<a
 												key={item.id}

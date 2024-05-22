@@ -18,7 +18,7 @@ interface typeProductProps {
 
 export function Header() {
 	const [open, setOpen] = useState(false)
-	const [filterProducts, _] = useState(products || [' '])
+	const [filterProducts] = useState(products)
 	const [filterProductsOnCommand, setFilterProductsOnCommand] =
 		useState(filterProducts)
 
@@ -94,7 +94,7 @@ export function Header() {
 												key={item.id}
 												href={`http://localhost:3000/products/${item.id}/detail`}>
 												<CommandItem>{item.name}</CommandItem>
-												<CommandSeparator />g
+												<CommandSeparator />
 											</a>
 										))}
 								</CommandGroup>

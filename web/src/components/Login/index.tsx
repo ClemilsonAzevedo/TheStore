@@ -1,47 +1,71 @@
+import { SubmitHandler, useForm } from 'react-hook-form'
+import { z } from 'zod'
 import githubLogo from '../../assets/github.svg'
 import gmailLogo from '../../assets/gmail.svg'
 import { Button } from '../ui/button'
 import { Checkbox } from '../ui/checkbox'
 
-export function Login() {
-	return (
-		<form className='py-5 max-w-full max-h-max flex flex-col gap-8'>
-				<div className='space-y-3 text-center w-[405px]'>
-					<h2 className='text-4xl font-bold'>
-						Login on <span className='text-violet-500'>THE STORE</span>
-					</h2>
-					<p className='text-sm'>
-						Login on THE STORE for the best shopping experience of your life
-						again
-					</p>
-				</div>
-				<div className='space-y-3'>
-					<div className='flex flex-col w-full gap-2'>
-						<label htmlFor='email' className='text-sm'>
-							Email
-						</label>
-						<input
-							type='email'
-							name='email'
-							id='email'
-							placeholder='Enter your email address'
-							className='text-sm pl-3 py-3 placeholder:text-neutral-600 bg-neutral-50 border border-neutral-600 focus-visible:outline-violet-500 rounded-lg'
-						/>
-					</div>
+const signInFormValidationSchema = z.object({
+	email: z.string().email('Email or password is Wrong'),
+	password: z.string().min(8, 'Email or password is Wrong'),
+})
 
-					<div className='flex flex-col w-full gap-2'>
-						<label htmlFor='password' className='text-sm'>
-							Password
-						</label>
-						<input
-							type='password'
-							name='password'
-							id='password'
-							placeholder='Minimum 8 character'
-							className='text-sm pl-3 py-3 placeholder:text-neutral-600 bg-neutral-50 border border-neutral-600 focus-visible:outline-violet-500 rounded-lg'
-						/>
-					</div>
+type signInFormData = z.infer<typeof signInFormValidationSchema>
+
+export function Login() {
+	const { register, watch, handleSubmit, reset } = useForm<signInFormData>()
+
+	function handleSignIn(data:signInFormData) {
+		console.log(data)
+		//todo: Enviar os dados de login para o backend 
+
+		reset()
+	}
+
+
+	const emailInputChange = watch('email')
+	const passwordInputChange = watch('password')
+	const isSubmitDisabled = !emailInputChange || !passwordInputChange
+
+	return (
+		<form
+			onSubmit={handleSubmit(handleSignIn)}
+			className='py-5 max-w-full max-h-max flex flex-col gap-8'>
+			<div className='space-y-3 text-center w-[405px]'>
+				<h2 className='text-4xl font-bold'>
+					Login on <span className='text-violet-500'>THE STORE</span>
+				</h2>
+				<p className='text-sm'>
+					Login on THE STORE for the best shopping experience of your life again
+				</p>
+			</div>
+			<div className='space-y-3'>
+				<div className='flex flex-col w-full gap-2'>
+					<label htmlFor='email' className='text-sm'>
+						Email
+					</label>
+					<input
+						type='email'
+						id='email'
+						{...register('email')}
+						placeholder='Enter your email address'
+						className='text-sm pl-3 py-3 placeholder:text-neutral-600 bg-neutral-50 border border-neutral-600 focus-visible:outline-violet-500 rounded-lg'
+					/>
 				</div>
+
+				<div className='flex flex-col w-full gap-2'>
+					<label htmlFor='password' className='text-sm'>
+						Password
+					</label>
+					<input
+						type='password'
+						id='password'
+						{...register('password')}
+						placeholder='Minimum 8 character'
+						className='text-sm pl-3 py-3 placeholder:text-neutral-600 bg-neutral-50 border border-neutral-600 focus-visible:outline-violet-500 rounded-lg'
+					/>
+				</div>
+			</div>
 
 			<div className='flex items-center space-x-2'>
 				<Checkbox
@@ -56,7 +80,11 @@ export function Login() {
 			</div>
 
 			<div className='space-y-3'>
-				<Button type='submit' className='w-full bg-violet-500 hover:bg-violet-500/70 text-sm h-12'>
+				<Button
+					type='submit'
+					disabled={isSubmitDisabled}
+					className='w-full bg-violet-500 hover:bg-violet-500/70 text-sm h-12 disabled:cursor-not-allowed'
+					>
 					Login
 				</Button>
 				<div className='flex gap-5'>

@@ -1,5 +1,6 @@
 import { Route, Routes as RoutesDOM } from 'react-router-dom'
 import { LayoutDefault } from './layouts/layoutDefault'
+import { ForgotPassword } from './pages/ForgotPassword'
 import { Cart } from './pages/cart'
 import { Home } from './pages/home'
 import { LovedProducts } from './pages/loved-products'
@@ -14,7 +15,8 @@ export default function Routes() {
 				<Route path='/cart' element={<Cart />} />
 				<Route path='/loved' element={<LovedProducts />} />
 				<Route path='/store' element={<Store />} />
-				<Route path='/products/:productId/detail' element={< ProductDetail />} />
+				<Route path='/products/:productId/detail' element={<ProductDetail />} />
+				<Route path='/forgot-password' element={<ForgotPassword />} />
 			</Route>
 		</RoutesDOM>
 	)

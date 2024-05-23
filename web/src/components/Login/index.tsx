@@ -1,7 +1,13 @@
+//todo: Abrir modal de SignUp quando clicar em ainda nao tem conta
+//todo: Redirecionar para a pagina de esqueceu a senha
+
+import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog'
 import { SubmitHandler, useForm } from 'react-hook-form'
+import { NavLink } from 'react-router-dom'
 import { z } from 'zod'
 import githubLogo from '../../assets/github.svg'
 import gmailLogo from '../../assets/gmail.svg'
+import { SignUp } from '../SignUp'
 import { Button } from '../ui/button'
 import { Checkbox } from '../ui/checkbox'
 
@@ -15,13 +21,12 @@ type signInFormData = z.infer<typeof signInFormValidationSchema>
 export function Login() {
 	const { register, watch, handleSubmit, reset } = useForm<signInFormData>()
 
-	function handleSignIn(data:signInFormData) {
+	function handleSignIn(data: signInFormData) {
 		console.log(data)
-		//todo: Enviar os dados de login para o backend 
+		//todo: Enviar os dados de login para o backend
 
 		reset()
 	}
-
 
 	const emailInputChange = watch('email')
 	const passwordInputChange = watch('password')
@@ -83,8 +88,7 @@ export function Login() {
 				<Button
 					type='submit'
 					disabled={isSubmitDisabled}
-					className='w-full bg-violet-500 hover:bg-violet-500/70 text-sm h-12 disabled:cursor-not-allowed'
-					>
+					className='w-full bg-violet-500 hover:bg-violet-500/70 text-sm h-12 disabled:cursor-not-allowed'>
 					Login
 				</Button>
 				<div className='flex gap-5'>
@@ -104,17 +108,23 @@ export function Login() {
 				</div>
 			</div>
 
-			<div className='text-center space-y-3'>
+			<div className='flex flex-col justify-center items-center'>
 				<a
-					href='#w'
+					href='/forgot-password'
 					className='block underline hover:text-violet-500 text-sm transition font-normal'>
 					Forgot password?
 				</a>
-				<a
-					href='#w'
-					className='block underline hover:text-violet-500 text-sm transition font-normal'>
-					Not have an account yet? Create one!
-				</a>
+
+				<Dialog>
+					<DialogContent className='px-[9.375rem] py-5 border-neutral-600 bg-neutral-400 focus-visible:outline-none max-w-max'>
+						<SignUp />
+					</DialogContent>
+					<DialogTrigger className='p-2 hover:bg-neutral-400 rounded-full focus-visible:outline-none transition group relative'>
+						<span className='block underline hover:text-violet-500 text-sm transition font-normal'>
+							Not have an account yet? Create one!
+						</span>
+					</DialogTrigger>
+				</Dialog>
 			</div>
 		</form>
 	)

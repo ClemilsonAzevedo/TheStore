@@ -16,6 +16,20 @@ import { useState } from 'react'
 export function Store() {
 	const [allProducts, _] = useState(products)
 	const [filterOnPage, setFilterOnPage] = useState(products)
+	const [productFilteredValue, setProductFilteredValue] =
+		useState<string>('all products')
+
+	function filterProductPerSelectValue(value: string) {
+		setProductFilteredValue(value)
+		if (value === 'all products') {
+			setFilterOnPage(allProducts)
+			return
+		}
+
+		const filterProducts = allProducts.filter(product => product.type === value)
+
+		console.log(filterProducts)
+	}
 
 	return (
 		<section className='flex gap-5 justify-start flex-col w-full py-5 overflow-y-auto'>
@@ -40,23 +54,25 @@ export function Store() {
 						}}
 					/>
 				</div>
-
-				<Select>
+				<Select
+					defaultValue={productFilteredValue}
+					value={productFilteredValue}
+					onValueChange={value => filterProductPerSelectValue(value)}>
 					<SelectTrigger className='w-[180px] focus-visible:ring-violet-500 h-full'>
-						<SelectValue placeholder='All Products' />
+						<SelectValue placeholder='all products' />
 					</SelectTrigger>
 					<SelectContent>
 						<SelectGroup>
 							<SelectLabel>Category</SelectLabel>
+							<SelectItem value='all products'>all products</SelectItem>
 							<SelectItem value='laptops'>Laptops</SelectItem>
-							<SelectItem value='Smartphones'>Smartphones</SelectItem>
+							<SelectItem value='smartphones'>Smartphones</SelectItem>
 							<SelectItem value='headphones'>Headphones</SelectItem>
 							<SelectItem value='smartwatches'>Smartwatches</SelectItem>
 						</SelectGroup>
 					</SelectContent>
 				</Select>
 			</div>
-
 			<div className='flex flex-col gap-5 items-center h-full mx-5'>
 				<div className='flex flex-wrap gap-5 justify-center w-full mb-5'>
 					{filterOnPage.map((product, _) => (

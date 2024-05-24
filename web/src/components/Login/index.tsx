@@ -1,9 +1,5 @@
-//todo: Abrir modal de SignUp quando clicar em ainda nao tem conta
-//todo: Redirecionar para a pagina de esqueceu a senha
-
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { NavLink } from 'react-router-dom'
 import { z } from 'zod'
 import githubLogo from '../../assets/github.svg'
 import gmailLogo from '../../assets/gmail.svg'

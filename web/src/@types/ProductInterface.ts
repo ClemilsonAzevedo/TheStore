@@ -7,6 +7,7 @@ export interface ProductInterface {
 	type?: 'laptop' | 'headphone' | 'smartphone' | 'smartwatch'
 	image?: string
 	sells?: number
+	createdAt?: Date
 	onCart?: boolean
 	cart?: {
 		unitPrice?: number

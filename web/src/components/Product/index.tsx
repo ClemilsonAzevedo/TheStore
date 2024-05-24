@@ -1,7 +1,7 @@
 import type { ProductInterface } from '@/@types/ProductInterface'
 import { Heart, Plus } from 'lucide-react'
 import { useState } from 'react'
-import pcImage from '../../assets/MacbookProM1Pro.png'
+import pcImage from '../../assets/1MacbookProM1Pro.png'
 import { Button } from '../ui/button'
 
 interface ProductProps extends ProductInterface {}
@@ -39,7 +39,13 @@ export function Product({
 						}>
 						<Heart className='flex-1' size={16} />
 					</button>
-					<img src={image} width={'100%'} alt='' />
+					<div className='w-[189px] h-[148px] flex justify-center'>
+						<img
+							src={image}
+							alt=''
+							className='object-cover w-[149px] rounded-lg'
+						/>
+					</div>
 				</div>
 				<div className='w-full'>
 					<h4 className='font-medium text-base text-neutral-950 text-center text-ellipsis truncate'>

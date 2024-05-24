@@ -1,4 +1,5 @@
 import { products } from '@/api/fakeProductsProps'
+import pcImage from '@/assets/1MacbookProM1Pro.png'
 import { Product } from '@/components/Product'
 import {
 	Carousel,
@@ -14,14 +15,13 @@ import {
 	Plus,
 	ShoppingCart,
 } from 'lucide-react'
-import pcImage from '../../assets/imageMacdemo.jpg'
 
 export function ProductDetail() {
 	return (
 		<section className='p-5 overflow-y-auto'>
 			<div className='flex gap-5'>
 				<div className='max-w-[400px] flex flex-col gap-5 items-center'>
-					<div className='border border-neutral-600 rounded-lg px-2 flex items-center justify-center h-[400px]'>
+					<div className='border border-neutral-600 rounded-lg px-2 flex items-center justify-center w-[400px] h-[400px]'>
 						<img src={pcImage} alt='' width={'100%'} />
 					</div>
 					<div className='flex justify-between items-center w-full text-2xl font-semibold leading-none'>

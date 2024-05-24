@@ -101,19 +101,21 @@ export function Home() {
 				</h2>
 
 				<div className='flex flex-wrap justify-center'>
-					{products.map(product => {
-						return (
-							<Product
-								key={product.id}
-								id={product.id}
-								price={product.price}
-								onCart={product.onCart}
-								isLiked={product.isLiked}
-								name={product.name}
-								description={product.description}
-							/>
-						)
-					})}
+					{products
+						.filter(product => product.type === 'smartwatch')
+						.map(product => {
+							return (
+								<Product
+									key={product.id}
+									id={product.id}
+									price={product.price}
+									onCart={product.onCart}
+									isLiked={product.isLiked}
+									name={product.name}
+									description={product.description}
+								/>
+							)
+						})}
 				</div>
 			</div>
 
@@ -123,19 +125,21 @@ export function Home() {
 				</h2>
 
 				<div className='flex flex-wrap justify-center'>
-					{products.map(product => {
-						return (
-							<Product
-								key={product.id}
-								id={product.id}
-								price={product.price}
-								onCart={product.onCart}
-								isLiked={product.isLiked}
-								name={product.name}
-								description={product.description}
-							/>
-						)
-					})}
+					{products
+						.filter(product => product.type === 'smartphone')
+						.map(product => {
+							return (
+								<Product
+									key={product.id}
+									id={product.id}
+									price={product.price}
+									onCart={product.onCart}
+									isLiked={product.isLiked}
+									name={product.name}
+									description={product.description}
+								/>
+							)
+						})}
 				</div>
 			</div>
 
@@ -146,19 +150,21 @@ export function Home() {
 				</h2>
 
 				<div className='flex flex-wrap justify-center'>
-					{products.map(product => {
-						return (
-							<Product
-								key={product.id}
-								id={product.id}
-								price={product.price}
-								onCart={product.onCart}
-								isLiked={product.isLiked}
-								name={product.name}
-								description={product.description}
-							/>
-						)
-					})}
+					{products
+						.filter(product => product.type === 'headphone')
+						.map(product => {
+							return (
+								<Product
+									key={product.id}
+									id={product.id}
+									price={product.price}
+									onCart={product.onCart}
+									isLiked={product.isLiked}
+									name={product.name}
+									description={product.description}
+								/>
+							)
+						})}
 				</div>
 			</div>
 
@@ -168,19 +174,21 @@ export function Home() {
 					Laptops
 				</h2>
 				<div className='flex flex-wrap justify-center'>
-					{products.map(product => {
-						return (
-							<Product
-								key={product.id}
-								id={product.id}
-								price={product.price}
-								onCart={product.onCart}
-								isLiked={product.isLiked}
-								name={product.name}
-								description={product.description}
-							/>
-						)
-					})}
+					{products
+						.filter(product => product.type === 'laptop')
+						.map(product => {
+							return (
+								<Product
+									key={product.id}
+									id={product.id}
+									price={product.price}
+									onCart={product.onCart}
+									isLiked={product.isLiked}
+									name={product.name}
+									description={product.description}
+								/>
+							)
+						})}
 				</div>
 			</div>
 		</section>

@@ -40,6 +40,7 @@ export function Store() {
 						}}
 					/>
 				</div>
+
 				<Select>
 					<SelectTrigger className='w-[180px] focus-visible:ring-violet-500 h-full'>
 						<SelectValue placeholder='All Products' />
@@ -55,6 +56,7 @@ export function Store() {
 					</SelectContent>
 				</Select>
 			</div>
+
 			<div className='flex flex-col gap-5 items-center h-full mx-5'>
 				<div className='flex flex-wrap gap-5 justify-center w-full mb-5'>
 					{filterOnPage.map((product, _) => (

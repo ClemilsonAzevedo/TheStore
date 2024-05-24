@@ -1,5 +1,5 @@
 import type { ProductInterface } from '@/@types/ProductInterface'
-import pcImage from '@/assets/MacbookProM1Pro.png'
+import pcImage from '@/assets/1MacbookProM1Pro.png'
 import { Heart } from 'lucide-react'
 
 interface ProductProps extends ProductInterface {}
@@ -16,7 +16,7 @@ export function DestacProduct({ name, price, image = pcImage }: ProductProps) {
 						}>
 						<Heart className='flex-1' size={16} />
 					</button>
-					<img src={image} alt='' loading='lazy' className='w-80 h-auto  ' />
+					<img src={image} alt='' loading='lazy' className='w-80 h-80  ' />
 				</div>
 				<h4 className='font-medium text-xl text-neutral-950 text-center text-ellipsis truncate'>
 					{name}

@@ -1,3 +1,6 @@
+//Todo: Usar URL state para fixar os produtos pelo filtro ou pela seleção
+//Todo: Apenas Filtrar a seleção do produto dentro do filtro de seleção
+
 import { products } from '@/api/fakeProductsProps'
 import { Product } from '@/components/Product'
 import { Input } from '@/components/ui/input'
@@ -15,7 +18,8 @@ import { useState } from 'react'
 
 export function Store() {
 	const [allProducts, _] = useState(products)
-	const [filterOnPage, setFilterOnPage] = useState(products)
+	const [filterOnPage, setFilterOnPage] = useState(allProducts)
+
 	const [productFilteredValue, setProductFilteredValue] =
 		useState<string>('all products')
 
@@ -26,9 +30,9 @@ export function Store() {
 			return
 		}
 
-		const filterProducts = allProducts.filter(product => product.type === value)
+		const filterProducts = products.filter(product => product.type === value)
 
-		console.log(filterProducts)
+		setFilterOnPage(filterProducts)
 	}
 
 	return (
@@ -65,10 +69,10 @@ export function Store() {
 						<SelectGroup>
 							<SelectLabel>Category</SelectLabel>
 							<SelectItem value='all products'>all products</SelectItem>
-							<SelectItem value='laptops'>Laptops</SelectItem>
-							<SelectItem value='smartphones'>Smartphones</SelectItem>
-							<SelectItem value='headphones'>Headphones</SelectItem>
-							<SelectItem value='smartwatches'>Smartwatches</SelectItem>
+							<SelectItem value='laptop'>laptops</SelectItem>
+							<SelectItem value='smartphone'>smartphones</SelectItem>
+							<SelectItem value='headphone'>headphones</SelectItem>
+							<SelectItem value='smartwatch'>smartwatches</SelectItem>
 						</SelectGroup>
 					</SelectContent>
 				</Select>

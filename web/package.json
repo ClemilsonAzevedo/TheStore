@@ -9,7 +9,8 @@
     "format": "biome format",
     "lint": "biome lint",
     "format-and-lint": "biome format && biome lint",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "server": "json-server ./src/api/server.json --watch --port 3333"
   },
   "dependencies": {
     "@radix-ui/react-checkbox": "^1.0.4",
@@ -28,11 +29,15 @@
     "cmdk": "^1.0.0",
     "embla-carousel-react": "^8.0.2",
     "html2canvas": "^1.4.1",
+    "json-server": "1.0.0-beta.0",
+    "localforage": "^1.10.0",
     "lucide-react": "^0.372.0",
+    "match-sorter": "^6.3.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.51.4",
     "react-router-dom": "^6.22.3",
+    "sort-by": "^1.2.0",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",
     "zod": "^3.23.8"

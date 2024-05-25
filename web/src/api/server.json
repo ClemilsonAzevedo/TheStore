@@ -1,0 +1,644 @@
+{
+  "products": [
+    {
+      "id": "u8v9w0x1",
+      "name": "MacBook Pro",
+      "description": "16-inch, 2021, Apple M1 Pro chip",
+      "price": 2499.99,
+      "isLiked": true,
+      "type": "laptop",
+      "image": "",
+      "sells": 120,
+      "onCart": false,
+      "cart": {
+        "quantity": 0,
+        "unitPrice": 0,
+        "amount": 0
+      }
+    },
+    {
+      "id": "u8v9w0x2",
+      "name": "Sony WH-1000XM4",
+      "description": "Noise Cancelling Wireless Headphones",
+      "price": 349.99,
+      "isLiked": false,
+      "type": "headphone",
+      "image": "",
+      "sells": 200,
+      "onCart": true,
+      "cart": {
+        "quantity": 2,
+        "unitPrice": 349.99,
+        "amount": 699.98
+      }
+    },
+    {
+      "id": "u8v9w0x3",
+      "name": "iPhone 13 Pro",
+      "description": "256GB, Graphite",
+      "price": 999.99,
+      "isLiked": true,
+      "type": "smartphone",
+      "image": "",
+      "sells": 350,
+      "onCart": false,
+      "cart": {
+        "quantity": 0,
+        "unitPrice": 0,
+        "amount": 0
+      }
+    },
+    {
+      "id": "u8v9w0x4",
+      "name": "Samsung Galaxy Watch 4",
+      "description": "44mm, Black",
+      "price": 249.99,
+      "isLiked": false,
+      "type": "smartwatch",
+      "image": "",
+      "sells": 180,
+      "onCart": true,
+      "cart": {
+        "quantity": 1,
+        "unitPrice": 249.99,
+        "amount": 249.99
+      }
+    },
+    {
+      "id": "u8v9w0x5",
+      "name": "Dell XPS 13",
+      "description": "13.4-inch, 11th Gen Intel Core i7",
+      "price": 1299.99,
+      "isLiked": true,
+      "type": "laptop",
+      "image": "",
+      "sells": 90,
+      "onCart": false,
+      "cart": {
+        "quantity": 0,
+        "unitPrice": 0,
+        "amount": 0
+      }
+    },
+    {
+      "id": "u8v9w0x6",
+      "name": "Bose QuietComfort 35 II",
+      "description": "Wireless Bluetooth Headphones, Noise-Cancelling",
+      "price": 299.99,
+      "isLiked": true,
+      "type": "headphone",
+      "image": "",
+      "sells": 150,
+      "onCart": false,
+      "cart": {
+        "quantity": 0,
+        "unitPrice": 0,
+        "amount": 0
+      }
+    },
+    {
+      "id": "u8v9w0x7",
+      "name": "Google Pixel 6",
+      "description": "128GB, Stormy Black",
+      "price": 599.99,
+      "isLiked": false,
+      "type": "smartphone",
+      "image": "",
+      "sells": 250,
+      "onCart": true,
+      "cart": {
+        "quantity": 1,
+        "unitPrice": 599.99,
+        "amount": 599.99
+      }
+    },
+    {
+      "id": "u8v9w0x8",
+      "name": "Apple Watch Series 7",
+      "description": "41mm, Blue Aluminum Case",
+      "price": 399.99,
+      "isLiked": true,
+      "type": "smartwatch",
+      "image": "",
+      "sells": 220,
+      "onCart": false,
+      "cart": {
+        "quantity": 0,
+        "unitPrice": 0,
+        "amount": 0
+      }
+    },
+    {
+      "id": "u8v9w0x9",
+      "name": "HP Spectre x360",
+      "description": "14-inch, Intel Evo, 16GB RAM",
+      "price": 1599.99,
+      "isLiked": false,
+      "type": "laptop",
+      "image": "",
+      "sells": 110,
+      "onCart": true,
+      "cart": {
+        "quantity": 1,
+        "unitPrice": 1599.99,
+        "amount": 1599.99
+      }
+    },
+    {
+      "id": "u8v9w0x10",
+      "name": "JBL Flip 6",
+      "description": "Portable Waterproof Bluetooth Speaker",
+      "price": 129.99,
+      "isLiked": true,
+      "type": "headphone",
+      "image": "",
+      "sells": 300,
+      "onCart": false,
+      "cart": {
+        "quantity": 0,
+        "unitPrice": 0,
+        "amount": 0
+      }
+    },
+    {
+      "id": "u8v9w0x11",
+      "name": "OnePlus 9 Pro",
+      "description": "256GB, Pine Green",
+      "price": 799.99,
+      "isLiked": false,
+      "type": "smartphone",
+      "image": "",
+      "sells": 140,
+      "onCart": true,
+      "cart": {
+        "quantity": 1,
+        "unitPrice": 799.99,
+        "amount": 799.99
+      }
+    },
+    {
+      "id": "u8v9w0x12",
+      "name": "Asus ROG Zephyrus G14",
+      "description": "14-inch, AMD Ryzen 9, 16GB RAM, RTX 3060",
+      "price": 1599.99,
+      "isLiked": true,
+      "type": "laptop",
+      "image": "",
+      "sells": 60,
+      "onCart": false,
+      "cart": {
+        "quantity": 0,
+        "unitPrice": 0,
+        "amount": 0
+      }
+    },
+    {
+      "id": "u8v9w0x13",
+      "name": "Sony WF-1000XM4",
+      "description": "Industry Leading Noise Canceling Truly Wireless Earbuds",
+      "price": 279.99,
+      "isLiked": false,
+      "type": "headphone",
+      "image": "",
+      "sells": 170,
+      "onCart": true,
+      "cart": {
+        "quantity": 2,
+        "unitPrice": 279.99,
+        "amount": 559.98
+      }
+    },
+    {
+      "id": "u8v9w0x14",
+      "name": "Samsung Galaxy S21 Ultra",
+      "description": "256GB, Phantom Black",
+      "price": 1199.99,
+      "isLiked": true,
+      "type": "smartphone",
+      "image": "",
+      "sells": 230,
+      "onCart": false,
+      "cart": {
+        "quantity": 0,
+        "unitPrice": 0,
+        "amount": 0
+      }
+    },
+    {
+      "id": "u8v9w0x15",
+      "name": "Garmin Fenix 6",
+      "description": "Pro Solar, Titanium Carbon Gray DLC with Black Band",
+      "price": 999.99,
+      "isLiked": false,
+      "type": "smartwatch",
+      "image": "",
+      "sells": 80,
+      "onCart": true,
+      "cart": {
+        "quantity": 1,
+        "unitPrice": 999.99,
+        "amount": 999.99
+      }
+    },
+    {
+      "id": "u8v9w0x16",
+      "name": "Microsoft Surface Laptop 4",
+      "description": "15-inch, AMD Ryzen 7",
+      "price": 1699.99,
+      "isLiked": true,
+      "type": "laptop",
+      "image": "",
+      "sells": 75,
+      "onCart": false,
+      "cart": {
+        "quantity": 0,
+        "unitPrice": 0,
+        "amount": 0
+      }
+    },
+    {
+      "id": "u8v9w0x17",
+      "name": "Huawei MateBook X Pro",
+      "description": "13.9-inch, 3K Touch, Intel i7",
+      "price": 1499.99,
+      "isLiked": false,
+      "type": "laptop",
+      "image": "",
+      "sells": 50,
+      "onCart": true,
+      "cart": {
+        "quantity": 1,
+        "unitPrice": 1499.99,
+        "amount": 1499.99
+      }
+    },
+    {
+      "id": "u8v9w0x18",
+      "name": "Samsung Galaxy Buds Pro",
+      "description": "True Wireless Earbuds, Active Noise Cancelling",
+      "price": 199.99,
+      "isLiked": true,
+      "type": "headphone",
+      "image": "",
+      "sells": 210,
+      "onCart": false,
+      "cart": {
+        "quantity": 0,
+        "unitPrice": 0,
+        "amount": 0
+      }
+    },
+    {
+      "id": "u8v9w0x19",
+      "name": "Apple MacBook Air",
+      "description": "13-inch, 2020, Apple M1 chip",
+      "price": 999.99,
+      "isLiked": true,
+      "type": "laptop",
+      "image": "",
+      "sells": 130,
+      "onCart": false,
+      "cart": {
+        "quantity": 0,
+        "unitPrice": 0,
+        "amount": 0
+      }
+    },
+    {
+      "id": "u8v9w0x20",
+      "name": "Google Pixel Watch",
+      "description": "Silver Stainless Steel Case, Chalk Active Band",
+      "price": 349.99,
+      "isLiked": false,
+      "type": "smartwatch",
+      "image": "",
+      "sells": 100,
+      "onCart": true,
+      "cart": {
+        "quantity": 1,
+        "unitPrice": 349.99,
+        "amount": 349.99
+      }
+    },
+    {
+      "id": "u8v9w0x21",
+      "name": "Beats Solo3",
+      "description": "Wireless On-Ear Headphones - Apple W1 Chip",
+      "price": 199.99,
+      "isLiked": true,
+      "type": "headphone",
+      "image": "",
+      "sells": 220,
+      "onCart": false,
+      "cart": {
+        "quantity": 0,
+        "unitPrice": 0,
+        "amount": 0
+      }
+    },
+    {
+      "id": "u8v9w0x22",
+      "name": "Lenovo ThinkPad X1 Carbon",
+      "description": "14-inch, 10th Gen Intel i7",
+      "price": 1799.99,
+      "isLiked": false,
+      "type": "laptop",
+      "image": "",
+      "sells": 80,
+      "onCart": true,
+      "cart": {
+        "quantity": 1,
+        "unitPrice": 1799.99,
+        "amount": 1799.99
+      }
+    },
+    {
+      "id": "u8v9w0x23",
+      "name": "Sennheiser Momentum 3",
+      "description": "Wireless Noise Cancelling Headphones",
+      "price": 399.99,
+      "isLiked": true,
+      "type": "headphone",
+      "image": "",
+      "sells": 90,
+      "onCart": false,
+      "cart": {
+        "quantity": 0,
+        "unitPrice": 0,
+        "amount": 0
+      }
+    },
+    {
+      "id": "u8v9w0x24",
+      "name": "Apple iPhone 12",
+      "description": "128GB, Blue",
+      "price": 799.99,
+      "isLiked": false,
+      "type": "smartphone",
+      "image": "",
+      "sells": 340,
+      "onCart": true,
+      "cart": {
+        "quantity": 1,
+        "unitPrice": 799.99,
+        "amount": 799.99
+      }
+    },
+    {
+      "id": "u8v9w0x25",
+      "name": "Fitbit Versa 3",
+      "description": "Health & Fitness Smartwatch with GPS",
+      "price": 229.99,
+      "isLiked": true,
+      "type": "smartwatch",
+      "image": "",
+      "sells": 210,
+      "onCart": false,
+      "cart": {
+        "quantity": 0,
+        "unitPrice": 0,
+        "amount": 0
+      }
+    },
+    {
+      "id": "u8v9w0x26",
+      "name": "HP Envy x360",
+      "description": "15.6-inch, AMD Ryzen 5, 8GB RAM",
+      "price": 749.99,
+      "isLiked": true,
+      "type": "laptop",
+      "image": "",
+      "sells": 60,
+      "onCart": false,
+      "cart": {
+        "quantity": 0,
+        "unitPrice": 0,
+        "amount": 0
+      }
+    },
+    {
+      "id": "u8v9w0x27",
+      "name": "Samsung Galaxy Watch 3",
+      "description": "45mm, Mystic Black",
+      "price": 399.99,
+      "isLiked": false,
+      "type": "smartwatch",
+      "image": "",
+      "sells": 150,
+      "onCart": true,
+      "cart": {
+        "quantity": 1,
+        "unitPrice": 399.99,
+        "amount": 399.99
+      }
+    },
+    {
+      "id": "u8v9w0x28",
+      "name": "Microsoft Surface Pro 7",
+      "description": "12.3-inch Touch-Screen, Intel Core i5",
+      "price": 899.99,
+      "isLiked": true,
+      "type": "laptop",
+      "image": "",
+      "sells": 110,
+      "onCart": false,
+      "cart": {
+        "quantity": 0,
+        "unitPrice": 0,
+        "amount": 0
+      }
+    },
+    {
+      "id": "u8v9w0x29",
+      "name": "Sony Xperia 1 III",
+      "description": "5G Unlocked Smartphone, Frosted Black",
+      "price": 1299.99,
+      "isLiked": false,
+      "type": "smartphone",
+      "image": "",
+      "sells": 90,
+      "onCart": true,
+      "cart": {
+        "quantity": 1,
+        "unitPrice": 1299.99,
+        "amount": 1299.99
+      }
+    },
+    {
+      "id": "u8v9w0x30",
+      "name": "Jabra Elite 85h",
+      "description": "Wireless Noise-Canceling Headphones",
+      "price": 249.99,
+      "isLiked": true,
+      "type": "headphone",
+      "image": "",
+      "sells": 160,
+      "onCart": false,
+      "cart": {
+        "quantity": 0,
+        "unitPrice": 0,
+        "amount": 0
+      }
+    },
+    {
+      "id": "u8v9w0x31",
+      "name": "Dell Inspiron 15",
+      "description": "15.6-inch, Intel Core i5, 8GB RAM",
+      "price": 599.99,
+      "isLiked": true,
+      "type": "laptop",
+      "image": "",
+      "sells": 85,
+      "onCart": false,
+      "cart": {
+        "quantity": 0,
+        "unitPrice": 0,
+        "amount": 0
+      }
+    },
+    {
+      "id": "u8v9w0x32",
+      "name": "Samsung Galaxy S20 FE",
+      "description": "128GB, Cloud Navy",
+      "price": 699.99,
+      "isLiked": false,
+      "type": "smartphone",
+      "image": "",
+      "sells": 250,
+      "onCart": true,
+      "cart": {
+        "quantity": 1,
+        "unitPrice": 699.99,
+        "amount": 699.99
+      }
+    },
+    {
+      "id": "u8v9w0x33",
+      "name": "Huawei Watch GT 3",
+      "description": "46mm, Black Fluoroelastomer Strap",
+      "price": 249.99,
+      "isLiked": true,
+      "type": "smartwatch",
+      "image": "",
+      "sells": 70,
+      "onCart": false,
+      "cart": {
+        "quantity": 0,
+        "unitPrice": 0,
+        "amount": 0
+      }
+    },
+    {
+      "id": "u8v9w0x34",
+      "name": "Apple MacBook Pro 13",
+      "description": "13-inch, 2020, Apple M1 chip",
+      "price": 1299.99,
+      "isLiked": true,
+      "type": "laptop",
+      "image": "",
+      "sells": 140,
+      "onCart": false,
+      "cart": {
+        "quantity": 0,
+        "unitPrice": 0,
+        "amount": 0
+      }
+    },
+    {
+      "id": "u8v9w0x35",
+      "name": "Sony WH-CH710N",
+      "description": "Noise Cancelling Wireless Headphones",
+      "price": 129.99,
+      "isLiked": false,
+      "type": "headphone",
+      "image": "",
+      "sells": 190,
+      "onCart": true,
+      "cart": {
+        "quantity": 2,
+        "unitPrice": 129.99,
+        "amount": 259.98
+      }
+    },
+    {
+      "id": "u8v9w0x36",
+      "name": "Samsung Galaxy Z Fold 3",
+      "description": "256GB, Phantom Silver",
+      "price": 1799.99,
+      "isLiked": true,
+      "type": "smartphone",
+      "image": "",
+      "sells": 80,
+      "onCart": false,
+      "cart": {
+        "quantity": 0,
+        "unitPrice": 0,
+        "amount": 0
+      }
+    },
+    {
+      "id": "u8v9w0x37",
+      "name": "Sony WF-C500",
+      "description": "Truly Wireless In-Ear Bluetooth Earbud Headphones",
+      "price": 79.99,
+      "isLiked": true,
+      "type": "headphone",
+      "image": "",
+      "sells": 220,
+      "onCart": false,
+      "cart": {
+        "quantity": 0,
+        "unitPrice": 0,
+        "amount": 0
+      }
+    },
+    {
+      "id": "u8v9w0x38",
+      "name": "Razer Blade 15",
+      "description": "Advanced Gaming Laptop, 15.6-inch, Intel Core i7",
+      "price": 2599.99,
+      "isLiked": true,
+      "type": "laptop",
+      "image": "",
+      "sells": 70,
+      "onCart": false,
+      "cart": {
+        "quantity": 0,
+        "unitPrice": 0,
+        "amount": 0
+      }
+    },
+    {
+      "id": "u8v9w0x39",
+      "name": "Amazfit Bip U Pro",
+      "description": "Smart Watch with Built-in GPS and Alexa",
+      "price": 69.99,
+      "isLiked": false,
+      "type": "smartwatch",
+      "image": "",
+      "sells": 170,
+      "onCart": true,
+      "cart": {
+        "quantity": 1,
+        "unitPrice": 69.99,
+        "amount": 69.99
+      }
+    },
+    {
+      "id": "u8v9w0x40",
+      "name": "Apple MacBook Air M2",
+      "description": "13.6-inch, 2022, Apple M2 chip",
+      "price": 1199.99,
+      "isLiked": true,
+      "type": "laptop",
+      "image": "",
+      "sells": 100,
+      "onCart": false,
+      "cart": {
+        "quantity": 0,
+        "unitPrice": 0,
+        "amount": 0
+      }
+    }
+  ]
+}

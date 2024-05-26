@@ -1,8 +1,8 @@
+import bcrypt from "bcrypt";
 import type { FastifyReply, FastifyRequest } from "fastify";
+import jwt from "jsonwebtoken";
 import type { SignInProps } from "../@types/signInSchema";
 import { db } from "../db/db";
-import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
 
 export async function signInController(
 	req: FastifyRequest<{

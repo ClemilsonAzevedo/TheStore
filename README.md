@@ -1,11 +1,10 @@
 # THE STORE
 
+**THE STORE** is an e-commerce project aimed at providing a complete shopping experience for Headphones, Laptops, Smartphones, and Smartwatches. The platform is being developed using the following technologies:
+
 <div align="center" style="display: inline_block">
   <img alt="Cover" width="80%" src="./.github/cover.png">
 </div>
-  
-
-**THE STORE** is an e-commerce project aimed at providing a complete shopping experience for Headphones, Laptops, Smartphones, and Smartwatches. The platform is being developed using the following technologies:
 
 ## Technologies
 <div align="center" style="display: inline_block"><br>

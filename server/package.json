@@ -21,6 +21,8 @@
 		"typescript": "^5.4.5"
 	},
 	"dependencies": {
+		"@fastify/swagger": "^8.14.0",
+		"@fastify/swagger-ui": "^3.0.0",
 		"bcrypt": "^5.1.1",
 		"fastify": "^4.26.2",
 		"fastify-zod": "^1.4.0",

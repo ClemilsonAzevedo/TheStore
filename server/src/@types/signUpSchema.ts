@@ -6,4 +6,6 @@ export const signUpSchema = z.object({
 	name: z.string(),
 });
 
+export const signUpResponse = signUpSchema.omit({ password: true });
+
 export type signUpProps = z.infer<typeof signUpSchema>;

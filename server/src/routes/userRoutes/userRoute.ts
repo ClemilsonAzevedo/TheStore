@@ -8,7 +8,11 @@ export async function userRoutes() {
 		"/signup",
 		{
 			schema: {
+				tags: ["User"],
 				body: $ref("signUpSchema"),
+				response: {
+					200: $ref("signUpResponse"),
+				},
 			},
 		},
 		signUpController,
@@ -17,6 +21,7 @@ export async function userRoutes() {
 		"/signin",
 		{
 			schema: {
+				tags: ["User"],
 				body: $ref("signInSchema"),
 			},
 		},

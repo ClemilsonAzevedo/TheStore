@@ -2,6 +2,24 @@ import fastify from "fastify";
 import { db } from "./db/db";
 import { routes } from "./routes/router";
 import { Schemas } from "./lib/schema";
+import swagger from "@fastify/swagger";
+import swaggerui from "@fastify/swagger-ui";
+
+const swaggerOptions = {
+	swagger: {
+		info: {
+			title: "My Title",
+			description: "My Description.",
+			version: "1.0.0",
+		},
+		tags: [{ name: "User" }],
+	},
+};
+
+const swaggerUiOptions = {
+	routePrefix: "/docs",
+	exposeRoute: true,
+};
 
 export const app = fastify();
 
@@ -10,6 +28,9 @@ const { PORT = "" } = process.env;
 for (const schema of [...Schemas]) {
 	app.addSchema(schema);
 }
+
+app.register(swagger, swaggerOptions);
+app.register(swaggerui, swaggerUiOptions);
 
 app.get("/", () => {
 	return "Api rodando";

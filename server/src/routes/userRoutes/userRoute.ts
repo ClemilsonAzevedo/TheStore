@@ -1,7 +1,7 @@
 import { $ref } from "../../lib/schema";
 import { signUpController } from "../../controllers/signUpController";
 import { app } from "../../server";
-import { signInController } from "../../controllers/signInController";
+import { UserController } from "../../controllers/signInController";
 
 export async function userRoutes() {
 	app.post(
@@ -15,7 +15,7 @@ export async function userRoutes() {
 				},
 			},
 		},
-		signUpController,
+		new UserController().signUp,
 	);
 	app.post(
 		"/signin",
@@ -25,6 +25,6 @@ export async function userRoutes() {
 				body: $ref("signInSchema"),
 			},
 		},
-		signInController,
+		new UserController().signIn,
 	);
 }

@@ -3,39 +3,75 @@ import type { FastifyReply, FastifyRequest } from "fastify";
 import jwt from "jsonwebtoken";
 import type { SignInProps } from "../@types/signInSchema";
 import { db } from "../db/db";
+import { signUpProps } from "../@types/signUpSchema";
 
-export async function signInController(
-	req: FastifyRequest<{
-		Body: SignInProps;
-	}>,
-	res: FastifyReply,
-) {
-	const { email, password } = req.body;
+export class UserController {
+	async signUp(
+		req: FastifyRequest<{
+			Body: signUpProps;
+		}>,
+		res: FastifyReply,
+	) {
+		const { name, password, email } = req.body;
 
-	const user = await db.user.findUnique({
-		where: {
-			email: email,
-		},
-	});
+		const user = await db.user.findUnique({
+			where: {
+				email: email,
+			},
+		});
 
-	if (!user) {
-		return res.status(400).send({ message: "Usuario não existe" });
+		if (user) {
+			return res.status(400).send({ message: "Email já existente" });
+		}
+
+		const hashPassword = await bcrypt.hash(password, 10);
+
+		const createUser = await db.user.create({
+			data: {
+				email: email,
+				name: name,
+				password: hashPassword,
+			},
+		});
+
+		const { password: _, ...userData } = createUser;
+
+		return res.status(201).send(userData);
 	}
 
-	const verifyPass = bcrypt.compare(password, user.password);
+	async signIn(
+		req: FastifyRequest<{
+			Body: SignInProps;
+		}>,
+		res: FastifyReply,
+	) {
+		const { email, password } = req.body;
 
-	if (!verifyPass) {
-		return res.status(400).send({ message: "Usuario não existe" });
+		const user = await db.user.findUnique({
+			where: {
+				email: email,
+			},
+		});
+
+		if (!user) {
+			return res.status(400).send({ message: "Usuario não existe" });
+		}
+
+		const verifyPass = await bcrypt.compare(password, user.password);
+
+		if (!verifyPass) {
+			return res.status(400).send({ message: "Usuario não existe" });
+		}
+
+		const token = jwt.sign({ id: user.id }, process.env.JWT_PASS ?? "", {
+			expiresIn: "8h",
+		});
+
+		const { password: _, ...userData } = user;
+
+		return res.send({
+			userData,
+			token: token,
+		});
 	}
-
-	const token = jwt.sign({ id: user.id }, process.env.JWT_PASS ?? "", {
-		expiresIn: "8h",
-	});
-
-	const { password: _, ...userData } = user;
-
-	return res.send({
-		userData,
-		token: token,
-	});
 }

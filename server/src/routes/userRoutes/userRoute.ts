@@ -22,6 +22,9 @@ export async function userRoutes() {
       schema: {
         tags: ["User"],
         body: $ref("signInSchema"),
+        response: {
+          200: $ref("signInResponse"),
+        },
       },
     },
     new UserController().signIn

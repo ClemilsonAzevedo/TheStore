@@ -1,5 +1,6 @@
 import { buildJsonSchemas } from "fastify-zod";
 import {
+  signInResponse,
   signInSchema,
   signUpResponse,
   signUpSchema,
@@ -10,6 +11,7 @@ export const { schemas: Schemas, $ref } = buildJsonSchemas({
   signUpSchema,
   signUpResponse,
   signInSchema,
+  signInResponse,
   getAllResponse,
   productsSchema,
 });

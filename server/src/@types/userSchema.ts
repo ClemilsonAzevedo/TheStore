@@ -13,6 +13,11 @@ export const signUpSchema = z.object({
 
 export const signUpResponse = signUpSchema.omit({ password: true });
 
+export const signInResponse = z.object({
+  userData: signUpResponse,
+  token: z.string(),
+});
+
 export type SignUpProps = z.infer<typeof signUpSchema>;
 
 export type SignInProps = z.infer<typeof signInSchema>;

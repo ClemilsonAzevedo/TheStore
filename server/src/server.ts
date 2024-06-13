@@ -6,19 +6,19 @@ import swagger from "@fastify/swagger";
 import swaggerui from "@fastify/swagger-ui";
 
 const swaggerOptions = {
-  swagger: {
-    info: {
-      title: "The Store API",
-      description: "Melhor API do Brasil.",
-      version: "1.0.0",
-    },
-    tags: [{ name: "User" }, { name: "Products" }],
-  },
+	swagger: {
+		info: {
+			title: "The Store API",
+			description: "Melhor API do Brasil.",
+			version: "1.0.0",
+		},
+		tags: [{ name: "User" }, { name: "Products" }],
+	},
 };
 
 const swaggerUiOptions = {
-  routePrefix: "/docs",
-  exposeRoute: true,
+	routePrefix: "/docs",
+	exposeRoute: true,
 };
 
 export const app = fastify();
@@ -26,34 +26,34 @@ export const app = fastify();
 const { PORT = "" } = process.env;
 
 for (const schema of [...Schemas]) {
-  app.addSchema(schema);
+	app.addSchema(schema);
 }
 
 app.register(swagger, swaggerOptions);
 app.register(swaggerui, swaggerUiOptions);
 
 app.get("/", () => {
-  return "Api rodando";
+	return "Api rodando";
 });
 
 app.register(routes);
 
 db.$connect()
-  .then(() => {
-    console.log("Conexão com o banco de dados estabelecida com sucesso.");
-  })
-  .catch((error: Error) => {
-    throw new Error(error.message);
-  });
+	.then(() => {
+		console.log("Conexão com o banco de dados estabelecida com sucesso.");
+	})
+	.catch((error: Error) => {
+		throw new Error(error.message);
+	});
 
 app.listen(
-  {
-    port: Number.parseInt(PORT),
-  },
-  (error, address) => {
-    if (error) {
-      console.log(error.message);
-    }
-    console.log(`API rodando na porta ${address}`);
-  }
+	{
+		port: Number.parseInt(PORT),
+	},
+	(error, address) => {
+		if (error) {
+			console.log(error.message);
+		}
+		console.log(`API rodando na porta ${address}`);
+	},
 );

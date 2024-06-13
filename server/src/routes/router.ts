@@ -3,6 +3,6 @@ import { productsRoutes } from "./productsRoutes/productsRoutes";
 import { userRoutes } from "./userRoutes/userRoute";
 
 export async function routes() {
-  app.register(userRoutes);
-  app.register(productsRoutes);
+	app.register(userRoutes);
+	app.register(productsRoutes);
 }

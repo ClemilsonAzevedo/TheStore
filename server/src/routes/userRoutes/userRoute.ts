@@ -3,30 +3,30 @@ import { app } from "../../server";
 import { UserController } from "../../controllers/userController";
 
 export async function userRoutes() {
-  app.post(
-    "/user/signup",
-    {
-      schema: {
-        tags: ["User"],
-        body: $ref("signUpSchema"),
-        response: {
-          200: $ref("signUpResponse"),
-        },
-      },
-    },
-    new UserController().signUp
-  );
-  app.post(
-    "/user/signin",
-    {
-      schema: {
-        tags: ["User"],
-        body: $ref("signInSchema"),
-        response: {
-          200: $ref("signInResponse"),
-        },
-      },
-    },
-    new UserController().signIn
-  );
+	app.post(
+		"/user/signup",
+		{
+			schema: {
+				tags: ["User"],
+				body: $ref("signUpSchema"),
+				response: {
+					200: $ref("signUpResponse"),
+				},
+			},
+		},
+		new UserController().signUp,
+	);
+	app.post(
+		"/user/signin",
+		{
+			schema: {
+				tags: ["User"],
+				body: $ref("signInSchema"),
+				response: {
+					200: $ref("signInResponse"),
+				},
+			},
+		},
+		new UserController().signIn,
+	);
 }

@@ -8,8 +8,8 @@ import swaggerui from "@fastify/swagger-ui";
 const swaggerOptions = {
   swagger: {
     info: {
-      title: "My Title",
-      description: "My Description.",
+      title: "The Store API",
+      description: "Melhor API do Brasil.",
       version: "1.0.0",
     },
     tags: [{ name: "User" }, { name: "Products" }],

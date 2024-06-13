@@ -9,3 +9,5 @@ export const productsSchema = z.object({
 });
 
 export const getAllResponse = z.array(productsSchema);
+
+export type ProductsProps = z.infer<typeof productsSchema>;

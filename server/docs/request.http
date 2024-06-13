@@ -19,3 +19,7 @@ content-type: application/json
 
 ###
 GET http://localhost:8080/products
+
+###
+
+GET http://localhost:8080/products/4

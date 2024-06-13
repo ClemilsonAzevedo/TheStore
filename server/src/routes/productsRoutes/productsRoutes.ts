@@ -15,4 +15,19 @@ export async function productsRoutes() {
     },
     new ProductsController().getAll
   );
+  app.get(
+    "/products/:id",
+    {
+      schema: {
+        tags: ["Products"],
+        params: {
+          id: { type: "number" },
+        },
+        response: {
+          200: $ref("productsSchema"),
+        },
+      },
+    },
+    new ProductsController().getOne
+  );
 }

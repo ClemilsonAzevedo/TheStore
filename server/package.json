@@ -1,34 +1,35 @@
 {
-	"name": "server",
-	"version": "1.0.0",
-	"description": "",
-	"main": "index.js",
-	"scripts": {
-		"dev": "tsx watch --env-file .env src/server.ts",
-		"test": "echo \"Error: no test specified\" && exit 1"
-	},
-	"keywords": [],
-	"author": "",
-	"license": "ISC",
-	"devDependencies": {
-		"@biomejs/biome": "1.7.2",
-		"@prisma/client": "^5.13.0",
-		"@types/bcrypt": "^5.0.2",
-		"@types/jsonwebtoken": "^9.0.6",
-		"@types/node": "^20.12.8",
-		"ts-node": "^10.9.2",
-		"tsx": "^4.9.0",
-		"typescript": "^5.4.5"
-	},
-	"dependencies": {
-		"@fastify/swagger": "^8.14.0",
-		"@fastify/swagger-ui": "^3.0.0",
-		"bcrypt": "^5.1.1",
-		"fastify": "^4.26.2",
-		"fastify-zod": "^1.4.0",
-		"jsonwebtoken": "^9.0.2",
-		"prisma": "^5.13.0",
-		"zod": "^3.23.6",
-		"zod-openapi": "^2.17.0"
-	}
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsx watch --env-file .env src/server.ts",
+    "seed": "node prisma/seed.mjs",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@biomejs/biome": "1.7.2",
+    "@prisma/client": "^5.13.0",
+    "@types/bcrypt": "^5.0.2",
+    "@types/jsonwebtoken": "^9.0.6",
+    "@types/node": "^20.12.8",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.9.0",
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "@fastify/swagger": "^8.14.0",
+    "@fastify/swagger-ui": "^3.0.0",
+    "bcrypt": "^5.1.1",
+    "fastify": "^4.26.2",
+    "fastify-zod": "^1.4.0",
+    "jsonwebtoken": "^9.0.2",
+    "prisma": "^5.13.0",
+    "zod": "^3.23.6",
+    "zod-openapi": "^2.17.0"
+  }
 }

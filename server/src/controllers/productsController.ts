@@ -32,6 +32,6 @@ export class ProductsController {
     req: FastifyRequest<{ Body: LikedProps }>,
     res: FastifyReply
   ) {
-    const { products_ids } = req.body;
+    res.send(req.user.name);
   }
 }

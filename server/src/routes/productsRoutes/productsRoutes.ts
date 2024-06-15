@@ -37,6 +37,7 @@ export async function productsRoutes() {
       preHandler: [authMiddleware],
       schema: {
         tags: ["Products"],
+        security: [{ Bearer: [] }],
         body: $ref("putLikedSchema"),
         response: {
           200: $ref("likedSchema"),

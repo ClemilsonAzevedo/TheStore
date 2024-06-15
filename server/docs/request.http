@@ -23,3 +23,14 @@ GET http://localhost:8080/products
 ###
 
 GET http://localhost:8080/products/4
+
+###
+
+PUT http://localhost:8080/products/liked
+content-type: application/json
+Authorization: Bearer xxx
+
+{
+  "id": 1,
+  "products_ids":[1]
+}

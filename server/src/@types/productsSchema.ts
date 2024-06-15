@@ -10,9 +10,11 @@ export const productsSchema = z.object({
 
 export const likedSchema = z.object({
   id: z.number().int(),
-  products_ids: z.number().int(),
+  products_ids: z.array(z.number().int()),
   user_id: z.string(),
 });
+
+export const putLikedSchema = likedSchema.omit({ user_id: true });
 
 export const getAllResponse = z.array(productsSchema);
 

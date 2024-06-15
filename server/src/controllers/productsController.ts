@@ -32,6 +32,17 @@ export class ProductsController {
     req: FastifyRequest<{ Body: LikedProps }>,
     res: FastifyReply
   ) {
-    res.send(req.user.name);
+    const { id, products_ids } = req.body;
+
+    const updateLiked = await db.like.update({
+      where: {
+        id: id,
+      },
+      data: {
+        products_ids: products_ids,
+      },
+    });
+
+    res.send(updateLiked);
   }
 }

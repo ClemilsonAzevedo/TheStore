@@ -31,10 +31,17 @@ export async function productsRoutes() {
     },
     new ProductsController().getOne
   );
-  app.get(
+  app.put(
     "/products/liked",
     {
       preHandler: [authMiddleware],
+      schema: {
+        tags: ["Products"],
+        body: $ref("putLikedSchema"),
+        response: {
+          200: $ref("likedSchema"),
+        },
+      },
     },
     new ProductsController().createLiked
   );

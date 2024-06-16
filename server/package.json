@@ -5,7 +5,9 @@
 	"main": "index.js",
 	"scripts": {
 		"dev": "tsx watch --env-file .env src/server.ts",
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"seed": "node prisma/seed.mjs",
+		"build": "tsup src",
+		"start": "node dist/server.js"
 	},
 	"keywords": [],
 	"author": "",
@@ -21,11 +23,15 @@
 		"typescript": "^5.4.5"
 	},
 	"dependencies": {
+		"@fastify/cors": "^9.0.1",
+		"@fastify/swagger": "^8.14.0",
+		"@fastify/swagger-ui": "^3.0.0",
 		"bcrypt": "^5.1.1",
 		"fastify": "^4.26.2",
 		"fastify-zod": "^1.4.0",
 		"jsonwebtoken": "^9.0.2",
 		"prisma": "^5.13.0",
+		"tsup": "^8.1.0",
 		"zod": "^3.23.6"
 	}
 }

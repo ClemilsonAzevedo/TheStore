@@ -1,25 +1,32 @@
 import { $ref } from "../../lib/schema";
-import { signUpController } from "../../controllers/signUpController";
 import { app } from "../../server";
-import { signInController } from "../../controllers/signInController";
+import { UserController } from "../../controllers/userController";
 
 export async function userRoutes() {
 	app.post(
-		"/signup",
+		"/user/signup",
 		{
 			schema: {
+				tags: ["User"],
 				body: $ref("signUpSchema"),
+				response: {
+					200: $ref("signUpResponse"),
+				},
 			},
 		},
-		signUpController,
+		new UserController().signUp,
 	);
 	app.post(
-		"/signin",
+		"/user/signin",
 		{
 			schema: {
+				tags: ["User"],
 				body: $ref("signInSchema"),
+				response: {
+					200: $ref("signInResponse"),
+				},
 			},
 		},
-		signInController,
+		new UserController().signIn,
 	);
 }

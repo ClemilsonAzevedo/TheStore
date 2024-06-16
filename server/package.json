@@ -6,7 +6,8 @@
 	"scripts": {
 		"dev": "tsx watch --env-file .env src/server.ts",
 		"seed": "node prisma/seed.mjs",
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"build": "tsup src",
+		"start": "node dist/server.js"
 	},
 	"keywords": [],
 	"author": "",
@@ -30,6 +31,7 @@
 		"fastify-zod": "^1.4.0",
 		"jsonwebtoken": "^9.0.2",
 		"prisma": "^5.13.0",
+		"tsup": "^8.1.0",
 		"zod": "^3.23.6"
 	}
 }

@@ -4,6 +4,7 @@ import { routes } from "./routes/router";
 import { Schemas } from "./lib/schema";
 import swagger from "@fastify/swagger";
 import swaggerui from "@fastify/swagger-ui";
+import cors from "@fastify/cors";
 
 export const app = fastify();
 
@@ -33,8 +34,10 @@ app.register(swagger, {
 });
 app.register(swaggerui, { routePrefix: "/docs" });
 
-app.get("/", () => {
-  return "Api rodando";
+app.register(cors, {
+  origin: ["*"],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"],
 });
 
 app.register(routes);

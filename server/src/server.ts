@@ -8,8 +8,6 @@ import cors from "@fastify/cors";
 
 export const app = fastify();
 
-const { PORT = "" } = process.env;
-
 for (const schema of [...Schemas]) {
 	app.addSchema(schema);
 }
@@ -52,7 +50,7 @@ db.$connect()
 
 app.listen(
 	{
-		port: Number.parseInt(PORT),
+		port: 8080,
 	},
 	(error, address) => {
 		if (error) {

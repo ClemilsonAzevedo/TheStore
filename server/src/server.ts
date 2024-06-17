@@ -1,10 +1,10 @@
-import fastify from "fastify";
-import { db } from "./db/db";
-import { routes } from "./routes/router";
-import { Schemas } from "./lib/schema";
+import cors from "@fastify/cors";
 import swagger from "@fastify/swagger";
 import swaggerui from "@fastify/swagger-ui";
-import cors from "@fastify/cors";
+import fastify from "fastify";
+import { db } from "./db/db";
+import { Schemas } from "./lib/schema";
+import { routes } from "./routes/router";
 
 export const app = fastify();
 
@@ -50,7 +50,7 @@ db.$connect()
 
 app.listen(
 	{
-		port: 8080,
+		port: Number(process.env.PORT) || 8080,
 	},
 	(error, address) => {
 		if (error) {

@@ -32,7 +32,6 @@ export async function authMiddleware(
 				res.code(401).send({ message: "Faça login para acessar essa rota." });
 			}
 		} else {
-			console.log("caiu aqui");
 			res.code(401).send({ message: "Faça login para acessar essa rota." });
 		}
 	} catch (error: unknown) {

@@ -14,7 +14,7 @@ export const likedSchema = z.object({
 	user_id: z.string(),
 });
 
-export const putLikedSchema = likedSchema.omit({ user_id: true });
+export const putLikedSchema = likedSchema.omit({ user_id: true, id: true });
 
 export const getAllResponse = z.array(productsSchema);
 

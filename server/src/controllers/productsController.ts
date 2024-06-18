@@ -34,18 +34,22 @@ export class ProductsController {
 		req: FastifyRequest<{ Body: LikedProps }>,
 		res: FastifyReply,
 	) {
-		const { id, products_ids } = req.body;
+		const { products_ids } = req.body;
 
 		const updateLiked = await db.like.update({
 			where: {
-				id: id,
+				user_id: req.user.id,
 			},
 			data: {
 				products_ids: products_ids,
 			},
 		});
 
-		res.send(updateLiked);
+		if (!updateLiked) {
+			return res.code(404).send({ message: "Não encontrado." });
+		}
+
+		return res.send(updateLiked);
 	}
 
 	async getLiked(req: FastifyRequest, res: FastifyReply) {
@@ -55,7 +59,9 @@ export class ProductsController {
 			},
 		});
 
-		console.log(userLiked);
+		if (!userLiked) {
+			return res.code(404).send({ message: "Não encontrado." });
+		}
 
 		const products = await db.products.findMany({
 			where: {
@@ -65,6 +71,10 @@ export class ProductsController {
 			},
 		});
 
-		res.send(products);
+		if (!products) {
+			return res.code(404).send({ message: "Não encontrado os produtos." });
+		}
+
+		return res.send(products);
 	}
 }

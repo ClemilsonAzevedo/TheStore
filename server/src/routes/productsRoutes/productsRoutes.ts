@@ -46,4 +46,18 @@ export async function productsRoutes() {
 		},
 		new ProductsController().createLiked,
 	);
+	app.get(
+		"/products/liked/get",
+		{
+			preHandler: [authMiddleware],
+			schema: {
+				tags: ["Products"],
+				security: [{ Bearer: [] }],
+				response: {
+					200: $ref("getAllResponse"),
+				},
+			},
+		},
+		new ProductsController().getLiked,
+	);
 }

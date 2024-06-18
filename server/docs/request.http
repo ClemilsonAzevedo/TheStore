@@ -31,6 +31,12 @@ content-type: application/json
 Authorization: Bearer xxx
 
 {
-  "id": 1,
-  "products_ids":[1]
+  "id": 2,
+  "products_ids":[1,2]
 }
+
+###
+
+GET http://localhost:8080/products/liked/get
+content-type: application/json
+Authorization: Bearer xxx

@@ -22,7 +22,7 @@ export async function productsRoutes() {
 			schema: {
 				tags: ["Products"],
 				params: {
-					id: { type: "number" },
+					id: { type: "string" },
 				},
 				response: {
 					200: $ref("productsSchema"),

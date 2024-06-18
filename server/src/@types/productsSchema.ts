@@ -1,10 +1,23 @@
 import { z } from "zod";
 
+enum typeProps {
+	laptop = "laptop",
+	headPhone = "headphone",
+	smartPhone = "smartphone",
+	smartWatch = "smartwatch",
+}
+
 export const productsSchema = z.object({
 	id: z.string(),
 	name: z.string(),
 	description: z.string(),
 	image: z.string(),
+	type: z.enum([
+		typeProps.headPhone,
+		typeProps.laptop,
+		typeProps.smartPhone,
+		typeProps.smartWatch,
+	]),
 	createdAt: z.date(),
 	price: z.number(),
 });

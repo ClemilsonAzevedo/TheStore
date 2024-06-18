@@ -1,5 +1,5 @@
-import { products } from '@/api/fakeProductsProps'
-import pcImage from '@/assets/1MacbookProM1Pro.png'
+import type { ProductInterface } from '@/@types/ProductInterface'
+import { storeApi } from '@/api/store-api'
 import { Product } from '@/components/Product'
 import {
 	Carousel,
@@ -15,8 +15,30 @@ import {
 	Plus,
 	ShoppingCart,
 } from 'lucide-react'
+import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 
 export function ProductDetail() {
+	const [products, setProducts] = useState<ProductInterface[]>([])
+	const [isProductsLoading, setIsProductsLoading] = useState(false)
+
+	useEffect(() => {
+		setIsProductsLoading(true)
+		storeApi
+			.get('/products')
+			.then(response => {
+				setProducts(response.data)
+			})
+			.finally(() => setIsProductsLoading(false))
+	}, [])
+
+	const { productId } = useParams()
+	const productFoundById = products.find(product => product.id === productId)
+
+	if (!productFoundById) {
+		return <div className='flex items-center justify-center text-3xl w-full font-bold'>Product not found</div>
+	}
+
 	return (
 		<section className='p-5 overflow-y-auto'>
 			<div className='flex gap-5'>

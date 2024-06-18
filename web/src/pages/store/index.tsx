@@ -1,7 +1,5 @@
-//Todo: Usar URL state para fixar os produtos pelo filtro ou pela seleção
-//Todo: Apenas Filtrar a seleção do produto dentro do filtro de seleção
-
-import { products } from '@/api/fakeProductsProps'
+import type { ProductInterface } from '@/@types/ProductInterface'
+import { storeApi } from '@/api/store-api'
 import { Product } from '@/components/Product'
 import { Input } from '@/components/ui/input'
 import {
@@ -13,28 +11,36 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from '@/components/ui/select'
-import { Filter } from 'lucide-react'
-import { useState } from 'react'
+import { Filter, Loader2 } from 'lucide-react'
+import { useEffect, useState } from 'react'
 
 export function Store() {
+	const [products, setProducts] = useState<ProductInterface[]>([])
+	const [isProductsLoading, setIsProductsLoading] = useState(false)
 
+	useEffect(() => {
+		setIsProductsLoading(true)
+		storeApi
+			.get('/products')
+			.then(response => {
+				setProducts(response.data)
+			})
+			.finally(() => setIsProductsLoading(false))
+	}, [])
 
-	const [allProducts, _] = useState(products)
-	const [filterOnPage, setFilterOnPage] = useState(allProducts)
-
+	const [filterProductsOnPage, setFilterProductsOnPage] = useState(products)
 	const [productFilteredValue, setProductFilteredValue] =
 		useState<string>('all products')
 
 	function filterProductPerSelectValue(value: string) {
 		setProductFilteredValue(value)
 		if (value === 'all products') {
-			setFilterOnPage(allProducts)
+			setFilterProductsOnPage(products)
 			return
 		}
 
 		const filterProducts = products.filter(product => product.type === value)
-
-		setFilterOnPage(filterProducts)
+		setFilterProductsOnPage(filterProducts)
 	}
 
 	return (
@@ -50,8 +56,8 @@ export function Store() {
 						className='border-none shadow-none outline-none placeholder:text-sm placeholder:text-neutral-600 text-sm'
 						onChange={e => {
 							const { value } = e.target
-							setFilterOnPage(
-								allProducts.filter(filteredProduct =>
+							setFilterProductsOnPage(
+								products.filter(filteredProduct =>
 									filteredProduct.name
 										.toLowerCase()
 										.includes(value.toLowerCase()),
@@ -81,16 +87,26 @@ export function Store() {
 			</div>
 			<div className='flex flex-col gap-5 items-center h-full mx-5'>
 				<div className='flex flex-wrap gap-5 justify-center w-full mb-5'>
-					{filterOnPage.map((product, _) => (
-						<Product
-							key={product.id}
-							id={product.id}
-							name={product.name}
-							description={product.description}
-							isLiked={product.isLiked}
-							price={product.price}
+					{isProductsLoading ? (
+						<Loader2
+							size={32}
+							className='animate-spin repeat-infinite transition flex h-full items-center jus'
 						/>
-					))}
+					) : (
+						(filterProductsOnPage.length === 0
+							? products
+							: filterProductsOnPage
+						).map((product, _) => (
+							<Product
+								key={product.id}
+								id={product.id}
+								name={product.name}
+								description={product.description}
+								isLiked={product.isLiked}
+								price={product.price}
+							/>
+						))
+					)}
 				</div>
 			</div>
 		</section>

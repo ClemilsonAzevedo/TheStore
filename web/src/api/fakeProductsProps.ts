@@ -10,13 +10,7 @@ export const products: ProductInterface[] = [
 		isLiked: true,
 		type: 'laptop',
 		image: '',
-		sells: 120,
-		onCart: false,
-		cart: {
-			quantity: 0,
-			unitPrice: 0,
-			amount: 0,
-		},
+		sells: 120
 	},
 	{
 		id: 'u8v9w0x2',

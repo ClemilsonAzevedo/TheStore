@@ -3,10 +3,12 @@ import { Heart, Plus } from 'lucide-react'
 import { useState } from 'react'
 import pcImage from '../../assets/1MacbookProM1Pro.png'
 import { Button } from '../ui/button'
+import { Link } from 'react-router-dom'
 
 interface ProductProps extends ProductInterface {}
 
 export function Product({
+	id,
 	name,
 	description,
 	price,
@@ -39,12 +41,19 @@ export function Product({
 						}>
 						<Heart className='flex-1' size={16} />
 					</button>
-					<div className='w-[189px] h-[148px] flex justify-center'>
+					<div className='w-[189px] h-[148px] flex justify-center relative group'>
 						<img
 							src={image}
 							alt=''
 							className='object-cover w-[149px] rounded-lg'
 						/>
+						<div className='bg-neutral-950/50 absolute inset-0 rounded-lg hidden group-hover:flex items-center justify-center'>
+							<Link
+								to={`/product/${id}`}
+								className='text-neutral-50 border border-neutral-50 rounded-lg px-3 py-2 hover:bg-neutral-50 hover:text-neutral-950 transition'>
+								Visualizar Produto
+							</Link>
+						</div>
 					</div>
 				</div>
 				<div className='w-full'>

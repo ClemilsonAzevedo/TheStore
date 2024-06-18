@@ -43,6 +43,7 @@ export function Home() {
 			.get('/products')
 			.then(response => {
 				setProducts(response.data)
+				console.log(response.data)
 			})
 			.finally(() => setIsProductsLoading(false))
 	}, [])
@@ -90,6 +91,9 @@ export function Home() {
 			</div>
 
 			<div id='Home' className='px-5 w-full'>
+				{/*
+					TODO: filtrar apenas os últimos 10 produtos adicionados
+				*/}
 				<h3 className='font-semibold text-2xl mb-2 mr-auto'>Most Recent</h3>
 
 				<div className='mx-auto w-[calc(100vw-250px)]'>
@@ -104,19 +108,19 @@ export function Home() {
 									size={32}
 									className='animate-spin repeat-infinite transition flex items-center jus'
 								/>
-							) : null}
-
-							{products.map(product => (
-								<Product
-									key={product.id}
-									id={product.id}
-									price={product.price}
-									onCart={product.onCart}
-									isLiked={product.isLiked}
-									name={product.name}
-									description={product.description}
-								/>
-							))}
+							) : (
+								products.map(product => (
+									<Product
+										key={product.id}
+										id={product.id}
+										price={product.price}
+										onCart={product.onCart}
+										isLiked={product.isLiked}
+										name={product.name}
+										description={product.description}
+									/>
+								))
+							)}
 						</CarouselContent>
 						<CarouselPrevious />
 						<CarouselNext />

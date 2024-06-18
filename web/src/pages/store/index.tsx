@@ -13,16 +13,10 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from '@/components/ui/select'
-import { api } from '@/lib/api'
 import { Filter } from 'lucide-react'
 import { useState } from 'react'
 
 export function Store() {
-	const products = api.get('/products').then(res => {
-		console.log(res.data)
-	})
-
-
 
 
 	const [allProducts, _] = useState(products)

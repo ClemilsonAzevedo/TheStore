@@ -22,7 +22,7 @@ export async function productsRoutes() {
 			schema: {
 				tags: ["Products"],
 				params: {
-					id: { type: "number" },
+					id: { type: "string" },
 				},
 				response: {
 					200: $ref("productsSchema"),
@@ -45,5 +45,19 @@ export async function productsRoutes() {
 			},
 		},
 		new ProductsController().createLiked,
+	);
+	app.get(
+		"/products/liked/get",
+		{
+			preHandler: [authMiddleware],
+			schema: {
+				tags: ["Products"],
+				security: [{ Bearer: [] }],
+				response: {
+					200: $ref("getAllResponse"),
+				},
+			},
+		},
+		new ProductsController().getLiked,
 	);
 }

@@ -1,4 +1,5 @@
-import { products } from '@/api/fakeProductsProps'
+import type { ProductInterface } from '@/@types/ProductInterface'
+import { storeApi } from '@/api/store-api'
 import { Product } from '@/components/Product'
 import { Button } from '@/components/ui/button'
 import {
@@ -8,8 +9,46 @@ import {
 	CarouselPrevious,
 } from '@/components/ui/carousel'
 import { Headphones, Laptop, Smartphone, Watch } from 'lucide-react'
+import { useEffect, useState } from 'react'
+
+const categories = [
+	{
+		id: 'Smartwatches',
+		title: 'Smartwatches',
+		icon: Watch,
+		type: 'smartwatch',
+	},
+	{
+		id: 'Smartphones',
+		title: 'Smartphones',
+		icon: Smartphone,
+		type: 'smartphone',
+	},
+	{
+		id: 'Headphones',
+		title: 'Headphones',
+		icon: Headphones,
+		type: 'headphone',
+	},
+	{ id: 'Laptops', title: 'Laptops', icon: Laptop, type: 'laptop' },
+]
 
 export function Home() {
+	const [products, setProducts] = useState<ProductInterface[]>([])
+
+	useEffect(() => {
+		const fetchProducts = async () => {
+			try {
+				const response = await storeApi.get('/products')
+				setProducts(response.data)
+			} catch (error) {
+				console.log(error)
+			}
+		}
+
+		fetchProducts()
+	}, [])
+
 	return (
 		<section className='flex flex-col w-full space-y-10 pr-5 overflow-y-auto overflow-x-hidden'>
 			<div className='flex flex-col justify-end items-center min-h-[550px] border-2 border-neutral-400 rounded-lg p-5'>
@@ -41,27 +80,14 @@ export function Home() {
 				</div>
 
 				<div className='flex justify-between items-center w-full max-md:flex-col'>
-					<a
-						href='#Smartwatches'
-						className='flex items-center gap-2 text-neutral-950 text-lg transition hover:text-violet-500/70'>
-						<Watch /> Smartwatches
-					</a>
-					<a
-						href='#Smartphones'
-						className='flex items-center gap-2 text-neutral-950 text-lg transition hover:text-violet-500/70'>
-						<Smartphone /> Smartphones
-					</a>
-					<a
-						href='#Headphones'
-						className='flex items-center gap-2 text-neutral-950 text-lg transition hover:text-violet-500/70'>
-						<Headphones />
-						Headphones
-					</a>
-					<a
-						href='#Laptops'
-						className='flex items-center gap-2 text-neutral-950 text-lg transition hover:text-violet-500/70'>
-						<Laptop /> Laptops
-					</a>
+					{categories.map(category => (
+						<a
+							key={category.id}
+							href={`#${category.id}`}
+							className='flex items-center gap-2 text-neutral-950 text-lg transition hover:text-violet-500/70'>
+							<category.icon /> {category.title}
+						</a>
+					))}
 				</div>
 			</div>
 
@@ -74,19 +100,17 @@ export function Home() {
 							loop: false,
 						}}>
 						<CarouselContent>
-							{products.map(product => {
-								return (
-									<Product
-										key={product.id}
-										id={product.id}
-										price={product.price}
-										onCart={product.onCart}
-										isLiked={product.isLiked}
-										name={product.name}
-										description={product.description}
-									/>
-								)
-							})}
+							{products.map(product => (
+								<Product
+									key={product.id}
+									id={product.id}
+									price={product.price}
+									onCart={product.onCart}
+									isLiked={product.isLiked}
+									name={product.name}
+									description={product.description}
+								/>
+							))}
 						</CarouselContent>
 						<CarouselPrevious />
 						<CarouselNext />
@@ -94,17 +118,20 @@ export function Home() {
 				</div>
 			</div>
 
-			<div id='Smartwatches' className='flex flex-col items-center gap-5'>
-				<h2 className='flex gap-2 items-center text-2xl font-semibold sticky -top-px z-10 bg-neutral-50 w-full justify-center py-2'>
-					<Watch size={32} />
-					Smartwatches
-				</h2>
+			{categories.map(category => (
+				<div
+					key={category.id}
+					id={category.id}
+					className='flex flex-col items-center gap-5'>
+					<h2 className='flex gap-2 items-center text-2xl font-semibold sticky -top-px z-10 bg-neutral-50 w-full justify-center py-2'>
+						<category.icon size={32} />
+						{category.title}
+					</h2>
 
-				<div className='flex flex-wrap justify-center'>
-					{products
-						.filter(product => product.type === 'smartwatch')
-						.map(product => {
-							return (
+					<div className='flex flex-wrap justify-center'>
+						{products
+							.filter(product => product.type === category.type)
+							.map(product => (
 								<Product
 									key={product.id}
 									id={product.id}
@@ -114,83 +141,10 @@ export function Home() {
 									name={product.name}
 									description={product.description}
 								/>
-							)
-						})}
+							))}
+					</div>
 				</div>
-			</div>
-
-			<div id='Smartphones' className='flex flex-col items-center gap-5'>
-				<h2 className='flex gap-2 items-center text-2xl font-semibold sticky -top-px z-10 bg-neutral-50 w-full justify-center py-2'>
-					<Smartphone size={32} /> Smartphones
-				</h2>
-
-				<div className='flex flex-wrap justify-center'>
-					{products
-						.filter(product => product.type === 'smartphone')
-						.map(product => {
-							return (
-								<Product
-									key={product.id}
-									id={product.id}
-									price={product.price}
-									onCart={product.onCart}
-									isLiked={product.isLiked}
-									name={product.name}
-									description={product.description}
-								/>
-							)
-						})}
-				</div>
-			</div>
-
-			<div id='Headphones' className='flex flex-col items-center gap-5'>
-				<h2 className='flex gap-2 items-center text-2xl font-semibold sticky -top-px z-10 bg-neutral-50 w-full justify-center py-2'>
-					<Headphones size={32} />
-					Headphones
-				</h2>
-
-				<div className='flex flex-wrap justify-center'>
-					{products
-						.filter(product => product.type === 'headphone')
-						.map(product => {
-							return (
-								<Product
-									key={product.id}
-									id={product.id}
-									price={product.price}
-									onCart={product.onCart}
-									isLiked={product.isLiked}
-									name={product.name}
-									description={product.description}
-								/>
-							)
-						})}
-				</div>
-			</div>
-
-			<div id='Laptops' className='flex flex-col items-center gap-5'>
-				<h2 className='flex gap-2 items-center text-2xl font-semibold sticky -top-px z-10 bg-neutral-50 w-full justify-center py-2'>
-					<Laptop size={32} />
-					Laptops
-				</h2>
-				<div className='flex flex-wrap justify-center'>
-					{products
-						.filter(product => product.type === 'laptop')
-						.map(product => {
-							return (
-								<Product
-									key={product.id}
-									id={product.id}
-									price={product.price}
-									onCart={product.onCart}
-									isLiked={product.isLiked}
-									name={product.name}
-									description={product.description}
-								/>
-							)
-						})}
-				</div>
-			</div>
+			))}
 		</section>
 	)
 }

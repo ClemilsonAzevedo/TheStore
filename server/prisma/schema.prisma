@@ -16,16 +16,18 @@ model User {
 }
 
 model Products {
-  id           Int @id @default(autoincrement())
+  id           String @id @default(cuid())
   name         String
   description  String
-  amount       Int
+  type         String
+  image        String
+  createdAt    DateTime
   price        Float
 }
 
 model Like {
   id           Int @id @default(autoincrement())
-  products_ids Int[]
+  products_ids String[]
   user         User @relation(fields: [user_id], references: [id])
-  user_id      String
+  user_id      String @unique
 }

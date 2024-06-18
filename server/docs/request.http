@@ -22,7 +22,7 @@ GET http://localhost:8080/products
 
 ###
 
-GET http://localhost:8080/products/4
+GET http://localhost:8080/products/clxkhh9ui0001238qy50qeg3k
 
 ###
 
@@ -31,6 +31,11 @@ content-type: application/json
 Authorization: Bearer xxx
 
 {
-  "id": 1,
-  "products_ids":[1]
+  "products_ids":["clxkhh9ui0001238qy50qeg3k"]
 }
+
+###
+
+GET http://localhost:8080/products/liked/get
+content-type: application/json
+Authorization: Bearer xxx

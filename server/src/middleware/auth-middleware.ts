@@ -1,7 +1,8 @@
-import { FastifyReply, FastifyRequest } from "fastify";
-import jwt, { JwtPayload } from "jsonwebtoken";
+import type { FastifyReply, FastifyRequest } from "fastify";
+import jwt from "jsonwebtoken";
+import type { JwtPayload } from "jsonwebtoken";
 import { db } from "../db/db";
-import { LikedProps } from "../@types/productsSchema";
+import type { LikedProps } from "../@types/productsSchema";
 
 export async function authMiddleware(
 	req: FastifyRequest<{ Body: LikedProps }>,

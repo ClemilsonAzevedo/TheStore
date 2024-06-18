@@ -1,6 +1,6 @@
-import { FastifyReply, FastifyRequest } from "fastify";
+import type { FastifyReply, FastifyRequest } from "fastify";
 import { db } from "../db/db";
-import { LikedProps, ProductsProps } from "../@types/productsSchema";
+import type { LikedProps, ProductsProps } from "../@types/productsSchema";
 
 export class ProductsController {
 	async getAll(req: FastifyRequest, res: FastifyReply) {
@@ -8,6 +8,7 @@ export class ProductsController {
 
 		return res.send(products);
 	}
+
 	async getOne(
 		req: FastifyRequest<{
 			Params: ProductsProps;
@@ -28,21 +29,52 @@ export class ProductsController {
 
 		return res.send(product);
 	}
+
 	async createLiked(
 		req: FastifyRequest<{ Body: LikedProps }>,
 		res: FastifyReply,
 	) {
-		const { id, products_ids } = req.body;
+		const { products_ids } = req.body;
 
 		const updateLiked = await db.like.update({
 			where: {
-				id: id,
+				user_id: req.user.id,
 			},
 			data: {
 				products_ids: products_ids,
 			},
 		});
 
-		res.send(updateLiked);
+		if (!updateLiked) {
+			return res.code(404).send({ message: "Não encontrado." });
+		}
+
+		return res.send(updateLiked);
+	}
+
+	async getLiked(req: FastifyRequest, res: FastifyReply) {
+		const userLiked = await db.like.findFirst({
+			where: {
+				user_id: req.user.id,
+			},
+		});
+
+		if (!userLiked) {
+			return res.code(404).send({ message: "Não encontrado." });
+		}
+
+		const products = await db.products.findMany({
+			where: {
+				id: {
+					in: userLiked?.products_ids,
+				},
+			},
+		});
+
+		if (!products) {
+			return res.code(404).send({ message: "Não encontrado os produtos." });
+		}
+
+		return res.send(products);
 	}
 }

@@ -7,7 +7,6 @@ async function seeding() {
 	try {
 		if (await prisma.products.findMany()) {
 			await prisma.products.deleteMany();
-			await prisma.$queryRaw`ALTER SEQUENCE "Products_id_seq" RESTART WITH 1`;
 
 			console.log("reset products");
 		}

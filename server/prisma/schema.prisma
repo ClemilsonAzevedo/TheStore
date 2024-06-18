@@ -19,7 +19,6 @@ model Products {
   id           String @id @default(cuid())
   name         String
   description  String
-  amount       Int
   type         String
   image        String
   createdAt    DateTime

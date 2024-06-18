@@ -1,16 +1,17 @@
 import { z } from "zod";
 
 export const productsSchema = z.object({
-	id: z.number().int(),
+	id: z.string(),
 	name: z.string(),
 	description: z.string(),
-	amount: z.number().int(),
+	image: z.string(),
+	createdAt: z.date(),
 	price: z.number(),
 });
 
 export const likedSchema = z.object({
 	id: z.number().int(),
-	products_ids: z.array(z.number().int()),
+	products_ids: z.array(z.string()),
 	user_id: z.string(),
 });
 

@@ -8,7 +8,7 @@ import {
 	CarouselNext,
 	CarouselPrevious,
 } from '@/components/ui/carousel'
-import { Headphones, Laptop, Smartphone, Watch } from 'lucide-react'
+import { Headphones, Laptop, Loader2, Smartphone, Watch } from 'lucide-react'
 import { useEffect, useState } from 'react'
 
 const categories = [
@@ -35,18 +35,16 @@ const categories = [
 
 export function Home() {
 	const [products, setProducts] = useState<ProductInterface[]>([])
+	const [isProductsLoading, setIsProductsLoading] = useState(false)
 
 	useEffect(() => {
-		const fetchProducts = async () => {
-			try {
-				const response = await storeApi.get('/products')
+		setIsProductsLoading(true)
+		storeApi
+			.get('/products')
+			.then(response => {
 				setProducts(response.data)
-			} catch (error) {
-				console.log(error)
-			}
-		}
-
-		fetchProducts()
+			})
+			.finally(() => setIsProductsLoading(false))
 	}, [])
 
 	return (
@@ -93,13 +91,21 @@ export function Home() {
 
 			<div id='Home' className='px-5 w-full'>
 				<h3 className='font-semibold text-2xl mb-2 mr-auto'>Most Recent</h3>
+
 				<div className='mx-auto w-[calc(100vw-250px)]'>
 					<Carousel
 						opts={{
 							align: 'center',
 							loop: false,
 						}}>
-						<CarouselContent>
+						<CarouselContent className='flex items-center justify-center min-h-[450px]'>
+							{isProductsLoading ? (
+								<Loader2
+									size={32}
+									className='animate-spin repeat-infinite transition flex items-center jus'
+								/>
+							) : null}
+
 							{products.map(product => (
 								<Product
 									key={product.id}

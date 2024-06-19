@@ -15,7 +15,7 @@ export default function Routes() {
 				<Route path='/cart' element={<Cart />} />
 				<Route path='/loved' element={<LovedProducts />} />
 				<Route path='/store' element={<Store />} />
-				<Route path='/product/:productId' element={<ProductDetail />} />
+				<Route path='/products/:productId' element={<ProductDetail />} />
 				<Route path='/forgot-password' element={<ForgotPassword />} />
 			</Route>
 		</RoutesDOM>

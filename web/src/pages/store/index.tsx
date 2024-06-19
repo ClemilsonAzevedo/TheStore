@@ -90,7 +90,7 @@ export function Store() {
 					{isProductsLoading ? (
 						<Loader2
 							size={32}
-							className='animate-spin repeat-infinite transition flex h-full items-center jus'
+							className='animate-spin repeat-infinite transition flex h-full items-center justify-center'
 						/>
 					) : (
 						(filterProductsOnPage.length === 0

@@ -1,5 +1,6 @@
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog'
-import { SubmitHandler, useForm } from 'react-hook-form'
+import { useAuth } from '@/context/authContext'
+import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import githubLogo from '../../assets/github.svg'
 import gmailLogo from '../../assets/gmail.svg'
@@ -16,11 +17,12 @@ type signInFormData = z.infer<typeof signInFormValidationSchema>
 
 export function Login() {
 	const { register, watch, handleSubmit, reset } = useForm<signInFormData>()
+	const { SignIn } = useAuth()
 
-	function handleSignIn(data: signInFormData) {
-		console.log(data)
-		//todo: Enviar os dados de login para o backend
+	function handleSignIn(userData: signInFormData) {
+		const { email, password } = userData
 
+		SignIn({ email, password })
 		reset()
 	}
 
@@ -87,21 +89,6 @@ export function Login() {
 					className='w-full bg-violet-500 hover:bg-violet-500/70 text-sm h-12 disabled:cursor-not-allowed'>
 					Login
 				</Button>
-				<div className='flex gap-5'>
-					<button
-						type='button'
-						className='px-5 py-2 flex items-center gap-2 border-2 border-neutral-600 rounded-lg w-full justify-center hover:border-violet-500 hover:text-violet-500 transition'>
-						<img src={gmailLogo} width={32} alt='' />
-						Google
-					</button>
-
-					<button
-						type='button'
-						className='px-5 py-2 flex items-center gap-2 border-2 border-neutral-600 rounded-lg w-full justify-center hover:border-violet-500 hover:text-violet-500 transition'>
-						<img src={githubLogo} width={32} alt='' />
-						Github
-					</button>
-				</div>
 			</div>
 
 			<div className='flex flex-col justify-center items-center'>

@@ -20,7 +20,7 @@ export class UserController {
 		});
 
 		if (user) {
-			return res.status(400).send({ message: "Email já existente" });
+			return res.status(400).send({ message: "Email already exists" });
 		}
 
 		const hashPassword = await bcrypt.hash(password, 10);
@@ -59,13 +59,13 @@ export class UserController {
 		});
 
 		if (!user) {
-			return res.status(400).send({ message: "Usuario não existe" });
+			return res.status(400).send({ message: "Email or password was wrong" });
 		}
 
 		const verifyPass = await bcrypt.compare(password, user.password);
 
 		if (!verifyPass) {
-			return res.status(400).send({ message: "Usuario não existe" });
+			return res.status(400).send({ message: "Email or password was wrong" });
 		}
 
 		const token = jwt.sign({ id: user.id }, process.env.JWT_PASS ?? "", {

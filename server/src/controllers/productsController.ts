@@ -24,7 +24,7 @@ export class ProductsController {
 		});
 
 		if (!product) {
-			return res.code(404).send({ message: "Produto não encontrado." });
+			return res.code(404).send({ message: "Not found product." });
 		}
 
 		return res.send(product);
@@ -46,7 +46,7 @@ export class ProductsController {
 		});
 
 		if (!updateLiked) {
-			return res.code(404).send({ message: "Não encontrado." });
+			return res.code(404).send({ message: "Not found." });
 		}
 
 		return res.send(updateLiked);
@@ -60,7 +60,7 @@ export class ProductsController {
 		});
 
 		if (!userLiked) {
-			return res.code(404).send({ message: "Não encontrado." });
+			return res.code(404).send({ message: "Not found." });
 		}
 
 		const products = await db.products.findMany({
@@ -72,7 +72,7 @@ export class ProductsController {
 		});
 
 		if (!products) {
-			return res.code(404).send({ message: "Não encontrado os produtos." });
+			return res.code(404).send({ message: "Not found products." });
 		}
 
 		return res.send(products);

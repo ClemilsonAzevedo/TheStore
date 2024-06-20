@@ -1,9 +1,8 @@
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog'
 import { useAuth } from '@/context/authContext'
 import { useForm } from 'react-hook-form'
+import { Link, useNavigate } from 'react-router-dom'
 import { z } from 'zod'
-import githubLogo from '../../assets/github.svg'
-import gmailLogo from '../../assets/gmail.svg'
 import { SignUp } from '../SignUp'
 import { Button } from '../ui/button'
 import { Checkbox } from '../ui/checkbox'
@@ -18,12 +17,22 @@ type signInFormData = z.infer<typeof signInFormValidationSchema>
 export function Login() {
 	const { register, watch, handleSubmit, reset } = useForm<signInFormData>()
 	const { SignIn } = useAuth()
+	const navigate = useNavigate()
 
-	function handleSignIn(userData: signInFormData) {
+	async function handleSignIn(userData: signInFormData) {
 		const { email, password } = userData
 
-		SignIn({ email, password })
-		reset()
+		try {
+			await SignIn({ email, password })
+			navigate('/')
+			reset()
+		} catch (error) {
+			if (error instanceof Error) {
+				alert(error.message)
+			} else {
+				alert('An unexpected error occurred')
+			}
+		}
 	}
 
 	const emailInputChange = watch('email')
@@ -92,11 +101,11 @@ export function Login() {
 			</div>
 
 			<div className='flex flex-col justify-center items-center'>
-				<a
-					href='/forgot-password'
+				<Link
+					to='/forgot-password'
 					className='block underline hover:text-violet-500 text-sm transition font-normal'>
 					Forgot password?
-				</a>
+				</Link>
 
 				<Dialog>
 					<DialogContent className='px-[9.375rem] py-5 border-neutral-600 bg-neutral-400 focus-visible:outline-none max-w-max'>

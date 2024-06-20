@@ -16,64 +16,90 @@ import {
 	PopoverContent,
 	PopoverTrigger,
 } from '@/components/ui/popover'
+import { useAuth } from '@/context/authContext'
 import { NavLink } from 'react-router-dom'
 import { Login } from '../Login'
 import { SignUp } from '../SignUp'
 import { Dialog, DialogContent, DialogTrigger } from '../ui/dialog'
 
 export function Aside() {
+	const { user } = useAuth()
+
 	return (
 		<aside className='flex h-full w-[50px] flex-col items-center justify-between py-5'>
-			<NavLink className='relative group p-2 rounded-full hover:bg-neutral-400 active:text-violet-500 ' to='/cart' >
+			<NavLink
+				className='relative group p-2 rounded-full hover:bg-neutral-400 active:text-violet-500 '
+				to='/cart'>
 				<span className='absolute right-1 top-2 h-[5px] w-[5px] rounded-full bg-violet-500' />
 				<ShoppingCart />
-				<label className='hidden group-hover:block absolute left-10 top-0 transition bg-neutral-950 text-neutral-50 p-2 rounded-lg text-xs'>Cart</label>
+				<label className='hidden group-hover:block absolute left-10 top-0 transition bg-neutral-950 text-neutral-50 p-2 rounded-lg text-xs'>
+					Cart
+				</label>
 			</NavLink>
 
 			<nav className='flex flex-col gap-5'>
-				<NavLink className='p-2 rounded-full hover:bg-neutral-400 active:text-violet-500 group relative' to={'/' || '#home'} >
+				<NavLink
+					className='p-2 rounded-full hover:bg-neutral-400 active:text-violet-500 group relative'
+					to={'/' || '#home'}>
 					<Home />
-					<label className='hidden group-hover:block absolute left-10 top-0 transition bg-neutral-950 text-neutral-50 p-2 rounded-lg text-xs'>home</label>
+					<label className='hidden group-hover:block absolute left-10 top-0 transition bg-neutral-950 text-neutral-50 p-2 rounded-lg text-xs'>
+						home
+					</label>
 				</NavLink>
-				<NavLink className='p-2 rounded-full hover:bg-neutral-400 active:text-violet-500 group relative' to='/store' >
+				<NavLink
+					className='p-2 rounded-full hover:bg-neutral-400 active:text-violet-500 group relative'
+					to='/store'>
 					<ShoppingBasket />
-					<label className='hidden group-hover:block absolute left-10 top-0 transition bg-neutral-950 text-neutral-50 p-2 rounded-lg text-xs'>Store</label>
+					<label className='hidden group-hover:block absolute left-10 top-0 transition bg-neutral-950 text-neutral-50 p-2 rounded-lg text-xs'>
+						Store
+					</label>
 				</NavLink>
-				<NavLink className='p-2 rounded-full hover:bg-neutral-400 active:text-violet-500 group relative' to='/loved' >
+				<NavLink
+					className='p-2 rounded-full hover:bg-neutral-400 active:text-violet-500 group relative'
+					to='/loved'>
 					<Heart />
-					<label className='hidden group-hover:block absolute left-10 top-0 transition bg-neutral-950 text-neutral-50 p-2 rounded-lg text-xs'>Loved</label>
+					<label className='hidden group-hover:block absolute left-10 top-0 transition bg-neutral-950 text-neutral-50 p-2 rounded-lg text-xs'>
+						Loved
+					</label>
 				</NavLink>
 			</nav>
 
 			<div className='flex flex-col gap-5'>
-				<div className='flex items-center flex-col justify-center gap-2 w-full'>
-					<Dialog>
-						<DialogContent className='px-[9.375rem] py-5 border-neutral-600 bg-neutral-400 focus-visible:outline-none max-w-max'>
-							<Login />
-						</DialogContent>
-						<DialogTrigger className='p-2 hover:bg-neutral-400 rounded-full focus-visible:outline-none transition group relative'>
-							<User size={24} />
-							<label className='hidden group-hover:block absolute left-10 top-0 transition bg-neutral-950 text-neutral-50 p-2 rounded-lg text-xs'>Login</label>
-						</DialogTrigger>
-					</Dialog>
+				{user === null ? (
+					<div className='flex items-center flex-col justify-center gap-2 w-full'>
+						<Dialog>
+							<DialogContent className='px-[9.375rem] py-5 border-neutral-600 bg-neutral-400 focus-visible:outline-none max-w-max'>
+								<Login />
+							</DialogContent>
+							<DialogTrigger className='p-2 hover:bg-neutral-400 rounded-full focus-visible:outline-none transition group relative'>
+								<User size={24} />
+								<label className='hidden group-hover:block absolute left-10 top-0 transition bg-neutral-950 text-neutral-50 p-2 rounded-lg text-xs'>
+									Login
+								</label>
+							</DialogTrigger>
+						</Dialog>
 
-					<Dialog>
-						<DialogContent className='px-[9.375rem] py-5 border-neutral-600 bg-neutral-400 focus-visible:outline-none max-w-max'>
-							<SignUp />
-						</DialogContent>
-						<DialogTrigger className='p-2 hover:bg-neutral-400 rounded-full focus-visible:outline-none transition group relative'>
-							<UserPlus size={24} />
-							<label className='hidden group-hover:block absolute left-10 top-0 transition bg-neutral-950 text-neutral-50 p-2 rounded-lg text-xs  text-nowrap'>Sign Up</label>
-
-						</DialogTrigger>
-					</Dialog>
-				</div>
+						<Dialog>
+							<DialogContent className='px-[9.375rem] py-5 border-neutral-600 bg-neutral-400 focus-visible:outline-none max-w-max'>
+								<SignUp />
+							</DialogContent>
+							<DialogTrigger className='p-2 hover:bg-neutral-400 rounded-full focus-visible:outline-none transition group relative'>
+								<UserPlus size={24} />
+								<label className='hidden group-hover:block absolute left-10 top-0 transition bg-neutral-950 text-neutral-50 p-2 rounded-lg text-xs  text-nowrap'>
+									Sign Up
+								</label>
+							</DialogTrigger>
+						</Dialog>
+					</div>
+				) : null}
 
 				<Popover>
 					<PopoverTrigger asChild>
 						<div className='rounded-full p-2 duration-300 hover:bg-neutral-400 transition group relative'>
 							<Settings className='hover:rotate-90 transition' />
-							<label className='hidden group-hover:block absolute left-10 top-0 transition bg-neutral-950 text-neutral-50 p-2 rounded-lg text-xs'>Settings</label>
+							<label className='hidden group-hover:block absolute left-10 top-0 transition bg-neutral-950 text-neutral-50 p-2 rounded-lg text-xs'>
+								Settings
+							</label>
 						</div>
 					</PopoverTrigger>
 

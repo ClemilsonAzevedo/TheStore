@@ -7,7 +7,7 @@ import { LovedProducts } from './pages/loved-products'
 import { ProductDetail } from './pages/productDetail'
 import { Store } from './pages/store'
 
-export default function Routes() {
+export function Routes() {
 	return (
 		<RoutesDOM>
 			<Route path='/' element={<LayoutDefault />}>

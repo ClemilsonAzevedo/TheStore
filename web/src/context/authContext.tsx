@@ -2,42 +2,57 @@ import { storeApi } from '@/api/store-api'
 import type { AxiosError } from 'axios'
 import { createContext, useContext, useEffect, useState } from 'react'
 
-export const AuthContext = createContext({})
+interface AuthContextType {
+	SignIn: ({ email, password }: SignInProps) => Promise<void>
+	SignOut: () => void
+	user: User | null
+}
 
-type AuthProviderProps = {
+interface User {
+	id: string
+	name: string
+	email: string
+}
+
+interface AuthProviderProps {
 	children: React.ReactNode
 }
 
-type SignInProps = {
+interface SignInProps {
 	email: string
 	password: string
 }
 
+interface AuthState {
+	user: User | null
+	token: string | null
+}
+
+const AuthContext = createContext<AuthContextType | undefined>(undefined)
+
 export function AuthProvider({ children }: AuthProviderProps) {
-	const [authData, setAuthData] = useState({})
+	const [data, setData] = useState<AuthState>({ user: null, token: null })
 
 	async function SignIn({ email, password }: SignInProps) {
 		try {
 			const response = await storeApi.post('/user/signin', { email, password })
-			const { userData, token } = response.data
+			const { user, token } = response.data
 
-			localStorage.setItem('@TheStore:user', JSON.stringify(userData))
+			localStorage.setItem('@TheStore:user', JSON.stringify(user))
 			localStorage.setItem('@TheStore:token', token)
 
 			storeApi.defaults.headers.common.Authorization = `Bearer ${token}`
-			setAuthData({ userData, token })
+			setData({ user, token })
 		} catch (error: unknown) {
 			if (isAxiosError(error)) {
 				if (error.response) {
 					const errorMessage = (error.response.data as { message: string })
 						.message
-					alert(errorMessage)
-				} else {
-					alert('Error trying to login, please try again later')
+					throw new Error(errorMessage)
 				}
-			} else {
-				alert('An unexpected error ocurred')
+				throw new Error('Error trying to login, please try again later')
 			}
+			throw new Error('An unexpected error occurred')
 		}
 	}
 
@@ -48,22 +63,29 @@ export function AuthProvider({ children }: AuthProviderProps) {
 	function SignOut() {
 		localStorage.removeItem('@TheStore:user')
 		localStorage.removeItem('@TheStore:token')
-
-		setAuthData({})
+		setData({ user: null, token: null })
 	}
 
 	useEffect(() => {
 		const token = localStorage.getItem('@TheStore:token')
-		const userData = localStorage.getItem('@TheStore:user')
+		const user = localStorage.getItem('@TheStore:user')
 
-		if (userData && token) {
-			storeApi.defaults.headers.common.Authorization = `Bearer ${token}`
-			setAuthData({ token, userData: JSON.parse(userData) })
+		if (token && user !== undefined && user !== 'undefined') {
+			try {
+				const parsedUser = JSON.parse(user)
+				storeApi.defaults.headers.common.Authorization = `Bearer ${token}`
+				setData({ token, user: parsedUser })
+			} catch (error) {
+				console.error('Error parsing user from localStorage', error)
+				localStorage.removeItem('@TheStore:user')
+				localStorage.removeItem('@TheStore:token')
+				setData({ user: null, token: null })
+			}
 		}
 	}, [])
 
 	return (
-		<AuthContext.Provider value={{ SignIn, SignOut }}>
+		<AuthContext.Provider value={{ SignIn, SignOut, user: data.user }}>
 			{children}
 		</AuthContext.Provider>
 	)
@@ -71,5 +93,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
 export function useAuth() {
 	const context = useContext(AuthContext)
+	if (!context) {
+		throw new Error('useAuth must be used within an AuthProvider')
+	}
 	return context
 }

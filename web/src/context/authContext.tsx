@@ -1,21 +1,18 @@
 import { storeApi } from '@/api/store-api'
 import type { AxiosError } from 'axios'
-import { createContext, useContext, useEffect, useState } from 'react'
-
-interface AuthContextType {
-	SignIn: ({ email, password }: SignInProps) => Promise<void>
-	SignOut: () => void
-	user: User | null
-}
+import { useEffect } from 'react'
+import { create } from 'zustand'
 
 interface User {
-	id: string
 	name: string
 	email: string
 }
 
-interface AuthProviderProps {
-	children: React.ReactNode
+interface AuthState {
+	user: User | null
+	token: string | null
+	SignIn: (props: SignInProps) => Promise<void>
+	SignOut: () => void
 }
 
 interface SignInProps {
@@ -23,17 +20,15 @@ interface SignInProps {
 	password: string
 }
 
-interface AuthState {
-	user: User | null
-	token: string | null
+function isAxiosError(error: unknown): error is AxiosError {
+	return (error as AxiosError).isAxiosError !== undefined
 }
 
-const AuthContext = createContext<AuthContextType | undefined>(undefined)
+const useAuthStore = create<AuthState>(set => ({
+	user: null,
+	token: null,
 
-export function AuthProvider({ children }: AuthProviderProps) {
-	const [data, setData] = useState<AuthState>({ user: null, token: null })
-
-	async function SignIn({ email, password }: SignInProps) {
+	SignIn: async ({ email, password }: SignInProps) => {
 		try {
 			const response = await storeApi.post('/user/signin', { email, password })
 			const { user, token } = response.data
@@ -42,59 +37,59 @@ export function AuthProvider({ children }: AuthProviderProps) {
 			localStorage.setItem('@TheStore:token', token)
 
 			storeApi.defaults.headers.common.Authorization = `Bearer ${token}`
-			setData({ user, token })
+			set({ user, token })
 		} catch (error: unknown) {
-			if (isAxiosError(error)) {
-				if (error.response) {
-					const errorMessage = (error.response.data as { message: string })
-						.message
-					throw new Error(errorMessage)
-				}
-				throw new Error('Error trying to login, please try again later')
+			if (isAxiosError(error) && error.response) {
+				const errorMessage = (error.response.data as { message: string })
+					.message
+				throw new Error(errorMessage)
 			}
 			throw new Error('An unexpected error occurred')
 		}
-	}
+	},
 
-	function isAxiosError(error: unknown): error is AxiosError {
-		return (error as AxiosError).isAxiosError !== undefined
-	}
-
-	function SignOut() {
+	SignOut: () => {
 		localStorage.removeItem('@TheStore:user')
 		localStorage.removeItem('@TheStore:token')
-		setData({ user: null, token: null })
-	}
+		set({ user: null, token: null })
+	},
+}))
+
+interface AuthProviderProps {
+	children: React.ReactNode
+}
+
+export function AuthProvider({ children }: AuthProviderProps) {
+	const setAuthState = useAuthStore(state => state)
 
 	useEffect(() => {
 		const token = localStorage.getItem('@TheStore:token')
 		const user = localStorage.getItem('@TheStore:user')
 
-		if (token && user !== undefined && user !== 'undefined') {
+		console.log('token from localStorage:', token)
+		console.log('user from localStorage:', user)
+
+		if (token && user && user !== 'undefined') {
 			try {
-				const parsedUser = JSON.parse(user)
+				const parsedUser: User = JSON.parse(user)
 				storeApi.defaults.headers.common.Authorization = `Bearer ${token}`
-				setData({ token, user: parsedUser })
+				setAuthState({ user: parsedUser, token })
 			} catch (error) {
 				console.error('Error parsing user from localStorage', error)
 				localStorage.removeItem('@TheStore:user')
 				localStorage.removeItem('@TheStore:token')
-				setData({ user: null, token: null })
+				setAuthState({ user: null, token: null })
 			}
 		}
-	}, [])
+	}, [setAuthState])
 
-	return (
-		<AuthContext.Provider value={{ SignIn, SignOut, user: data.user }}>
-			{children}
-		</AuthContext.Provider>
-	)
+	return <>{children}</>
 }
 
 export function useAuth() {
-	const context = useContext(AuthContext)
-	if (!context) {
-		throw new Error('useAuth must be used within an AuthProvider')
-	}
-	return context
+	return useAuthStore(state => ({
+		user: state.user,
+		SignIn: state.SignIn,
+		SignOut: state.SignOut,
+	}))
 }

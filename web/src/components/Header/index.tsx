@@ -9,7 +9,8 @@ import {
 	CommandList,
 	CommandSeparator,
 } from '@/components/ui/command'
-import { Search } from 'lucide-react'
+import { useAuth } from '@/context/authContext'
+import { Search, User2 } from 'lucide-react'
 import { type KeyboardEvent, useEffect, useState } from 'react'
 
 interface typeProductProps {
@@ -17,6 +18,9 @@ interface typeProductProps {
 }
 
 export function Header() {
+	const { user } = useAuth()
+	console.log(user)
+
 	const [open, setOpen] = useState(false)
 	const [filterProducts] = useState(products)
 	const [filterProductsOnCommand, setFilterProductsOnCommand] =
@@ -45,7 +49,7 @@ export function Header() {
 			<header className='flex items-center justify-center p-5'>
 				<button
 					type='button'
-					className='group flex items-center h-full w-full max-w-[350px] border-2 border-neutral-600 rounded-lg p-2 hover:border-violet-500 hover:bg-neutral-400/70 transition focus-within:ring-1 focus:border-violet-500 '
+					className='group flex flex-1 ml-auto items-center h-full w-full max-w-[350px] border-2 border-neutral-600 rounded-lg p-2 hover:border-violet-500 hover:bg-neutral-400/70 transition focus-within:ring-1 focus:border-violet-500 '
 					onClick={open ? () => setOpen(false) : () => setOpen(true)}>
 					<Search
 						size={20}
@@ -58,6 +62,10 @@ export function Header() {
 						<span className='text-sm bg-transparent'>Ctrl + K</span>
 					</kbd>
 				</button>
+
+				<div className='ml-auto flex'>
+					<span>{user?.email}</span><User2 size={32} />
+				</div>
 			</header>
 
 			<CommandDialog open={open} onOpenChange={setOpen}>

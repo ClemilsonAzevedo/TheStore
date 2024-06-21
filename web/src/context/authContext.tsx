@@ -1,7 +1,8 @@
 import { storeApi } from '@/api/store-api'
 import type { AxiosError } from 'axios'
+import type React from 'react'
 import { useEffect } from 'react'
-import { create } from 'zustand'
+import { type SetState, create } from 'zustand'
 
 interface User {
 	name: string
@@ -31,13 +32,16 @@ const useAuthStore = create<AuthState>(set => ({
 	SignIn: async ({ email, password }: SignInProps) => {
 		try {
 			const response = await storeApi.post('/user/signin', { email, password })
-			const { user, token } = response.data
+			const { userData, token } = response.data
 
-			localStorage.setItem('@TheStore:user', JSON.stringify(user))
+			console.log('Received user from API:', userData)
+			console.log('Received token from API:', token)
+
+			localStorage.setItem('@TheStore:user', JSON.stringify(userData))
 			localStorage.setItem('@TheStore:token', token)
 
 			storeApi.defaults.headers.common.Authorization = `Bearer ${token}`
-			set({ user, token })
+			set({ user: userData, token })
 		} catch (error: unknown) {
 			if (isAxiosError(error) && error.response) {
 				const errorMessage = (error.response.data as { message: string })
@@ -60,8 +64,8 @@ interface AuthProviderProps {
 }
 
 export function AuthProvider({ children }: AuthProviderProps) {
-	const setAuthState = useAuthStore(state => state)
-
+	const setAuthState: SetState<AuthState> = useAuthStore
+	
 	useEffect(() => {
 		const token = localStorage.getItem('@TheStore:token')
 		const user = localStorage.getItem('@TheStore:user')
@@ -72,6 +76,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
 		if (token && user && user !== 'undefined') {
 			try {
 				const parsedUser: User = JSON.parse(user)
+				console.log('Parsed user:', parsedUser)
 				storeApi.defaults.headers.common.Authorization = `Bearer ${token}`
 				setAuthState({ user: parsedUser, token })
 			} catch (error) {

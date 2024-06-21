@@ -3,6 +3,7 @@ import {
 	Github,
 	Heart,
 	Home,
+	LogOut,
 	Settings,
 	ShoppingBasket,
 	ShoppingCart,
@@ -23,7 +24,7 @@ import { SignUp } from '../SignUp'
 import { Dialog, DialogContent, DialogTrigger } from '../ui/dialog'
 
 export function Aside() {
-	const { user } = useAuth()
+	const { user, SignOut } = useAuth()
 
 	return (
 		<aside className='flex h-full w-[50px] flex-col items-center justify-between py-5'>
@@ -91,7 +92,17 @@ export function Aside() {
 							</DialogTrigger>
 						</Dialog>
 					</div>
-				) : null}
+				) : (
+					<button
+						type='button'
+						onClick={SignOut}
+						className='p-2 rounded-full hover:bg-neutral-400 active:text-violet-500 group relative'>
+						<LogOut size={24} />
+						<label className='hidden group-hover:block absolute left-10 top-0 transition bg-neutral-950 text-neutral-50 p-2 rounded-lg text-xs'>
+							Logout
+						</label>
+					</button>
+				)}
 
 				<Popover>
 					<PopoverTrigger asChild>
@@ -111,7 +122,7 @@ export function Aside() {
 						</div>
 						<a
 							className='flex items-center gap-2 transition hover:text-violet-500 p-1'
-							href='http://'
+							href='https://github.com/clemilsonAzevedo/TheStore/'
 							target='_blank'
 							rel='noopener noreferrer'>
 							<Github size={20} />
@@ -119,7 +130,7 @@ export function Aside() {
 						</a>
 						<a
 							className='flex items-center gap-2 transition hover:text-violet-500 p-1'
-							href='http://'
+							href='https://www.figma.com/file/WHtAEKZFjBcS5sYiieO5ne/The-Store?type=design&node-id=4%3A2&mode=design&t=2VoTsVIV9rkgO9HD-1'
 							target='_blank'
 							rel='noopener noreferrer'>
 							<Figma size={20} />

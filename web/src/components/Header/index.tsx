@@ -49,7 +49,7 @@ export function Header() {
 			<header className='flex items-center justify-center p-5'>
 				<button
 					type='button'
-					className='group flex flex-1 ml-auto items-center h-full w-full max-w-[350px] border-2 border-neutral-600 rounded-lg p-2 hover:border-violet-500 hover:bg-neutral-400/70 transition focus-within:ring-1 focus:border-violet-500 '
+					className={user ? `group flex flex-1 items-center h-full w-full max-w-[350px] border-2 border-neutral-600 rounded-lg p-2 hover:border-violet-500 hover:bg-neutral-400/70 transition focus-within:ring-1 focus:border-violet-500 ml-auto`: 'group flex flex-1 items-center h-full w-full max-w-[350px] border-2 border-neutral-600 rounded-lg p-2 hover:border-violet-500 hover:bg-neutral-400/70 transition focus-within:ring-1 focus:border-violet-500'}
 					onClick={open ? () => setOpen(false) : () => setOpen(true)}>
 					<Search
 						size={20}
@@ -63,9 +63,14 @@ export function Header() {
 					</kbd>
 				</button>
 
-				<div className='ml-auto flex'>
-					<span>{user?.email}</span><User2 size={32} />
-				</div>
+				{user ? (
+					<div className='ml-auto'>
+						<div className='flex mr-5 gap-2 items-center text-violet-500 p-2 hover:bg-neutral-400 rounded-lg transition hover:border-neutral-600 cursor-pointer'>
+								<span className='text-sm'>{user.email}</span>
+							<User2 size={32} />
+						</div>
+					</div>
+				) : null}
 			</header>
 
 			<CommandDialog open={open} onOpenChange={setOpen}>

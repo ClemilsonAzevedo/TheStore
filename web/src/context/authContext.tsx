@@ -65,7 +65,7 @@ interface AuthProviderProps {
 
 export function AuthProvider({ children }: AuthProviderProps) {
 	const setAuthState: SetState<AuthState> = useAuthStore
-	
+
 	useEffect(() => {
 		const token = localStorage.getItem('@TheStore:token')
 		const user = localStorage.getItem('@TheStore:user')

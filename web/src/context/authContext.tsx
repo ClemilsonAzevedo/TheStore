@@ -20,7 +20,7 @@ interface SignInProps {
 	password: string
 }
 
-function isAxiosError(error: unknown): error is AxiosError {
+export function isAxiosError(error: unknown): error is AxiosError {
 	return (error as AxiosError).isAxiosError !== undefined
 }
 

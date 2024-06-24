@@ -1,5 +1,6 @@
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog'
 import { useAuth } from '@/context/authContext'
+import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
 import { z } from 'zod'
@@ -15,7 +16,15 @@ const signInFormValidationSchema = z.object({
 type signInFormData = z.infer<typeof signInFormValidationSchema>
 
 export function Login() {
-	const { register, watch, handleSubmit, reset } = useForm<signInFormData>()
+	const {
+		register,
+		watch,
+		handleSubmit,
+		reset,
+		formState: { errors },
+	} = useForm<signInFormData>({
+		resolver: zodResolver(signInFormValidationSchema),
+	})
 	const { SignIn } = useAuth()
 	const navigate = useNavigate()
 
@@ -58,11 +67,17 @@ export function Login() {
 					</label>
 					<input
 						type='email'
+						required
 						id='email'
 						{...register('email')}
 						placeholder='Enter your email address'
 						className='text-sm pl-3 py-3 placeholder:text-neutral-600 bg-neutral-50 border border-neutral-600 focus-visible:outline-violet-500 rounded-lg'
 					/>
+					{errors.email && (
+						<span className='text-destructive text-sm'>
+							{errors.email.message}
+						</span>
+					)}
 				</div>
 
 				<div className='flex flex-col w-full gap-2'>
@@ -71,15 +86,22 @@ export function Login() {
 					</label>
 					<input
 						type='password'
+						required
 						id='password'
 						{...register('password')}
 						placeholder='Minimum 8 character'
 						className='text-sm pl-3 py-3 placeholder:text-neutral-600 bg-neutral-50 border border-neutral-600 focus-visible:outline-violet-500 rounded-lg'
 					/>
+					{errors.password && (
+						<span className='text-destructive text-sm'>
+							{errors.password.message}
+						</span>
+					)}
 				</div>
 			</div>
 
 			<div className='flex items-center space-x-2'>
+				{/*Todo: adicionar metodo de lembrar por 30 dias */}
 				<Checkbox
 					id='remember'
 					className='w-8 h-8 bg-transparent border-2 border-neutral-600 rounded-lg checked:bg-transparent'
@@ -103,6 +125,7 @@ export function Login() {
 			<div className='flex flex-col justify-center items-center'>
 				<Link
 					to='/forgot-password'
+					reloadDocument
 					className='block underline hover:text-violet-500 text-sm transition font-normal'>
 					Forgot password?
 				</Link>

@@ -1,8 +1,7 @@
 import { storeApi } from '@/api/store-api'
 import type { AxiosError } from 'axios'
 import type React from 'react'
-import { useEffect } from 'react'
-import { type SetState, create } from 'zustand'
+import { create } from 'zustand'
 
 interface User {
 	name: string
@@ -25,7 +24,7 @@ function isAxiosError(error: unknown): error is AxiosError {
 	return (error as AxiosError).isAxiosError !== undefined
 }
 
-const useAuthStore = create<AuthState>(set => ({
+export const useAuthStore = create<AuthState>(set => ({
 	user: null,
 	token: null,
 
@@ -33,9 +32,6 @@ const useAuthStore = create<AuthState>(set => ({
 		try {
 			const response = await storeApi.post('/user/signin', { email, password })
 			const { userData, token } = response.data
-
-			console.log('Received user from API:', userData)
-			console.log('Received token from API:', token)
 
 			localStorage.setItem('@TheStore:user', JSON.stringify(userData))
 			localStorage.setItem('@TheStore:token', token)
@@ -64,30 +60,24 @@ interface AuthProviderProps {
 }
 
 export function AuthProvider({ children }: AuthProviderProps) {
-	const setAuthState: SetState<AuthState> = useAuthStore
-
-	useEffect(() => {
+	function initializeAuthState() {
 		const token = localStorage.getItem('@TheStore:token')
 		const user = localStorage.getItem('@TheStore:user')
-
-		console.log('token from localStorage:', token)
-		console.log('user from localStorage:', user)
 
 		if (token && user && user !== 'undefined') {
 			try {
 				const parsedUser: User = JSON.parse(user)
-				console.log('Parsed user:', parsedUser)
 				storeApi.defaults.headers.common.Authorization = `Bearer ${token}`
-				setAuthState({ user: parsedUser, token })
+				useAuthStore.setState({ user: parsedUser, token })
 			} catch (error) {
-				console.error('Error parsing user from localStorage', error)
 				localStorage.removeItem('@TheStore:user')
 				localStorage.removeItem('@TheStore:token')
-				setAuthState({ user: null, token: null })
+				useAuthStore.setState({ user: null, token: null })
 			}
 		}
-	}, [setAuthState])
+	}
 
+	initializeAuthState()
 	return <>{children}</>
 }
 

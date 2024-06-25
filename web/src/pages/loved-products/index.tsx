@@ -49,12 +49,15 @@ export function LovedProducts() {
         <Loading />
       ) : likedProducts.length === 0 ? (
         <div className='space-y-4 flex flex-col items-center'>
-          <span className='text-xl'>
+          <span className='text-xl font-semibold'>
             Your Liked Products is Empty, search and like any product
           </span>
-            <Link className='flex px-6 py-2 bg-violet-500 items-center justify-center rounded-lg text-lg font-medium text-neutral-50 gap-2' to={'/store'}>
-              Go to The Store <ShoppingBasket />
-            </Link>
+          <Link
+            className='flex px-6 py-2 bg-violet-500 items-center justify-center rounded-lg text-lg font-medium text-neutral-50 gap-2'
+            to={'/store'}
+          >
+            Go to The Store <ShoppingBasket />
+          </Link>
         </div>
       ) : (
         likedProducts.map(product => (

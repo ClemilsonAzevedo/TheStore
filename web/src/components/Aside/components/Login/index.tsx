@@ -8,9 +8,9 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
 import { z } from 'zod'
+import { Button } from '../../../ui/button'
+import { Checkbox } from '../../../ui/checkbox'
 import { SignUp } from '../SignUp'
-import { Button } from '../ui/button'
-import { Checkbox } from '../ui/checkbox'
 
 const signInFormValidationSchema = z.object({
 	email: z.string().email('Email or password is Wrong'),

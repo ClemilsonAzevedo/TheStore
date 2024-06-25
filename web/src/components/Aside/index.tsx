@@ -1,4 +1,10 @@
 import {
+	Popover,
+	PopoverContent,
+	PopoverTrigger,
+} from '@/components/ui/popover'
+import { useAuth } from '@/context/authContext'
+import {
 	Figma,
 	Github,
 	Heart,
@@ -11,58 +17,27 @@ import {
 	User,
 	UserPlus,
 } from 'lucide-react'
-
-import {
-	Popover,
-	PopoverContent,
-	PopoverTrigger,
-} from '@/components/ui/popover'
-import { useAuth } from '@/context/authContext'
-import { NavLink } from 'react-router-dom'
-import { Login } from '../Login'
-import { SignUp } from '../SignUp'
 import { Dialog, DialogContent, DialogTrigger } from '../ui/dialog'
+import { Login } from './components/Login'
+import { NavigationLink } from './components/NavigationLink'
+import { SignUp } from './components/SignUp'
 
 export function Aside() {
 	const { user, SignOut } = useAuth()
 
 	return (
 		<aside className='flex h-full w-[50px] flex-col items-center justify-between py-5'>
-			<NavLink
-				className='relative group p-2 rounded-full hover:bg-neutral-400 active:text-violet-500 '
-				to='/cart'>
-				<span className='absolute right-1 top-2 h-[5px] w-[5px] rounded-full bg-violet-500' />
-				<ShoppingCart />
-				<label className='hidden group-hover:block absolute left-10 top-0 transition bg-neutral-950 text-neutral-50 p-2 rounded-lg text-xs'>
-					Cart
-				</label>
-			</NavLink>
+			<div className='relative'>
+				<NavigationLink title='Cart' path='/cart' icon={<ShoppingCart />} />
+
+				{/*TODO: Apenas quando o carrinho tiver algum produto e resolver bug do padding */}
+				<span className='absolute -right-1 top-5 h-[5px] w-[5px] rounded-full bg-violet-500' />
+			</div>
 
 			<nav className='flex flex-col gap-5'>
-				<NavLink
-					className='p-2 rounded-full hover:bg-neutral-400 active:text-violet-500 group relative'
-					to={'/' || '#home'}>
-					<Home />
-					<label className='hidden group-hover:block absolute left-10 top-0 transition bg-neutral-950 text-neutral-50 p-2 rounded-lg text-xs'>
-						home
-					</label>
-				</NavLink>
-				<NavLink
-					className='p-2 rounded-full hover:bg-neutral-400 active:text-violet-500 group relative'
-					to='/store'>
-					<ShoppingBasket />
-					<label className='hidden group-hover:block absolute left-10 top-0 transition bg-neutral-950 text-neutral-50 p-2 rounded-lg text-xs'>
-						Store
-					</label>
-				</NavLink>
-				<NavLink
-					className='p-2 rounded-full hover:bg-neutral-400 active:text-violet-500 group relative'
-					to='/loved'>
-					<Heart />
-					<label className='hidden group-hover:block absolute left-10 top-0 transition bg-neutral-950 text-neutral-50 p-2 rounded-lg text-xs'>
-						Loved
-					</label>
-				</NavLink>
+				<NavigationLink title='Home' path='/' icon={<Home />} />
+				<NavigationLink title='Store' path='/store' icon={<ShoppingBasket />} />
+				<NavigationLink title='Loved' path='/loved' icon={<Heart />} />
 			</nav>
 
 			<div className='flex flex-col gap-5'>

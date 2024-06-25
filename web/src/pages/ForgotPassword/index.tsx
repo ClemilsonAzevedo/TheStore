@@ -1,5 +1,5 @@
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog'
-import { SignUp } from '../../components/SignUp'
+import { SignUp } from '../../components/Aside/components/SignUp'
 import { Button } from '../../components/ui/button'
 
 export function ForgotPassword() {

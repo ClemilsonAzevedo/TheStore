@@ -6,8 +6,8 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import { z } from 'zod'
+import { Button } from '../../../ui/button'
 import { Login } from '../Login'
-import { Button } from '../ui/button'
 
 const signUpFormValidationSchema = z.object({
 	name: z.string().min(3),

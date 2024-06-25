@@ -1,6 +1,10 @@
+// TODO: Criar um componente de Alerta para renderizar mensagens de erro e sucesso
+
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog'
 import { useAuth } from '@/context/authContext'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { Loader2 } from 'lucide-react'
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
 import { z } from 'zod'
@@ -16,6 +20,8 @@ const signInFormValidationSchema = z.object({
 type signInFormData = z.infer<typeof signInFormValidationSchema>
 
 export function Login() {
+	const [isSendingUserData, setIsSendingUserData] = useState(false)
+
 	const {
 		register,
 		watch,
@@ -32,7 +38,9 @@ export function Login() {
 		const { email, password } = userData
 
 		try {
+			setIsSendingUserData(true)
 			await SignIn({ email, password })
+			alert('Login has Done With Success')
 			navigate('/')
 			reset()
 		} catch (error) {
@@ -42,6 +50,7 @@ export function Login() {
 				alert('An unexpected error occurred')
 			}
 		}
+		setIsSendingUserData(false)
 	}
 
 	const emailInputChange = watch('email')
@@ -101,7 +110,7 @@ export function Login() {
 			</div>
 
 			<div className='flex items-center space-x-2'>
-				{/*Todo: adicionar metodo de lembrar por 30 dias */}
+				{/*Todo: adicionar método de lembrar por 30 dias */}
 				<Checkbox
 					id='remember'
 					className='w-8 h-8 bg-transparent border-2 border-neutral-600 rounded-lg checked:bg-transparent'
@@ -113,14 +122,19 @@ export function Login() {
 				</label>
 			</div>
 
-			<div className='space-y-3'>
-				<Button
-					type='submit'
-					disabled={isSubmitDisabled}
-					className='w-full bg-violet-500 hover:bg-violet-500/70 text-sm h-12 disabled:cursor-not-allowed'>
-					Login
-				</Button>
-			</div>
+			<Button
+				type='submit'
+				disabled={isSubmitDisabled || isSendingUserData}
+				className='w-full bg-violet-500 hover:bg-violet-500/70 text-sm h-12 disabled:cursor-not-allowed'>
+				{isSendingUserData ? (
+					<Loader2
+						size={16}
+						className='animate-spin flex items-center justify-center'
+					/>
+				) : (
+					<span>Login</span>
+				)}
+			</Button>
 
 			<div className='flex flex-col justify-center items-center'>
 				<Link

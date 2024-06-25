@@ -1,6 +1,8 @@
 import { storeApi } from '@/api/store-api'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Dialog, DialogContent, DialogTrigger } from '@radix-ui/react-dialog'
+import { Loader2 } from 'lucide-react'
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import { z } from 'zod'
@@ -16,6 +18,7 @@ const signUpFormValidationSchema = z.object({
 type signUpFormData = z.infer<typeof signUpFormValidationSchema>
 
 export function SignUp() {
+	const [isSendingUserData, setIsSendingUserData] = useState(false)
 	const {
 		register,
 		watch,
@@ -30,7 +33,8 @@ export function SignUp() {
 		const { name, email, password } = userData
 
 		try {
-			storeApi.post('/user/signup', { name, email, password })
+			setIsSendingUserData(true)
+			await storeApi.post('/user/signup', { name, email, password })
 			navigate('/')
 		} catch (error) {
 			//Todo: Dar alert nos erros da maneira correta
@@ -40,6 +44,7 @@ export function SignUp() {
 				alert('An unexpected error occurred')
 			}
 		}
+		setIsSendingUserData(false)
 	}
 
 	const nameInputChange = watch('name')
@@ -120,9 +125,16 @@ export function SignUp() {
 			<div className='space-y-3'>
 				<Button
 					type='submit'
-					disabled={isSubmitDisabled}
-					className='w-full bg-violet-500 hover:bg-violet-500/70 text-sm h-12'>
-					Sign Up
+					disabled={isSubmitDisabled || isSendingUserData}
+					className='w-full bg-violet-500 hover:bg-violet-500/70 text-sm h-12 disabled:cursor-not-allowed'>
+					{isSendingUserData ? (
+						<Loader2
+							size={16}
+							className='animate-spin flex items-center justify-center'
+						/>
+					) : (
+						<span>Sign Up</span>
+					)}
 				</Button>
 			</div>
 

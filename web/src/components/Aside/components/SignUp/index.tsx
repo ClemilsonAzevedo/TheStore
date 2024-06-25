@@ -34,7 +34,7 @@ export function SignUp() {
 
 		try {
 			setIsSendingUserData(true)
-			await storeApi.post('/user/signup', { name, email, password })
+			storeApi.post('/user/signup', { name, email, password })
 			navigate('/')
 		} catch (error) {
 			//Todo: Dar alert nos erros da maneira correta
@@ -139,14 +139,14 @@ export function SignUp() {
 			</div>
 
 			<Dialog>
-				<DialogContent className='px-[9.375rem] py-5 border-neutral-600 bg-neutral-400 focus-visible:outline-none max-w-max'>
-					<Login />
-				</DialogContent>
-				<DialogTrigger className='p-2 hover:bg-neutral-400 rounded-full focus-visible:outline-none transition group relative'>
-					<span className='block underline hover:text-violet-500 text-sm transition font-normal'>
+				<DialogTrigger className='p-2 hover:bg-neutral-400 rounded-full focus-visible:outline-none transition relative'>
+					<span className='block underline hover:text-violet-500 text-sm transition'>
 						Already have an account? Login!
 					</span>
 				</DialogTrigger>
+				<DialogContent className='px-[9.375rem] py-5 border-neutral-600 bg-neutral-400 focus-visible:outline-none max-w-max max-h-max'>
+					<Login />
+				</DialogContent>
 			</Dialog>
 		</form>
 	)

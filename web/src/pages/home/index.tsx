@@ -43,7 +43,6 @@ export function Home() {
 			.get('/products')
 			.then(response => {
 				setProducts(response.data)
-				console.log(response.data)
 			})
 			.finally(() => setIsProductsLoading(false))
 	}, [])

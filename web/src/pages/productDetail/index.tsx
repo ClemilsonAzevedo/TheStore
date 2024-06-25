@@ -120,34 +120,6 @@ export function ProductDetail() {
 			{/*
 				TODO: Criar filtro para produtos mais relevantes do mesmo tipo ou algo parecido
 			*/}
-			<div className='mt-16'>
-				<h3 className='text-2xl font-semibold'>More Relevant Products</h3>
-				<Carousel
-					opts={{
-						align: 'center',
-						loop: true,
-						slidesToScroll: 'auto',
-					}}
-					className='w-full max-w-screen-xl h-full  mx-auto'>
-					<CarouselContent>
-						{products.map(product => {
-							return (
-								<Product
-									key={product.id}
-									id={product.id}
-									price={product.price}
-									onCart={product.onCart}
-									isLiked={product.isLiked}
-									name={product.name}
-									description={product.description}
-								/>
-							)
-						})}
-					</CarouselContent>
-					<CarouselPrevious />
-					<CarouselNext />
-				</Carousel>
-			</div>
 		</section>
 	)
 }
